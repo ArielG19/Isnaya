@@ -77,7 +77,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            {{--<div class="content">
                 <div class="title m-b-md">
                     Laravel
                 </div>
@@ -88,7 +88,61 @@
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>--}}
+               
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                                <img src="{{asset('img/alquimista.jpg')}}" alt="" width="300px">
+                            <div class="caption">
+                                <h3>Texto 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                                <img src="{{asset('img/alquimista.jpg')}}" alt="" width="300px">
+                            <div class="caption">
+                                <h3>Texto 2</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                                <img src="{{asset('img/alquimista.jpg')}}" alt="" width="300px">
+                            <div class="caption">
+                                <h3>Texto 3</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                                <img src="{{asset('img/alquimista.jpg')}}" alt="" width="300px">
+                            <div class="caption">
+                                <h3>Texto 4</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </body>

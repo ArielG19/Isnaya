@@ -29,8 +29,6 @@ class CreateProformasTable extends Migration
             $table->enum('estado',['echa','completada'])->default('echa');
             $table->integer('caras');
             $table->double('iva');
-            $table->string('fax',15);
-            $table->string('telefono',15);
             $table->integer('id_producto')->unsigned();
             $table->integer('id_formato')->unsigned();
             $table->integer('id_cliente')->unsigned();
