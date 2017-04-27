@@ -31,10 +31,10 @@ class RubrosController extends Controller
         $rubro->costo=$request->costo;
         $rubro->tipo=$request->tipo;
         $rubro->estado='Activo';
-        $rubro->id_usuario=1;
+        $rubro->id_usuario='1';
         $rubro->save();
 
-        return redirect('ÉXITO');
+        return 'ÉXITO';
     }
 
     /**
