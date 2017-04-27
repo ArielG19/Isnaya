@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Rubro;
 
-class RubrosController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        return view('isnaya/vistas/gesRubros');
+        //
     }
 
     /**
@@ -22,19 +21,10 @@ class RubrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $rubro= new Rubro($request->all());
-
-        $rubro->descripcion=$request->descripcion;
-        $rubro->cantidad=$request->cantidad;
-        $rubro->costo=$request->costo;
-        $rubro->tipo=$request->tipo;
-        $rubro->estado='Activo';
-        $rubro->id_usuario='1';
-        $rubro->save();
-
-        return 'ÉXITO';
+        //
+        return view ('admin.producto.create');
     }
 
     /**
@@ -46,6 +36,8 @@ class RubrosController extends Controller
     public function store(Request $request)
     {
         //
+        $descripcion = $request->input("descripcion");
+        return $descripcion;
     }
 
     /**
