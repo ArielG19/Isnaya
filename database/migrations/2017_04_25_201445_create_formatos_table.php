@@ -16,6 +16,7 @@ class CreateFormatosTable extends Migration
         Schema::create('formatos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('formato');
+            $table->enum('estado',['Activo','Inactivo'])->default('Activo');
             $table->timestamps();
         });
     }

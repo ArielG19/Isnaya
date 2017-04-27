@@ -12,11 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('isnaya/vistas/index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+<<<<<<< HEAD
 Route::Resource('/productos','ProductoController');
+=======
+
+Route::get('/rubros', 'RubrosController@index');
+Route::post('/rubros', 'RubrosController@create');
+>>>>>>> 43e2e5b74221d4eb540130ab04737cb7c34dddf8
