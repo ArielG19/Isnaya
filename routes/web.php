@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('Vistas/index');
+    return view('isnaya/vistas/index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::get('/rubros', 'RubrosController@index');
+Route::post('/rubros', 'RubrosController@create');

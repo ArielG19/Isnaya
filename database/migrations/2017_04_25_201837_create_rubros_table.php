@@ -19,6 +19,7 @@ class CreateRubrosTable extends Migration
             $table->integer('cantidad');
             $table->double('costo');
             $table->string('tipo',30);
+            $table->enum('estado',['Activo','Inactivo'])->default('Activo');
             $table->integer('id_usuario')->unsigned();
             $table->timestamps();
 

@@ -26,9 +26,10 @@ class CreateProformasTable extends Migration
             $table->double('precio_venta');
             $table->double('fecha');
             $table->double('descuento');
-            $table->enum('estado',['echa','completada'])->default('echa');
+            $table->enum('tipo',['echa','completada'])->default('echa');
             $table->integer('caras');
             $table->double('iva');
+            $table->enum('estado',['Activo','Inactivo'])->default('Activo');
             $table->integer('id_producto')->unsigned();
             $table->integer('id_formato')->unsigned();
             $table->integer('id_cliente')->unsigned();

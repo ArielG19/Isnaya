@@ -1,4 +1,4 @@
-@extends('Vistas/template.main')
+@extends('isnaya/template/main')
 
 @section('title')
 	Inicio

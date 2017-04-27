@@ -20,6 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('telefono',20);
             $table->string('email');
             $table->string('fax');
+            $table->enum('estado',['Activo','Inactivo'])->default('Activo');
             $table->timestamps();
         });
     }

@@ -8,18 +8,22 @@
 	@yield('css')
 
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="">
-		@include('Vistas/template.nav')
+		@include('isnaya/template.nav')
 	</div>
 	
 	<div class="container-fluid">			
 		@yield('contenido')
 	</div>	
-	@include('Vistas/template.footer')
+
+
+	@include('isnaya/template.footer')
 	<script src="js/jquery.js"></script>
+	<script src="css/bootstrap/js/bootstrap.js"></script>
 
 	@yield('script')
+
 	
 </body>
 </html>
