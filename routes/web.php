@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-<<<<<<< HEAD
 
-Route::get('/rubros', 'RubrosController@index');
-Route::post('/rubros', 'RubrosController@create');
-=======
+Route::Resource('/rubros', 'RubrosController');
 Route::Resource('/productos','ProductoController');
->>>>>>> 962bde2003184d1a6efe3f2aaaf00cbc36c69da5
+Route::Resource('/cliente', 'ClienteController');
+Route::Resource('/formato', 'FormatoController');
+Route::Resource('/proforma', 'ProformaController');
+Route::Resource('/bitacora', 'BitacoraController');
+Route::Resource('/color', 'ColorController');
