@@ -21,7 +21,7 @@
 						{!!form::submit('Registrar',['class'=>'btn btn-primary'])!!}
 					</div>
 
-			{!!Form::close()!!}
+			{!!Form::close()!!} 
 	</div>
 </div>
 

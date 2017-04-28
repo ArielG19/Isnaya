@@ -14,7 +14,7 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        return view('isnaya/vistas/gesRubros');
+        
     }
 
     /**
@@ -22,8 +22,20 @@ class RubrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
+        return view('isnaya/vistas/gesRubros');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
         $rubro= new Rubro($request->all());
 
         $rubro->descripcion=$request->descripcion;
@@ -38,17 +50,6 @@ class RubrosController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -56,7 +57,7 @@ class RubrosController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -67,7 +68,9 @@ class RubrosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rubro=Rubro::find($id);
+ 
+        return view('/isnaya/vistas/mos_rubros', array('rubro'=>$rubro));
     }
 
     /**

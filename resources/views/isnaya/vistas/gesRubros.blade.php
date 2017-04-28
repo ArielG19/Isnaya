@@ -10,50 +10,40 @@
 
 
 @section('contenido')
+
 <div class="container">
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2><center>Gestión de Rubros de Isnaya Print</center></h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+       <div class="panel-heading">
+          <h2><center>Gestión de Rubros de Isnaya Print</center></h2>
+       </div>
+        <div class="panel-body">
+          {!!Form::open(['route'=>'rubros.store','method'=>'POST'])!!}
+            <div class="form-group">
+              {!!Form::label('Descripcion:')!!}
+              {!!form::textarea('descripcion',null,['id'=>'descripcion','class'=>'form-control','row'=>'2','placeholder'=>'Escriba una descripcion'])!!}
             </div>
-            <div class="panel-body">
-              <div class="formularios">
-                <form class="form-horizontal" method="post" action="/rubros" enctype="multipart/form-data">
-                    {{csrf_field()}}  
-					<div class="form-group">
-                        <label class="col-md-3 col-xs-3 control-label">Descripción</label>
-                        <div class="col-md-7 col-xs-7">
-                          <textarea class="form-control" rows="5"  name="descripcion" value=""></textarea><br>
-                        </div>
-                      </div>   
-                      <div class="form-group">
-                        <label class="col-md-3 col-xs-3 control-label">Cantidad:</label>
-                        <div class="col-md-7 col-xs-7">
-                            <input class="form-control" type="text" name="cantidad" value="">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3 col-xs-3 control-label">Costo:</label>
-                        <div class="col-md-7 col-xs-7">
-                            <input class="form-control" type="text" name="costo" value="">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-3 col-xs-3 control-label">Tipo:</label>
-                          <div class="col-md-7 col-xs-7">
-                            <input type="text" class="form-control" name="tipo" value="">
-                          </div>
-                      </div>   
-                      <div class="form-group">
-                        <div class="col-xs-offset-1 col-xs-10">
-                          <center> <input class="btn btn-primary pull-right" type="submit" name='enviar' value="Guardar"></center>
-                        </div>
-                    </div>                                    
-                  </form>
-              </div>
+            <div class="form-group">
+              {!!Form::label('Cantidad:')!!}
+              {!!form::text('cantidad',null,['id'=>'cantidad','class'=>'form-control','placeholder'=>'Escriba la cantidad'])!!}
             </div>
+            <div class="form-group">
+              {!!Form::label('Costo:')!!}
+              {!!form::text('costo',null,['id'=>'costo','class'=>'form-control','placeholder'=>'Escriba el costo'])!!}
+            </div>
+            <div class="form-group">
+              {!!Form::label('Tipo:')!!}
+              {!!form::text('tipo',null,['id'=>'tipo','class'=>'form-control','placeholder'=>'Escriba el tipo de rubro'])!!}
+            </div>
+            <div class="form-group">
+             {!!form::submit('Guardar',['class'=>'btn btn-primary'])!!}
+            </div>
+          {!!Form::close()!!}
         </div>
+      </div>
     </div>
+  </div>
 </div>
 @endsection
 
