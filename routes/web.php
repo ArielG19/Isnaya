@@ -18,16 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-<<<<<<< HEAD
-<<<<<<< HEAD
+ 
 Route::Resource('/productos','ProductoController');
-=======
+//1. agregamos una nueva ruta para para llamar al metodo listarTodo
+//2. pasamos el parametro {page?} para la paginacion
+Route::get('/listar/{page?}','ProductoController@listarTodo');
 
 Route::get('/rubros', 'RubrosController@index');
 Route::post('/rubros', 'RubrosController@create');
->>>>>>> 43e2e5b74221d4eb540130ab04737cb7c34dddf8
-=======
 
 Route::Resource('/rubros', 'RubrosController');
 Route::Resource('/productos','ProductoController');
@@ -36,4 +34,4 @@ Route::Resource('/formato', 'FormatoController');
 Route::Resource('/proforma', 'ProformaController');
 Route::Resource('/bitacora', 'BitacoraController');
 Route::Resource('/color', 'ColorController');
->>>>>>> 8246ec5a291103f2f618573827847c3ea55dea50
+

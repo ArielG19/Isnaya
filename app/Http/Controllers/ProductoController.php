@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Producto;
+use Session;
 
 class ProductoController extends Controller
 {
@@ -14,6 +16,15 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        
+        return view('isnaya.producto.index');
+    }
+
+    //1. creamos un un nuevo metodo para listar todo atravez de ajax.
+    public function listarTodo(){
+        $productos = Producto::Orderby('descripcion','ASC')->paginate(3);
+        return view('isnaya.producto.listar')->with('productos',$productos);
+
     }
 
     /**
@@ -24,7 +35,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
-        return view ('admin.producto.create');
+        return view ('isnaya.producto.create');
     }
 
     /**
@@ -35,9 +46,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $descripcion = $request->input("descripcion");
-        return $descripcion;
+
+        /*$producto = new Producto($request->all());
+        $producto->save();
+        //Session::flash('save','Se ha creado correctamente');
+        return redirect()->route('productos.index');*/
+
+        //verificamos si viene atravez de ajax
+        if($request->ajax()){
+            $product = Producto::create($request->all());
+            //si no hay error entonces
+            if($product){
+                Session::flash('save','Se ha creado correctamente');
+                return response()->json(['success'=>'true']);
+            }else{
+                return response()->json(['success'=>'false']);
+            }
+        }
+
     }
 
     /**
@@ -60,6 +86,10 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
+          $productos = Producto::FindOrFail($id);
+            //devolvemos una respuesta atravez de json
+            return response()->json($productos);
+        
     }
 
     /**
@@ -72,6 +102,20 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         //
+         //usamos ajax y json para actulizar
+        if($request->ajax()){
+
+            $productos = Producto::FindOrFail($id);
+            $input = $request->all();
+            $resultado = $productos->fill($input)->save();
+
+            if($resultado){
+                return response()->json(['success'=>'true']);
+            }else{
+                return response()->json(['success'=>'false']);
+            }
+        }
+
     }
 
     /**
