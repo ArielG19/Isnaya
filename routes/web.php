@@ -18,10 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+ 
+Route::Resource('/productos','ProductoController');
+//1. agregamos una nueva ruta para para llamar al metodo listarTodo
+//2. pasamos el parametro {page?} para la paginacion
+Route::get('/listar/{page?}','ProductoController@listarTodo');
 
 Route::Resource('/rubros', 'RubrosController');
-Route::Resource('/productos','ProductoController');
+Route::get('/mos_rubros/{page?}', 'RubrosController@listar');
+
 Route::Resource('/cliente', 'ClienteController');
 Route::Resource('/formato', 'FormatoController');
 Route::Resource('/proforma', 'ProformaController');
