@@ -11,6 +11,13 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
+    @include('mensajes.error')
+    
+         <div id="message-error" class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong id="error"></strong>
+        </div>
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="panel-title">
@@ -63,25 +70,25 @@
   			var route = "{{route('productos.store')}}";
   			var dataSting = "descripcion="+descripcion;
 
-      			$.ajax({
-     			url:route,
+      		$.ajax({
+     			  url:route,
       			headers:{'X-CSRF-TOKEN':token},
       			type:'post',
       			datatype:'json',
       			data:dataSting,
         			success:function(data){
           				if(data.success=='true'){
-            				alert('Se registro');
+            				//alert('Se registro');
             				document.location.href= "{{ route('productos.index')}}"; 
          				 }
         			},
         			//aqui atrapamos los errores una vez validados atraves de un request
-        			/*error:function(data){
-          			//aun nos muestra nuestro mensaje por que nos falta validar en el request
+        			error:function(data){
           			//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-          			$("#error").html(data.responseJSON.nombre);
+          			$("#error").html(data.responseJSON.descripcion);
           			$("#message-error").fadeIn();
-        			}*/
+                $("#message-error").show().delay(3000).fadeOut(3);
+        			}
 
       			});
   		});
@@ -89,4 +96,4 @@
 @endsection
 
 @endsection
-
+              
