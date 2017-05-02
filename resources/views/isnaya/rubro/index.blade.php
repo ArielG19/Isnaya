@@ -7,25 +7,32 @@
 @section('contenido')
 	<div class="row">
 	<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="panel-title">
-							Lista de Rubros 
-						</div>
-					</div>
-				<div class="panel-body">
-					{{--Agregamos un div con id donde traeremos la tabla--}}
-					<div id="listar-rubro">
-						
+
+		<div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+			<strong>Se ha actualizado correctamente</strong>
+		</div>
+
+		<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">
+						Lista de Rubros 
 					</div>
 				</div>
+			<div class="panel-body">
+				{{--Agregamos un div con id donde traeremos la tabla--}}
+				<div id="listar-rubro">
+						
+				</div>
 			</div>
+		</div>
 	</div>
 </div>
 
 @endsection
 
 @include('isnaya.rubro.modal')
+
+@include('isnaya.rubro.modal_eli')
 
 
 @section('script')
@@ -63,8 +70,8 @@
 				}
 
 			});
-
 		});		
+
 
 	//ACTUALIZAR----------------------------------------
 	//creamos la function para mostrar datos en el modal. y esta va en boton editar 
@@ -79,6 +86,7 @@
 			$("#costo").val(data.costo);
 			$("#tipo").val(data.tipo);
 		});
+	}
 
 		//btn para actualizar con ajax
 		$("#actualizar").click(function(){
@@ -107,6 +115,7 @@
 						$("#myModal").modal('toggle');
 						//pintamos un mensaje
 						$("#message-update").fadeIn();
+						$("#message-update").show().delay(3000).fadeOut(3);
 					}
 				},
 				/*error:function(data){
@@ -119,8 +128,6 @@
 		});
 
 	});
-
-	}
 
 	</script>
 @endsection

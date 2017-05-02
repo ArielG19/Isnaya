@@ -27,7 +27,9 @@ Route::get('/listar/{page?}','ProductoController@listarTodo');
 Route::Resource('/rubros', 'RubrosController');
 Route::get('/mos_rubros/{page?}', 'RubrosController@listar');
 
-Route::Resource('/cliente', 'ClienteController');
+Route::Resource('/clientes', 'ClienteController');
+Route::get('/lis_clientes/{page?}','ClienteController@listar');
+
 Route::Resource('/formato', 'FormatoController');
 Route::Resource('/proforma', 'ProformaController');
 Route::Resource('/bitacora', 'BitacoraController');
