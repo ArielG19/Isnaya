@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Formato extends Model
 {
-    protected $table=('formatos');
-    protected $fillable=['id','formato'];
+    protected $table ='formatos';
+    protected $fillable =['formato','estado'];
 }

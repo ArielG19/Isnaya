@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductoRequest;
-use App\Http\Requests\updateProductoRequest;
-use App\Producto;
-use Session;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\updateUserRequest;
+use App\User;
 
-class ProductoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +17,12 @@ class ProductoController extends Controller
     public function index()
     {
         //
-        
-        return view('isnaya.producto.index');
+        return view('isnaya.usuarios.index');
     }
 
-    //1. creamos un un nuevo metodo para listar todo atravez de ajax.
-    public function listarTodo(){
-        $productos = Producto::Orderby('descripcion','ASC')->paginate(3);
-        return view('isnaya.producto.listar')->with('productos',$productos);
-
+    public function listarUsuarios(){
+             $usuarios = User::Orderby('name','ASC')->paginate(3);
+            return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
     }
 
     /**
@@ -37,7 +33,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
-        return view ('isnaya.producto.create');
+        return view ('isnaya.usuarios.create');
     }
 
     /**
@@ -46,26 +42,19 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductoRequest $request)
+    public function store(UserRequest $request)
     {
-
-        /*$producto = new Producto($request->all());
-        $producto->save();
-        //Session::flash('save','Se ha creado correctamente');
-        return redirect()->route('productos.index');*/
-
-        //verificamos si viene atravez de ajax
-        if($request->ajax()){
-            $product = Producto::create($request->all());
+        //
+            if($request->ajax()){
+            $usuarios = User::create($request->all());
             //si no hay error entonces
-            if($product){
-                Session::flash('save','Se ha creado correctamente');
+            if($usuarios){
+                //Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
             }else{
                 return response()->json(['success'=>'false']);
             }
         }
-
     }
 
     /**
@@ -77,6 +66,8 @@ class ProductoController extends Controller
     public function show($id)
     {
         //
+     
+
     }
 
     /**
@@ -88,10 +79,9 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
-          $productos = Producto::FindOrFail($id);
+        $usuarios = User::FindOrFail($id);
             //devolvemos una respuesta atravez de json
-            return response()->json($productos);
-        
+            return response()->json($usuarios);
     }
 
     /**
@@ -101,15 +91,15 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(updateProductoRequest $request, $id)
+    public function update(updateUserRequest $request, $id)
     {
         //
-         //usamos ajax y json para actulizar
-        if($request->ajax()){
+            if($request->ajax()){
 
-            $productos = Producto::FindOrFail($id);
+            $usuarios =User::FindOrFail($id);
+            //en input amacenamos toda la info del request
             $input = $request->all();
-            $resultado = $productos->fill($input)->save();
+            $resultado = $usuarios->fill($input)->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);
@@ -117,7 +107,6 @@ class ProductoController extends Controller
                 return response()->json(['success'=>'false']);
             }
         }
-
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormatoRequest;
+use App\Http\Requests\updateFormatoRequest;
+use App\Formato;
 
 class FormatoController extends Controller
 {
@@ -14,6 +17,13 @@ class FormatoController extends Controller
     public function index()
     {
         //
+        return view('isnaya.formato.index');
+    }
+
+    public function listarFormato(){
+         $formatos = Formato::Orderby('formato','ASC')->paginate(3);
+            return view('isnaya.formato.listar')->with('formatos',$formatos);
+
     }
 
     /**
@@ -33,9 +43,19 @@ class FormatoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormatoRequest $request)
     {
         //
+        if($request->ajax()){
+            $formato = Formato::create($request->all());
+            //si no hay error entonces
+            if($formato){
+                //Session::flash('save','Se ha creado correctamente');
+                return response()->json(['success'=>'true']);
+            }else{
+                return response()->json(['success'=>'false']);
+            }
+        }
     }
 
     /**
@@ -58,6 +78,9 @@ class FormatoController extends Controller
     public function edit($id)
     {
         //
+        $formatos = Formato::FindOrFail($id);
+            //devolvemos una respuesta atravez de json
+            return response()->json($formatos);
     }
 
     /**
@@ -67,9 +90,23 @@ class FormatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateFormatoRequest $request, $id)
     {
         //
+        if($request->ajax()){
+
+            $formatos =Formato::FindOrFail($id);
+            //en input amacenamos toda la info del request
+            $input = $request->all();
+            $resultado = $formatos->fill($input)->save();
+
+            if($resultado){
+                return response()->json(['success'=>'true']);
+            }else{
+                return response()->json(['success'=>'false']);
+            }
+        }
+
     }
 
     /**
