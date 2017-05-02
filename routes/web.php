@@ -32,6 +32,15 @@ Route::Resource('/productos','ProductoController');
 Route::get('/listar-productos/{page?}','ProductoController@listarTodo');
 
 
+<<<<<<< HEAD
+Route::Resource('/rubros', 'RubrosController');
+Route::get('/mos_rubros/{page?}', 'RubrosController@listar');
+
+Route::Resource('/clientes', 'ClienteController');
+Route::get('/lis_clientes/{page?}','ClienteController@listar');
+
+Route::Resource('/formato', 'FormatoController');
+=======
 
 //---------------------------------------------------------------------------
 Route::Resource('/formatos', 'FormatoController');
@@ -60,15 +69,20 @@ Route::Resource('/cliente', 'ClienteController');
 
 
 //---------------------------------------------------------------------------
+>>>>>>> 945591408b8189e9a0eef6686dfa8bb8b2e6435c
 Route::Resource('/proforma', 'ProformaController');
 
 
 
 //---------------------------------------------------------------------------
 Route::Resource('/bitacora', 'BitacoraController');
+<<<<<<< HEAD
+Route::Resource('/color', 'ColorController');
+=======
 
 
 
 //---------------------------------------------------------------------------
 Route::Resource('/color', 'ColorController');
 
+>>>>>>> 945591408b8189e9a0eef6686dfa8bb8b2e6435c

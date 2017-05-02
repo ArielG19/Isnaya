@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Rubro;
-use Session;
+use \App\Cliente;
+use Sesion;
 
-class RubrosController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,13 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        return view('isnaya.rubro.index');
+        return view('isnaya.clientes.index');
     }
-
-
     public function listar()
     {
-        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(3);
-        return view('isnaya.rubro.listar')->with('rubros',$rubros);
+        $clientes = Cliente::Orderby('nombre','ASC')->paginate(3);
+        return view('isnaya.clientes.listar')->with('clientes',$clientes);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,8 +29,9 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        return view('isnaya/rubro/rubro');
+        return view('isnaya.clientes.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,19 +41,16 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $rubro= new Rubro($request->all());
-
-        $rubro->descripcion=$request->descripcion;
-        $rubro->cantidad=$request->cantidad;
-        $rubro->costo=$request->costo;
-        $rubro->tipo=$request->tipo;
-        $rubro->estado='Activo';
-        $rubro->id_usuario='1';
-        $rubro->save();
-
-        return redirect('/rubros');
-    
+         if($request->ajax()){
+            $clientes = Cliente::create($request->all());
+            //si no hay error entonces
+            if($clientes){
+                Session::flash('save','Se ha creado correctamente');
+                return response()->json(['success'=>'true']);
+            }else{
+                return response()->json(['success'=>'false']);
+            }
+        }
     }
 
     /**
@@ -66,7 +61,7 @@ class RubrosController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -77,9 +72,9 @@ class RubrosController extends Controller
      */
     public function edit($id)
     {
-        $rubro=Rubro::FindOrFail($id);
-            //devolvemos una respuesta atravez de json
-            return response()->json($rubro);
+        $clientes=Cliente::FindOrFail($id);
+        //devolvemos una respuesta atravez de json
+        return response()->json($clientes);
     }
 
     /**
@@ -91,12 +86,11 @@ class RubrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //usamos ajax y json para actulizar
-        if($request->ajax()){
+            if($request->ajax()){
 
-            $rubro=Rubro::FindOrFail($id);
+            $clientes=Cliente::FindOrFail($id);
             $input = $request->all();
-            $resultado = $rubro->fill($input)->save();
+            $resultado = $clientes->fill($input)->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);
@@ -114,17 +108,6 @@ class RubrosController extends Controller
      */
     public function destroy($id)
     {
-          if($request->ajax()){
-
-            $rubro=Rubro::FindOrFail($id);
-            $input = $request->all();
-            $resultado = $rubro->fill($input)->save();
-
-            if($resultado){
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
-        }
+        //
     }
 }
