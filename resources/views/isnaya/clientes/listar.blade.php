@@ -16,15 +16,14 @@
 				<td>{{$cliente->apellido}}</td>
 				<td>{{$cliente->telefono}}</td>
 				<td>{{$cliente->email}}</td>
-				<td>{{$cliente->fax}}</td>
-									
-					<td>
-             			<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             			 <a class="btn btn-primary" href="#" Onclick='Mostrar({{$cliente->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
-              				<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
-              			</a>
-           			</td>
-				</tr>
+				<td>{{$cliente->fax}}</td>			
+				<td>
+             		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
+             		<a class="btn btn-primary" href="#" Onclick='MostrarCliente({{$cliente->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+              			<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
+              		</a>
+           		</td>
+			</tr>
 		@endforeach
 	</tbody>
 </table>

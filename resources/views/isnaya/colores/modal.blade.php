@@ -6,9 +6,8 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span> 
 				</button>
-				<h4 class="modal-title" id="myModalLabel">Actualizar Producto</h4>
+				<h4 class="modal-title" id="myModalLabel">Actualizar Clientes</h4> 
 			</div>
-
 			<div class="modal-body">
 				{{--creamos un alert--}}
 				<div id="message-error" class="alert alert-danger danger" role="alert" style="display:none">
@@ -18,18 +17,15 @@
 				{!!Form::open(['id'=>'form'])!!}
 					<input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
 					<input type="hidden" id="id">
-
-				<div class="form-group">
-                    <!--Nombramos las cajas de texto igual que los campos de la bd-->
-                    {!!form::label('Descripcion:')!!}
-                    {!!form::text('descripcion',null,['id'=>'descripcion','class'=>'form-control','placeholder'=>'Escriba una descripcion'])!!}
+					<div class="form-group">
+                    	<!--Nombramos las cajas de texto igual que los campos de la bd-->
+                    	{!!form::label('Color:')!!}
+                   		{!!form::text('color',null,['id'=>'color','class'=>'form-control','placeholder'=>'Escriba el color'])!!}
                 {!!Form::close()!!}
                 </div>
-
 			</div>
-
 			<div class="modal-footer">
-				{!!link_to('#',$title ='Actualizar',$attributes= ['id'=>'actualizarProduto','class'=>'btn btn-primary'],$secure = null)!!}
+				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'actualizarColor','class'=>'btn btn-primary'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

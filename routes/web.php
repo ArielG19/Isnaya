@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//---------------------------------------------------------------------------
 Route::Resource('/usuarios','UserController');
 
 //1. agregamos una nueva ruta para para llamar al metodo listarUsuarios
@@ -27,62 +26,25 @@ Route::Resource('/usuarios','UserController');
 Route::get('/listar-usuarios/{page?}','UserController@listarUsuarios');
 
 
-//---------------------------------------------------------------------------
 Route::Resource('/productos','ProductoController');
 Route::get('/listar-productos/{page?}','ProductoController@listarTodo');
 
 
-<<<<<<< HEAD
 Route::Resource('/rubros', 'RubrosController');
-Route::get('/mos_rubros/{page?}', 'RubrosController@listar');
+Route::get('/mos_rubros', 'RubrosController@listar');
 
 Route::Resource('/clientes', 'ClienteController');
 Route::get('/lis_clientes/{page?}','ClienteController@listar');
 
-Route::Resource('/formato', 'FormatoController');
-=======
 
-//---------------------------------------------------------------------------
 Route::Resource('/formatos', 'FormatoController');
 Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
 
 
-
-//---------------------------------------------------------------------------
-Route::get('/rubros', 'RubrosController@index');
+//Route::Resource('/proforma', 'ProformaController');
 
 
+//Route::Resource('/bitacora', 'BitacoraController');
 
-//---------------------------------------------------------------------------
-Route::post('/rubros', 'RubrosController@create');
-
-
-
-//---------------------------------------------------------------------------
-Route::Resource('/rubros', 'RubrosController');
-
-
-
-//---------------------------------------------------------------------------
-Route::Resource('/cliente', 'ClienteController');
-
-
-
-//---------------------------------------------------------------------------
->>>>>>> 945591408b8189e9a0eef6686dfa8bb8b2e6435c
-Route::Resource('/proforma', 'ProformaController');
-
-
-
-//---------------------------------------------------------------------------
-Route::Resource('/bitacora', 'BitacoraController');
-<<<<<<< HEAD
-Route::Resource('/color', 'ColorController');
-=======
-
-
-
-//---------------------------------------------------------------------------
-Route::Resource('/color', 'ColorController');
-
->>>>>>> 945591408b8189e9a0eef6686dfa8bb8b2e6435c
+Route::Resource('/colores', 'ColorController');
+Route::get('/lisColores/{page?}','ColorController@listar');

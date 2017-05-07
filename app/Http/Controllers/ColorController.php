@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Rubro;
-use Session;
+use \App\Color;
+use \Session;
 
-class RubrosController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,13 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        return view('isnaya.rubro.index');
+        return view('isnaya.colores.index');
     }
-
 
     public function listar()
     {
-        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(3);
-        return view('isnaya.rubro.listar')->with('rubros',$rubros);
+        $colores = Color::Orderby('color','ASC')->paginate(3);
+        return view('isnaya.colores.listar')->with('colores',$colores); 
     }
 
     /**
@@ -32,7 +31,7 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        return view('isnaya/rubro/rubro');
+        return view('isnaya.colores.create');
     }
 
     /**
@@ -43,16 +42,16 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {
-         if($request->ajax()){
-            $rubros = Rubro::create($request->all());
+            if($request->ajax()){
+            $colores = Color::create($request->all());
             //si no hay error entonces
-            if($rubros){
+            if($colores){
                 Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
             }else{
                 return response()->json(['success'=>'false']);
             }
-        }   
+        }
     }
 
     /**
@@ -63,7 +62,7 @@ class RubrosController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -74,9 +73,9 @@ class RubrosController extends Controller
      */
     public function edit($id)
     {
-        $rubro=Rubro::FindOrFail($id);
-            //devolvemos una respuesta atravez de json
-            return response()->json($rubro);
+         $colores=Color::FindOrFail($id);
+        //devolvemos una respuesta atravez de json
+        return response()->json($colores);
     }
 
     /**
@@ -88,12 +87,11 @@ class RubrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //usamos ajax y json para actulizar
         if($request->ajax()){
 
-            $rubro=Rubro::FindOrFail($id);
+            $colores=Color::FindOrFail($id);
             $input = $request->all();
-            $resultado = $rubro->fill($input)->save();
+            $resultado = $colores->fill($input)->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);
@@ -111,17 +109,6 @@ class RubrosController extends Controller
      */
     public function destroy($id)
     {
-          if($request->ajax()){
-
-            $rubro=Rubro::FindOrFail($id);
-            $input = $request->all();
-            $resultado = $rubro->fill($input)->save();
-
-            if($resultado){
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
-        }
+        //
     }
 }
