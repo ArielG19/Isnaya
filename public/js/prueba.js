@@ -489,7 +489,7 @@ $("#guardarUsuario").click(function(event){
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
-  	var route ="{{route('usuarios.store')}}";
+  	var route ="usuarios";
     $.ajax({
      	url:route,
       	headers:{'X-CSRF-TOKEN':token},
@@ -498,7 +498,7 @@ $("#guardarUsuario").click(function(event){
       	data:{name:name,cargo:cargo,email:email,password:password,type:type},
         success:function(data){
           	if(data.success=='true'){
-                document.location.href= "{{ route('usuarios.index')}}"; 
+                document.location.href= "usuarios"; 
             }
         },
         //aqui atrapamos los errores una vez validados atraves de un request
@@ -536,7 +536,7 @@ $(document).on("click",".pagination li a",function(e){
 });
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
-	var route = "{{url('usuarios')}}/"+id+"/edit";
+	var route = "usuarios/"+id+"/edit";
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -552,7 +552,7 @@ $("#actualizarUsuario").click(function(){
 	var name = $("#name").val();
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
-	var route = "{{url('usuarios')}}/"+id+"";
+	var route = "usuarios/"+id+"";
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
