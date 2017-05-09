@@ -19,7 +19,7 @@
 									
 					<td>
              			<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             			 <a class="btn btn-primary" href="#" Onclick='Mostrar({{$rubro->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+             			 <a class="btn btn-primary" href="#" Onclick='MostrarRubro({{$rubro->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
               				<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               			</a>
 

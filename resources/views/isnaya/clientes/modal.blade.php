@@ -8,7 +8,6 @@
 				</button>
 				<h4 class="modal-title" id="myModalLabel">Actualizar Clientes</h4>
 			</div>
-
 			<div class="modal-body">
 				{{--creamos un alert--}}
 				<div id="message-error" class="alert alert-danger danger" role="alert" style="display:none">
@@ -18,28 +17,24 @@
 				{!!Form::open(['id'=>'form'])!!}
 					<input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
 					<input type="hidden" id="id">
-
 				<div class="form-group">
                     <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Nombres:')!!}
                         {!!form::text('nombre',null,['id'=>'nombre','class'=>'form-control','placeholder'=>'Escriba los nombres'])!!}
                     {!!Form::close()!!}
                 </div>
-
                 <div class="form-group">
                      <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Apellidos:')!!}
                         {!!form::text('apellido',null,['id'=>'apellido','class'=>'form-control','placeholder'=>'Escriba los apellidos'])!!}
                     {!!Form::close()!!}
                 </div>
-
                 <div class="form-group">
                      <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Telefono:')!!}
                         {!!form::text('telefono',null,['id'=>'telefono','class'=>'form-control','placeholder'=>'Escriba el Telefono'])!!}
                     {!!Form::close()!!}
                 </div>
-
                 <div class="form-group">
                      <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Email:')!!}
@@ -53,9 +48,8 @@
                     {!!Form::close()!!}
                 </div>
 			</div>
-
 			<div class="modal-footer">
-				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'actualizar','class'=>'btn btn-primary'],$secure = null)!!}
+				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'actualizarCliente','class'=>'btn btn-primary'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

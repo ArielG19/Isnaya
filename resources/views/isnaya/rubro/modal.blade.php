@@ -1,4 +1,3 @@
-{{--Modal--}}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -50,7 +49,7 @@
 			</div>
 
 			<div class="modal-footer">
-				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'actualizar','class'=>'btn btn-primary'],$secure = null)!!}
+				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'actualizarRubro','class'=>'btn btn-primary'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

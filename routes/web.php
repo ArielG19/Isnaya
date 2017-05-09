@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//---------------------------------------------------------------------------
 Route::Resource('/usuarios','UserController');
 
 //1. agregamos una nueva ruta para para llamar al metodo listarUsuarios
@@ -27,24 +26,24 @@ Route::Resource('/usuarios','UserController');
 Route::get('/listar-usuarios/{page?}','UserController@listarUsuarios');
 
 
-//---------------------------------------------------------------------------
 Route::Resource('/productos','ProductoController');
 Route::get('/listar-productos/{page?}','ProductoController@listarTodo');
 
 
 Route::Resource('/rubros', 'RubrosController');
-Route::get('/mos_rubros/{page?}', 'RubrosController@listar');
+Route::get('/mos_rubros', 'RubrosController@listar');
 
 Route::Resource('/clientes', 'ClienteController');
 Route::get('/lis_clientes/{page?}','ClienteController@listar');
 
 
-//---------------------------------------------------------------------------
 Route::Resource('/formatos', 'FormatoController');
 Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
 
 
+//Route::Resource('/proforma', 'ProformaController');
 
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 Route::Resource('/cliente', 'ClienteController');
 
@@ -64,3 +63,10 @@ Route::Resource('/bitacora', 'BitacoraController');
 //---------------------------------------------------------------------------
 Route::Resource('/color', 'ColorController');
 
+=======
+
+//Route::Resource('/bitacora', 'BitacoraController');
+
+Route::Resource('/colores', 'ColorController');
+Route::get('/lisColores/{page?}','ColorController@listar');
+>>>>>>> edcb6fc40264bf751411c5ac8c1ed04521ab46a9

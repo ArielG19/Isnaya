@@ -37,7 +37,7 @@
               {!!form::text('tipo',null,['id'=>'tipo','class'=>'form-control','placeholder'=>'Escriba el tipo de rubro'])!!}
             </div>
             <div class="form-group">
-             {!!form::submit('Guardar',['class'=>'btn btn-primary'])!!}
+             {!!link_to('#','Guardar',['id'=>'guardarRubro','class'=>'btn btn-primary btn-sm-mt-10'])!!}
             </div>
           {!!Form::close()!!}
         </div>
@@ -47,3 +47,6 @@
 </div>
 @endsection
 
+@section('script')
+  <script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
+@endsection
