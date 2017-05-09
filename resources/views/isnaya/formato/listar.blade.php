@@ -8,7 +8,7 @@
 						<tbody>
 							@foreach($formatos as $formato)
 
-							{{--@if($formato->estado =="Activo")--}}
+							@if($formato->estado =="Activo")
 								<tr>
 									<td>
 										{{$formato->id}}
@@ -41,7 +41,7 @@
               							</a>
            							</td>
 								</tr>
-								{{--@endif--}}
+								@endif
 
 							@endforeach
 						</tbody>

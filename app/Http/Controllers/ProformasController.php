@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\updateUserRequest;
+use App\Proforma;
 use App\User;
+use App\Cliente;
+use App\Formato;
+use App\Producto;
 
-class UserController extends Controller
+class ProformasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +19,12 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('isnaya.usuarios.index');
+        return view('isnaya.proformas.index');
     }
 
-    public function listarUsuarios(){
-             $usuarios = User::Orderby('name','ASC')->paginate(3);
-            return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
+    public function listarProforma(){
+        $proformas = Proforma::Orderby('id','ASC')->paginate(1);
+            return view('isnaya.proformas.listar')->with('proformas',$proformas);
     }
 
     /**
@@ -32,8 +34,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
-        return view ('isnaya.usuarios.create');
+        
+        $user = User::pluck('name','id')->prepend('Seleccione el usuario');
+        $clientes = Cliente::pluck('nombre','id')->prepend('Seleccione el cliente');
+        $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
+        $producto = Producto::pluck('descripcion','id')->prepend('Seleccione el producto');
+
+        return view('isnaya.proformas.create')->with('user',$user)->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto);
+        //->with('proforma',$proforma);
     }
 
     /**
@@ -42,15 +50,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         //
-            if($request->ajax()){
-            $usuarios = User::create($request->all());
-            $usuarios->password=bcrypt($request->password);
-            $usuarios->save();
+          if($request->ajax()){
+            $proformas = Proforma::create($request->all());
             //si no hay error entonces
-            if($usuarios){
+            if($proformas){
                 //Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
             }else{
@@ -68,8 +74,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-     
-
     }
 
     /**
@@ -81,9 +85,6 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $usuarios = User::FindOrFail($id);
-            //devolvemos una respuesta atravez de json
-            return response()->json($usuarios);
     }
 
     /**
@@ -93,22 +94,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(updateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-            if($request->ajax()){
-
-            $usuarios =User::FindOrFail($id);
-            //en input amacenamos toda la info del request
-            $input = $request->all();
-            $resultado = $usuarios->fill($input)->save();
-
-            if($resultado){
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
-        }
     }
 
     /**

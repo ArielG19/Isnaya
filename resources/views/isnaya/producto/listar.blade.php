@@ -1,6 +1,6 @@
-	<table class="table table-bordered">
+<table class="table table-bordered">
 								<thead>
-									<th>ID</th>
+									<th>Id</th>
 									<th>Productos</th>
 									<th>Accìòn</th>
 								</thead>
@@ -25,7 +25,7 @@
 								</tr>
 							@endforeach
 						</tbody>
-	</table>
+</table>
 	<center>
 		<h4>{{$productos->render()}}</h4>
 	</center>

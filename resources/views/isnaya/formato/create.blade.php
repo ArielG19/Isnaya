@@ -41,10 +41,10 @@
                          <!--Agregamos nuestro link para trabajar ajax-->
                           {!!link_to('#','Guardar',['id'=>'guardar','class'=>'btn btn-primary btn-sm-mt-10'])!!}
                           <!--Agregamos un button para cancelar-->
+                      </div>
+        {!! Form::close() !!}
 
-                   {!! Form::close() !!}
-
-			</div>
+			
 		</div>
 	</div>
 </div>
