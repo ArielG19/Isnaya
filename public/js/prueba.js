@@ -273,8 +273,11 @@ $("#guardarFormato").click(function(event){
         data:{formato:formato,estado:estado},
         success:function(data){
             if(data.success=='true'){
+            	listarFormato();
+            	$("#myModalCreate").modal('toggle');
+            	$("#message-save").fadeIn();
                 //alert('Se registro');
-                document.location.href= "formatos"; 
+                //document.location.href= "formatos"; 
             }
         },
         //aqui atrapamos los errores una vez validados atraves de un request

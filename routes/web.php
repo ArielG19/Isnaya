@@ -41,9 +41,6 @@ Route::Resource('/formatos', 'FormatoController');
 Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
 
 
-//Route::Resource('/proforma', 'ProformaController');
-
-<<<<<<< HEAD
 //---------------------------------------------------------------------------
 Route::Resource('/cliente', 'ClienteController');
 
@@ -63,10 +60,7 @@ Route::Resource('/bitacora', 'BitacoraController');
 //---------------------------------------------------------------------------
 Route::Resource('/color', 'ColorController');
 
-=======
-
-//Route::Resource('/bitacora', 'BitacoraController');
 
 Route::Resource('/colores', 'ColorController');
 Route::get('/lisColores/{page?}','ColorController@listar');
->>>>>>> edcb6fc40264bf751411c5ac8c1ed04521ab46a9
+
