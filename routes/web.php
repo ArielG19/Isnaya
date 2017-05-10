@@ -40,11 +40,10 @@ Route::get('/lis_clientes/{page?}','ClienteController@listar');
 Route::Resource('/formatos', 'FormatoController');
 Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
 
-
-//Route::Resource('/proforma', 'ProformaController');
-
-
-//Route::Resource('/bitacora', 'BitacoraController');
-
 Route::Resource('/colores', 'ColorController');
 Route::get('/lisColores/{page?}','ColorController@listar');
+
+Route::Resource('/proformas', 'ProformasController');
+Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
+
+Route::Resource('/bitacora', 'BitacoraController');

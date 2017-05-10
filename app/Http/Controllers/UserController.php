@@ -47,6 +47,8 @@ class UserController extends Controller
         //
             if($request->ajax()){
             $usuarios = User::create($request->all());
+            $usuarios->password=bcrypt($request->password);
+            $usuarios->save();
             //si no hay error entonces
             if($usuarios){
                 //Session::flash('save','Se ha creado correctamente');

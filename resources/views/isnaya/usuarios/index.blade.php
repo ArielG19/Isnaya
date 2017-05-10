@@ -7,6 +7,7 @@
 @endsection
 
 @section('contenido')
+<<<<<<< HEAD
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			@include('mensajes.error')
@@ -16,6 +17,18 @@
 	            </button>
 				<strong> Se actualizo correctamente</strong>
 			</div>
+=======
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+				@include('mensajes.error')
+				
+				<div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+	                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong> Se actualizo correctamente</strong>
+				</div>
+
+>>>>>>> e2f56c567df3c6b57a7d16d49728d19162374ae0
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Cliente;
-use Sesion;
+use App\Proforma;
+use App\User;
+use App\Cliente;
+use App\Formato;
+use App\Producto;
 
-class ClienteController extends Controller
+class ProformasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +18,15 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('isnaya.clientes.index');
+        //
+        return view('isnaya.proformas.index');
     }
-    public function listar()
-    {
-        $clientes = Cliente::Orderby('nombre','ASC')->paginate(3);
-        return view('isnaya.clientes.listar')->with('clientes',$clientes);
+
+    public function listarProforma(){
+        $proformas = Proforma::Orderby('id','ASC')->paginate(1);
+            return view('isnaya.proformas.listar')->with('proformas',$proformas);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,9 +34,15 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('isnaya.clientes.modalcreate');
-    }
+        
+        $user = User::pluck('name','id')->prepend('Seleccione el usuario');
+        $clientes = Cliente::pluck('nombre','id')->prepend('Seleccione el cliente');
+        $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
+        $producto = Producto::pluck('descripcion','id')->prepend('Seleccione el producto');
 
+        return view('isnaya.proformas.create')->with('user',$user)->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto);
+        //->with('proforma',$proforma);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,11 +52,12 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-         if($request->ajax()){
-            $clientes = Cliente::create($request->all());
+        //
+          if($request->ajax()){
+            $proformas = Proforma::create($request->all());
             //si no hay error entonces
-            if($clientes){
-                Session::flash('save','Se ha creado correctamente');
+            if($proformas){
+                //Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
             }else{
                 return response()->json(['success'=>'false']);
@@ -72,9 +84,7 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $clientes=Cliente::FindOrFail($id);
-        //devolvemos una respuesta atravez de json
-        return response()->json($clientes);
+        //
     }
 
     /**
@@ -86,18 +96,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-            if($request->ajax()){
-
-            $clientes=Cliente::FindOrFail($id);
-            $input = $request->all();
-            $resultado = $clientes->fill($input)->save();
-
-            if($resultado){
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
-        }
+        //
     }
 
     /**

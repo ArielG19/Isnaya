@@ -17,6 +17,7 @@ class CreateProformasTable extends Migration
             $table->increments('id');
             $table->integer('num_pag');
             $table->string('solicitante', 100);
+            $table->integer('caras');
             $table->integer('volumen');
             $table->double('subtotal');
             $table->double('gastos');
@@ -24,12 +25,11 @@ class CreateProformasTable extends Migration
             $table->double('utilidad_bruta');
             $table->double('valor_venta');
             $table->double('precio_venta');
-            $table->double('fecha');
             $table->double('descuento');
-            $table->enum('tipo',['echa','completada'])->default('echa');
-            $table->integer('caras');
             $table->double('iva');
-            $table->enum('estado',['Activo','Inactivo'])->default('Activo');
+            $table->double('fecha');
+            $table->enum('tipo',['hecha','completada']);
+            $table->enum('estado',['activo','inactivo']);
             $table->integer('id_producto')->unsigned();
             $table->integer('id_formato')->unsigned();
             $table->integer('id_cliente')->unsigned();
