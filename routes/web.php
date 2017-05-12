@@ -34,16 +34,28 @@ Route::Resource('/rubros', 'RubrosController');
 Route::get('/mos_rubros', 'RubrosController@listar');
 
 Route::Resource('/clientes', 'ClienteController');
-Route::get('/lis_clientes/{page?}','ClienteController@listar');
+Route::get('/lis_clientes','ClienteController@listar');
 
 
 Route::Resource('/formatos', 'FormatoController');
 Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
 
+
 Route::Resource('/colores', 'ColorController');
-Route::get('/lisColores/{page?}','ColorController@listar');
+Route::get('/lisColores','ColorController@listar');
+
 
 Route::Resource('/proformas', 'ProformasController');
 Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
 
+
 Route::Resource('/bitacora', 'BitacoraController');
+
+
+Route::Resource('/bitacora', 'BitacoraController');
+
+Route::Resource('/color', 'ColorController');
+
+
+Route::Resource('/colores', 'ColorController');
+Route::get('/lisColores/{page?}','ColorController@listar');

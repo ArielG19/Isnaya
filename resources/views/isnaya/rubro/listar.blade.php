@@ -6,7 +6,6 @@
 		<th>Costo</th>
 		<th>Tipo</th>
 		<th>Opción</th>
-		<th>Opción</th>
 	</thead>
 	<tbody>
 		@foreach($rubros as $rubro)
@@ -27,13 +26,13 @@
                 		<i class="fa fa-times" aria-hidden="true"></i>  Eliminar
               			</a>--}}
            			</td>
-           			<td>
-           				<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             			 <a class="btn btn-danger" href="#" Onclick='Eliminar({{$rubro->id}});' data-toggle='modal' data-target='#myModal2' style ="margin-right: 8px;">
+           			<!--<td>
+           				en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego
+             			 <a class="btn btn-danger" href="#" Onclick='Eliminar($rubro->id);' data-toggle='modal' data-target='#myModal2' style ="margin-right: 8px;">
               				<i class="fa fa-pencil-square-o" aria-hidden="true">  Eliminar</i>
               			</a>
 
-           			</td>
+           			</td>-->
 				</tr>
 		@endforeach
 	</tbody>

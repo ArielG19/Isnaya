@@ -1,5 +1,5 @@
 {{--Modal--}}
-<div class="modal fade" id="myModalcreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -17,28 +17,28 @@
                 <div class="form-group">
                     <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Nombres:')!!}
-                    {!!form::text('nombre',null,['id'=>'nombre','class'=>'form-control','placeholder'=>'Escriba los nombres'])!!}
+                    {!!form::text('nombre',null,['id'=>'addnombre','class'=>'form-control','placeholder'=>'Escriba los nombres'])!!}
                 </div>
                 <div class="form-group">
                      {!!form::label('Apellidos:')!!}
-                    {!!form::text('apellido',null,['id'=>'apellido','class'=>'form-control','placeholder'=>'Escriba los apellidos'])!!}
+                    {!!form::text('apellido',null,['id'=>'addapellido','class'=>'form-control','placeholder'=>'Escriba los apellidos'])!!}
                 </div>
                 <div class="form-group">
                     {!!form::label('Telefono:')!!}
-                    {!!form::text('telefono',null,['id'=>'telefono','class'=>'form-control','placeholder'=>'Escriba el número de telefono'])!!}
+                    {!!form::text('telefono',null,['id'=>'addtelefono','class'=>'form-control','placeholder'=>'Escriba el número de telefono'])!!}
                 </div>
                 <div class="form-group">
                     {!!form::label('Email:')!!}
-                    {!!form::text('email',null,['id'=>'email','class'=>'form-control','placeholder'=>'Escriba el email'])!!}
+                    {!!form::text('email',null,['id'=>'addemail','class'=>'form-control','placeholder'=>'Escriba el email'])!!}
                 </div>
                 <div class="form-group">
                     {!!form::label('Fax:')!!}
-                    {!!form::text('fax',null,['id'=>'fax','class'=>'form-control','placeholder'=>'Escriba el fax'])!!}
+                    {!!form::text('fax',null,['id'=>'addfax','class'=>'form-control','placeholder'=>'Escriba el fax'])!!}
                 </div>
                 {!! Form::close() !!}
 			</div>
 			<div class="modal-footer">
-				{!!link_to('#',$title ='actualizar',$attributes= ['id'=>'guardarCliente','class'=>'btn btn-primary'],$secure = null)!!}
+				{!!link_to('#',$title ='Guardar',$attributes= ['id'=>'guardarCliente','class'=>'btn btn-primary'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

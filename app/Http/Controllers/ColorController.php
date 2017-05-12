@@ -20,7 +20,7 @@ class ColorController extends Controller
 
     public function listar()
     {
-        $colores = Color::Orderby('color','ASC')->paginate(3);
+        $colores = Color::Orderby('color','ASC')->paginate(5);
         return view('isnaya.colores.listar')->with('colores',$colores); 
     }
 
@@ -31,7 +31,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        return view('isnaya.colores.create');
+        //return view('isnaya.colores.create');
     }
 
     /**

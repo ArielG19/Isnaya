@@ -17,6 +17,14 @@
 					<div class="panel-title">
 						Lista de Rubros 
 					</div>
+					<p class="navbar-text navbar-right" style="margin-top: -11px;">
+						<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-bottom:1px; margin-top: -11px;margin-right: 8px; padding: 4px 18px;">
+					 		<span>
+					 			Agregar<i class="fa fa-plus-circle" aria-hidden="true"></i>
+					 		</span>
+              			</a>
+					</p>
+
 				</div>
 			<div class="panel-body">
 				{{--Agregamos un div con id donde traeremos la tabla--}}
@@ -31,8 +39,7 @@
 @endsection
 
 @include('isnaya.rubro.modal')
-
-@include('isnaya.rubro.modal_eli')
+@include('isnaya.rubro.modalCreate')
 
 @section('script')
 	<script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>

@@ -29,7 +29,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('isnaya.clientes.modalcreate');
+        //return view('isnaya.clientes.modalcreate');
     }
 
 
@@ -45,7 +45,7 @@ class ClienteController extends Controller
             $clientes = Cliente::create($request->all());
             //si no hay error entonces
             if($clientes){
-                Session::flash('save','Se ha creado correctamente');
+                //Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
             }else{
                 return response()->json(['success'=>'false']);

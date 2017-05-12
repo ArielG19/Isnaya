@@ -83,10 +83,10 @@ $("#actualizarRubro").click(function(){
 });
 //Funcion para Guardar Rubro
 $("#guardarRubro").click(function(event){
-	var descripcion = $("#descripcion").val();
-	var cantidad = $("#cantidad").val();
-	var costo = $("#costo").val();
-	var tipo = $("#tipo").val();
+	var descripcion = $("#adddescripcion").val();
+	var cantidad = $("#addcantidad").val();
+	var costo = $("#addcosto").val();
+	var tipo = $("#addtipo").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
@@ -97,11 +97,19 @@ $("#guardarRubro").click(function(event){
       	type:'POST',
       	datatype:'json',
       	data:{descripcion:descripcion,cantidad:cantidad,costo:costo,tipo:tipo,id_usuario:1},
-        success:function(data){
-          	if(data.success=='true'){
-            	alert('Se registro');
-            	document.location.href= "/rubros"; 
-         	}
+      	success:function(data){
+			if(data.success=='true'){
+                //alert('Se registro');
+            	listarColores();
+            	$("#myModalCreate").modal('toggle');
+            	$("#message-save").fadeIn();
+        	}
+    	},
+        //aqui atrapamos los errores una vez validados atraves de un request
+       	error:function(data){
+            //obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
+            $("#message-error").fadeIn();
+            $("#message-error").show().delay(3000).fadeOut(3);
         },
     });
 });
@@ -164,7 +172,7 @@ $("#actualizarColor").click(function(){
 });	
 //Funcion para Guardar Color
 $("#guardarColor").click(function(event){	
-  	var color = $("#color").val();
+  	var color = $("#addcolor").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
@@ -175,11 +183,19 @@ $("#guardarColor").click(function(event){
       	type:'POST',
       	datatype:'json',
       	data:{color:color},
-        success:function(data){
-          	if(data.success=='true'){
-            	alert('Se registro');
-            	document.location.href= "/colores"; 
-         	}
+        	success:function(data){
+				if(data.success=='true'){
+                	//alert('Se registro');
+            		listarColores();
+            		$("#myModalCreate").modal('toggle');
+            		$("#message-save").fadeIn();
+        		}
+    		},
+        	//aqui atrapamos los errores una vez validados atraves de un request
+       		error:function(data){
+            	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
+            	$("#message-error").fadeIn();
+            	$("#message-error").show().delay(3000).fadeOut(3);
         },
     });
 });
@@ -275,6 +291,11 @@ $("#guardarFormato").click(function(event){
             if(data.success=='true'){
                 //alert('Se registro');
                 document.location.href= "formatos"; 
+            	listarFormato();
+            	$("#myModalCreate").modal('toggle');
+            	$("#message-save").fadeIn();
+                //alert('Se registro');
+                //document.location.href= "formatos"; 
             }
         },
         //aqui atrapamos los errores una vez validados atraves de un request
@@ -385,27 +406,36 @@ $("#guardarProducto").click(function(event){
 
 //==>>Inicio de Clientes<<==
 $("#guardarCliente").click(function(event){
-  	var nombre = $("#nombre").val();
-    var apellido = $("#apellido").val();
-    var telefono = $("#telefono").val();
-    var email= $("#email").val();
-    var fax = $("#fax").val();
+  	var nombre = $("#addnombre").val();
+    var apellido = $("#addapellido").val();
+    var telefono = $("#addtelefono").val();
+    var email= $("#addemail").val();
+    var fax = $("#addfax").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
   	var route = "clientes";
     $.ajax({
-    url:route,
-    headers:{'X-CSRF-TOKEN':token},
-    type:'post',
-    datatype:'json',
-    data:{nombre:nombre,apellido:apellido,telefono:telefono,email:email,fax:fax},
-        success:function(data){
-          	if(data.success=='true'){
-            	alert('Se registro');
-            	document.location.href= "clientes"; 
-         	}
-        },
+    	url:route,
+    	headers:{'X-CSRF-TOKEN':token},
+    	type:'post',
+    	datatype:'json',
+    	data:{nombre:nombre,apellido:apellido,telefono:telefono,email:email,fax:fax},
+    	success:function(data){
+			if(data.success=='true'){
+                //alert('Se registro');
+            	listarFormato();
+            	$("#myModalCreate").modal('toggle');
+            	$("#message-save").fadeIn();
+                //alert('Se registro');
+        	}
+    	},
+        //aqui atrapamos los errores una vez validados atraves de un request
+        error:function(data){
+            //obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
+            $("#message-error").fadeIn();
+            $("#message-error").show().delay(3000).fadeOut(3);
+        }
     });
 });
 //creamos una funcion para listar atravez de ajax
@@ -490,6 +520,7 @@ $("#guardarUsuario").click(function(event){
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
   	var route ="usuarios";
+  	var route ="{{route('usuarios.store')}}";
     $.ajax({
      	url:route,
       	headers:{'X-CSRF-TOKEN':token},
@@ -499,6 +530,7 @@ $("#guardarUsuario").click(function(event){
         success:function(data){
           	if(data.success=='true'){
                 document.location.href= "usuarios"; 
+                document.location.href= "{{ route('usuarios.index')}}"; 
             }
         },
         //aqui atrapamos los errores una vez validados atraves de un request
@@ -537,6 +569,7 @@ $(document).on("click",".pagination li a",function(e){
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
 	var route = "usuarios/"+id+"/edit";
+	var route = "{{url('usuarios')}}/"+id+"/edit";
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -553,6 +586,7 @@ $("#actualizarUsuario").click(function(){
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
 	var route = "usuarios/"+id+"";
+	var route = "{{url('usuarios')}}/"+id+"";
 	var token = $("#token").val();
 	$.ajax({
 		url:route,

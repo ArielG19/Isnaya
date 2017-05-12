@@ -21,7 +21,7 @@ class FormatoController extends Controller
     }
 
     public function listarFormato(){
-         $formatos = Formato::Orderby('formato','ASC')->paginate(3);
+         $formatos = Formato::Orderby('formato','ASC')->paginate(10);
             return view('isnaya.formato.listar')->with('formatos',$formatos);
 
     }

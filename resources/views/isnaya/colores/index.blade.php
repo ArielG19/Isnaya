@@ -15,6 +15,13 @@
 					<div class="panel-title">
 						Lista de Colores
 					</div>
+					<p class="navbar-text navbar-right" style="margin-top: -11px;">
+						<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-bottom:1px; margin-top: -11px;margin-right: 8px; padding: 4px 18px;">
+					 		<span>
+					 			Agregar<i class="fa fa-plus-circle" aria-hidden="true"></i>
+					 		</span>
+              			</a>
+					</p>
 				</div>
 			<div class="panel-body">
 				<div id="listar-colores">
@@ -27,6 +34,7 @@
 @endsection
 
 @include('isnaya.colores.modal')
+@include('isnaya.colores.modalCreate')
 
 @section('script')
     <script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
