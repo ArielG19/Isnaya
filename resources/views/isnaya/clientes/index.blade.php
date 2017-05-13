@@ -53,4 +53,7 @@
 
 @section('script')
 	<script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
+	<script>
+		listarClientes();
+	</script>
 @endsection

@@ -1,12 +1,3 @@
-$(document).ready(function(){
-	listarRubro();
-	listarColores();
-	listarFormato();
-	listarProducto();
-	listarClientes();
-	listarUsuario();
-});
-
 //==>>Inicio de los Rubros<<==
 //creamos una funcion para listar atravez de ajax
 function listarRubro(){
@@ -32,7 +23,7 @@ $(document).on("click",".pagination li a",function(e){
 		}
 	});
 });		
-//ACTUALIZAR----------------------------------------
+//ACTUALIZAR-
 //creamos la function para mostrar datos en el modal. y esta va en boton editar 
 function MostrarRubro(id){
 	var route = "rubros/"+id+"/edit";

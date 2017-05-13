@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('isnaya/vistas/index');
 });
+Route::get('/prueba', function(){
+	return view('prueba');
+});
 
 Auth::routes();
 
