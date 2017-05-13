@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     public function listarUsuarios(){
-             $usuarios = User::Orderby('name','ASC')->paginate(3);
+             $usuarios = User::Orderby('id','DESC')->paginate(3);
             return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
     }
 
@@ -33,7 +33,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view ('isnaya.usuarios.create');
+        //return view ('isnaya.usuarios.create');
     }
 
     /**

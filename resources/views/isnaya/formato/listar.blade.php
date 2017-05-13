@@ -32,7 +32,7 @@
 																		
 									 <td>
              							 <!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             							 <a class="btn btn-info" href="#" Onclick='Mostrar({{$formato->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+             							 <a class="btn btn-info" href="#" Onclick='MostrarFormato({{$formato->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
               								<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               							</a>
 

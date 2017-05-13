@@ -1,12 +1,11 @@
 $(document).ready(function(){
-	listarRubro();
+	/*listarRubro();
 	listarColores();
 	listarFormato();
 	listarProducto();
-	listarClientes();
-	listarUsuario();
+	listarClientes();*/
+	
 });
-
 //==>>Inicio de los Rubros<<==
 //creamos una funcion para listar atravez de ajax
 function listarRubro(){
@@ -213,18 +212,18 @@ $(document).on("click",".pagination li a",function(e){
 function MostrarFormato(id){
 	var route = "formatos/"+id+"/edit";
 	$.get(route, function(data){
-		//alert(id); traemos todos los datos
+		//alert(id); // traemos todos los datos
 		$("#id").val(data.id);
-		$("#formato").val(data.formato);
-		$("#estado").val(data.estado);
+		$("#upFormato").val(data.formato);
+		$("#upEstado").val(data.estado);
 	});
 }
 //btn para actualizar con ajax
 $("#actualizarFormato").click(function(){
 	//recuperamos la informacion del modal atravez de los id
 	var id = $("#id").val();
-	var formato = $("#formato").val();
-	var estado = $("#estado").val();
+	var formato = $("#upFormato").val();
+	var estado = $("#upEstado").val();
 	var route = "formatos/"+id+"";
 	var token = $("#token").val();
 	$.ajax({
@@ -241,21 +240,23 @@ $("#actualizarFormato").click(function(){
 				$("#myModal").modal('toggle');
 				//pintamos un mensaje
 				$("#message-update").fadeIn();
+				$("#message-update").show().delay(3000).fadeOut(3);
 			}
 		},
 		error:function(data){
-			$("#error").html(data.responseJSON.formato);
-          	$("#message-error").fadeIn();
+			$("#formatosError").html(data.responseJSON.formato);
+          	$("#formatosMessage-error").fadeIn();
 				if(data.status == 422){
-				console.clear();
-			}
+					console.clear();
+				}
 		}
 	});
 });	
 //Limpiamos el mensaje del modal
 $("#myModal").on("hidden.bs.modal", function(){
-	$("#message-error").fadeOut();
+	$("#formatosMessage-error").fadeOut();
 });
+
 //Función para guardar formato
 $("#guardarFormato").click(function(event){
   	//recuperamos el valor del input descripcion
@@ -276,8 +277,6 @@ $("#guardarFormato").click(function(event){
             	listarFormato();
             	$("#myModalCreate").modal('toggle');
             	$("#message-save").fadeIn();
-                //alert('Se registro');
-                //document.location.href= "formatos"; 
             }
         },
         //aqui atrapamos los errores una vez validados atraves de un request
@@ -336,15 +335,15 @@ $("#actualizarProducto").click(function(){
 			if(data.success == 'true'){
 				listarProducto();
 				//despues de actualizar desaperece la ventana
-				$("#myModal").modal('toggle');
+				$("#myModalProducto").modal('toggle');
 				//pintamos un mensaje
 				$("#message-update").fadeIn();
 				$("#message-update").show().delay(3000).fadeOut(3);
 			}
 		},
 		error:function(data){
-			$("#error").html(data.responseJSON.descripcion);
-        	$("#message-error").fadeIn();
+			$("#errorProducto").html(data.responseJSON.descripcion);
+        	$("#message-errorProducto").fadeIn();
 			if(data.status == 422){
 				console.clear();
 			}
@@ -352,13 +351,13 @@ $("#actualizarProducto").click(function(){
 	});
 });
 //Limpiamos el mensaje del modal
-$("#myModal").on("hidden.bs.modal", function(){
-	$("#message-error").fadeOut();
+$("#myModalProducto").on("hidden.bs.modal", function(){
+	$("#message-errorProducto").fadeOut();
 });
 //Funcion para guardar producto
-$("#guardarProducto").click(function(event){
+$("#addProducto").click(function(event){
 	//recuperamos el valor del input descripcion
-  	var descripcion = $("#descripcion").val();
+  	var descripcion = $("#addDescripcion").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
@@ -372,15 +371,18 @@ $("#guardarProducto").click(function(event){
       	data:dataSting,
         success:function(data){
           	if(data.success=='true'){
-            	document.location.href= "productos"; 
+            	listarProducto();
+            	$("#myModalCreateProd").modal('toggle');
+            	$("#message-save").fadeIn();
+            	$("#message-save").show().delay(3000).fadeOut(3);
          	}
         },
         //aqui atrapamos los errores una vez validados atraves de un request
         error:function(data){
           	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-          	$("#error").html(data.responseJSON.descripcion);
-          	$("#message-error").fadeIn();
-               $("#message-error").show().delay(3000).fadeOut(3);
+          	$("#addProdError").html(data.responseJSON.descripcion);
+          	$("#addProdMessage-error").fadeIn();
+               $("#addProdMessage-error").show().delay(3000).fadeOut(3);
         }
     });
 });
@@ -476,55 +478,22 @@ $("#actualizarCliente").click(function(){
 				$("#message-update").fadeIn();
 				$("#message-update").show().delay(3000).fadeOut(3);
 			}
-		},
+		}
 	});
 });
 //==>>Fin de Clientes<<==
 
 //==>>Inicio de Usuarios<<==
-$("#guardarUsuario").click(function(event){
-	//recuperamos el valor del input descripcion
-  	var name = $("#name").val();
-    var cargo = $("#cargo").val();
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var type = $("#type").val();
-  	//recuperamos la informacion del token
-  	var token = $("input[name=_token]").val();
-  	//la ruta donde se envia la informacion del formulario
-  	var route ="{{route('usuarios.store')}}";
-    $.ajax({
-     	url:route,
-      	headers:{'X-CSRF-TOKEN':token},
-      	type:'post',
-      	datatype:'json',
-      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
-        success:function(data){
-          	if(data.success=='true'){
-                document.location.href= "{{ route('usuarios.index')}}"; 
-            }
-        },
-        //aqui atrapamos los errores una vez validados atraves de un request
-        error:function(data){
-         	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.name);
-         	$("#message-error").fadeIn();
-            $("#message-error").show().delay(3000).fadeOut(3);
-        }
-    });
-});
-//creamos una funcion para listar atravez de ajax
 function listarUsuario(){
 	$.ajax({
 		type:'get',
 		url:'listar-usuarios',
-		success: function(data){
+		success:function(data){
 			$('#listar-usuarios').empty().html(data);
 		}
 	});
 }
-//creamos la paginacion usando ajax
-//dentro del documento se produce un click en la clase pagination
+
 $(document).on("click",".pagination li a",function(e){
 	//se produce un evento
 	e.preventDefault();
@@ -537,9 +506,10 @@ $(document).on("click",".pagination li a",function(e){
 		}
 	});
 });
+
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
-	var route = "{{url('usuarios')}}/"+id+"/edit";
+	var route = "usuarios/"+id+"/edit";
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -548,6 +518,7 @@ function MostrarUsuario(id){
 		$("#type").val(data.type);
 	});
 }
+
 //btn para actualizar con ajax
 $("#actualizarUsuario").click(function(){
 	//recuperamos la informacion del modal atravez de los id
@@ -555,7 +526,7 @@ $("#actualizarUsuario").click(function(){
 	var name = $("#name").val();
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
-	var route = "{{url('usuarios')}}/"+id+"";
+	var route = "usuarios/"+id+"";
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
@@ -571,7 +542,7 @@ $("#actualizarUsuario").click(function(){
 				$("#myModal").modal('toggle');
 				//pintamos un mensaje
 				$("#message-update").fadeIn();
-				$("#message-update").show().delay(3000).fadeOut(3);
+				$("#message-update").show().delay(4000).fadeOut(4);
 			}
 		},
 		error:function(data){
@@ -587,4 +558,43 @@ $("#actualizarUsuario").click(function(){
 $("#myModal").on("hidden.bs.modal", function(){
 	$("#message-error").fadeOut();
 });
+
+$("#addUsuario").click(function(event){
+	//recuperamos el valor del input descripcion
+  	var addName = $("#addName").val();
+    var addCargo = $("#addCargo").val();
+    var addEmail = $("#addEmail").val();
+    var addPassword = $("#addPassword").val();
+    var addType = $("#addType").val();
+  	//recuperamos la informacion del token
+  	var token = $("input[name=_token]").val();
+  	//la ruta donde se envia la informacion del formulario
+  	var route ="usuarios";
+    $.ajax({
+     	url:route,
+      	headers:{'X-CSRF-TOKEN':token},
+      	type:'post',
+      	datatype:'json',
+      	data:{addName:addName,addCargo:addCargo,addEmail:addEmail,addPassword:addPassword,addType:addType},
+        success:function(data){
+          	if(data.success=='true'){
+          		listarUsuario();
+				$("#myModalcreateUser").modal('toggle');
+				//pintamos un mensaje
+				$("#message-save").fadeIn();
+				$("#message-save").show().delay(3000).fadeOut(3);
+
+                
+            }
+        },
+        //aqui atrapamos los errores una vez validados atraves de un request
+        error:function(data){
+         	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
+         	$("#error").html(data.responseJSON.addName);
+         	$("#message-error").fadeIn();
+            $("#message-error").show().delay(3000).fadeOut(3);
+        }
+    });
+});
 //==>>Fin de Usuarios<<==
+

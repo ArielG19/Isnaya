@@ -20,9 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::Resource('/usuarios','UserController');
-
-//1. agregamos una nueva ruta para para llamar al metodo listarUsuarios
-//2. pasamos el parametro {page?} para la paginacion
 Route::get('/listar-usuarios/{page?}','UserController@listarUsuarios');
 
 
