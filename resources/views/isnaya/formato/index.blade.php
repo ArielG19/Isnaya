@@ -29,6 +29,20 @@
 				{{--FIN DE MENSAJES--}}
 				<div class="panel-title">
 					Lista de Formatos
+	        	</button>
+				<strong> Se agrego correctamente</strong>
+			</div>
+			{{--FIN DE MENSAJES--}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+						<div class="panel-title">Lista de Formatos</div>
+						<p class="navbar-text navbar-right" style="margin-top: -15px;">
+						 	<a class="btn btn-info" href="#" data-toggle='modal' 
+						 	   data-target='#myModalCreate' 
+						 	   style="margin-bottom:1px; margin-top: -11px;margin-right: 8px; padding: 4px 18px;">
+					 		  <span>Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+              				</a>
+						</p>
 				</div>
 				<p class="navbar-text navbar-right" style="margin-top: -11px;">
 					<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalcreate' style="margin-bottom:1px; margin-top: -11px;margin-right: 8px; padding: 4px 18px;">
@@ -54,5 +68,6 @@
 
 @section('script')
 	<script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
+	<script>listarFormato();</script>
 @endsection
 

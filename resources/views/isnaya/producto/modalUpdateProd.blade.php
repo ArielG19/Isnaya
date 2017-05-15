@@ -1,5 +1,4 @@
-{{--Modal--}}
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModalProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -11,8 +10,8 @@
 
 			<div class="modal-body">
 				{{--creamos un alert--}}
-				<div id="message-error" class="alert alert-danger danger" role="alert" style="display:none">
-					<strong id="error"></strong>
+				<div id="message-errorProducto" class="alert alert-danger danger" role="alert" style="display:none">
+					<strong id="errorProducto"></strong>
 				</div>
 				{{--cremos el formulario con un id para usar ajax--}}
 				{!!Form::open(['id'=>'form'])!!}
@@ -29,7 +28,7 @@
 			</div>
 
 			<div class="modal-footer">
-				{!!link_to('#',$title ='Actualizar',$attributes= ['id'=>'actualizarProduto','class'=>'btn btn-primary'],$secure = null)!!}
+				{!!link_to('#',$title ='Actualizar',$attributes= ['id'=>'actualizarProducto','class'=>'btn btn-primary'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

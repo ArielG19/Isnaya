@@ -24,7 +24,7 @@ class ProductoController extends Controller
 
     //1. creamos un un nuevo metodo para listar todo atravez de ajax.
     public function listarTodo(){
-        $productos = Producto::Orderby('descripcion','ASC')->paginate(3);
+        $productos = Producto::Orderby('descripcion','ASC')->paginate(6);
         return view('isnaya.producto.listar')->with('productos',$productos);
 
     }

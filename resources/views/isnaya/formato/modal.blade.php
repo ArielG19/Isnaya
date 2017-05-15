@@ -1,4 +1,3 @@
-{{--Modal--}}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -10,8 +9,8 @@
 			</div>
 			<div class="modal-body">
 				{{--creamos un alert--}}
-				<div id="message-error" class="alert alert-danger danger" role="alert" style="display:none">
-					<strong id="error"></strong>
+				<div id="formatosMessage-error" class="alert alert-danger danger" role="alert" style="display:none">
+					<strong id="formatosError"></strong>
 				</div>
 				{{--cremos el formulario con un id para usar ajax--}}
 				{!!Form::open(['id'=>'form'])!!}
@@ -20,11 +19,11 @@
 					<div class="form-group">
                         <!--Nombramos las cajas de texto igual que los campos de la bd-->
                         {!!form::label('Formato:')!!}
-                        {!!form::text('formato',null,['id'=>'formato','class'=>'form-control','placeholder'=>'Escriba el formato'])!!}
+                        {!!form::text('formato',null,['id'=>'upFormato','class'=>'form-control','placeholder'=>'Escriba el formato'])!!}
                     </div>
                     <div class="form-group">
                         {!!Form::label('estado','Tipo de estado')!!}
-                        {!!Form::select('estado',[''=>'Seleccione un estado','Activo'=>'Activo','Inactivo'=>'Inactivo'],null,['id'=>'estado','class'=>'form-control'])!!}
+                        {!!Form::select('estado',[''=>'Seleccione un estado','Activo'=>'Activo','Inactivo'=>'Inactivo'],null,['id'=>'upEstado','class'=>'form-control'])!!}
                     </div>
 				{!!Form::close()!!}
 			</div>
