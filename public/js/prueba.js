@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-=======
-$(document).ready(function(){
-	/*listarRubro();
-	listarColores();
-	listarFormato();
-	listarProducto();
-	listarClientes();*/
-	
-});
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 //==>>Inicio de los Rubros<<==
 //creamos una funcion para listar atravez de ajax
 function listarRubro(){
@@ -514,7 +503,6 @@ $("#actualizarCliente").click(function(){
 //==>>Fin de Clientes<<==
 
 //==>>Inicio de Usuarios<<==
-<<<<<<< HEAD
 $("#guardarUsuario").click(function(event){
 	//recuperamos el valor del input descripcion
   	var name = $("#name").val();
@@ -549,8 +537,6 @@ $("#guardarUsuario").click(function(event){
     });
 });
 //creamos una funcion para listar atravez de ajax
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 function listarUsuario(){
 	$.ajax({
 		type:'get',
@@ -577,10 +563,7 @@ $(document).on("click",".pagination li a",function(e){
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
 	var route = "usuarios/"+id+"/edit";
-<<<<<<< HEAD
 	var route = "{{url('usuarios')}}/"+id+"/edit";
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -598,10 +581,7 @@ $("#actualizarUsuario").click(function(){
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
 	var route = "usuarios/"+id+"";
-<<<<<<< HEAD
 	var route = "{{url('usuarios')}}/"+id+"";
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
@@ -672,4 +652,3 @@ $("#addUsuario").click(function(event){
     });
 });
 //==>>Fin de Usuarios<<==
-
