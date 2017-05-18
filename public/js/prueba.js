@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(document).ready(function(){
 	/*listarRubro();
 	listarColores();
@@ -6,6 +7,8 @@ $(document).ready(function(){
 	listarClientes();*/
 	
 });
+=======
+>>>>>>> ddaa247cbe309307b8734e30924d14bc03e6626e
 //==>>Inicio de los Rubros<<==
 //creamos una funcion para listar atravez de ajax
 function listarRubro(){
@@ -509,6 +512,42 @@ $("#actualizarCliente").click(function(){
 //==>>Fin de Clientes<<==
 
 //==>>Inicio de Usuarios<<==
+<<<<<<< HEAD
+=======
+$("#guardarUsuario").click(function(event){
+	//recuperamos el valor del input descripcion
+  	var name = $("#name").val();
+    var cargo = $("#cargo").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var type = $("#type").val();
+  	//recuperamos la informacion del token
+  	var token = $("input[name=_token]").val();
+  	//la ruta donde se envia la informacion del formulario
+  	var route ="usuarios";
+  	var route ="{{route('usuarios.store')}}";
+    $.ajax({
+     	url:route,
+      	headers:{'X-CSRF-TOKEN':token},
+      	type:'post',
+      	datatype:'json',
+      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
+        success:function(data){
+          	if(data.success=='true'){
+                document.location.href= "usuarios"; 
+                document.location.href= "{{ route('usuarios.index')}}"; 
+            }
+        },
+        //aqui atrapamos los errores una vez validados atraves de un request
+        error:function(data){
+         	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
+         	$("#error").html(data.responseJSON.name);
+         	$("#message-error").fadeIn();
+            $("#message-error").show().delay(3000).fadeOut(3);
+        }
+    });
+});
+>>>>>>> ddaa247cbe309307b8734e30924d14bc03e6626e
 //creamos una funcion para listar atravez de ajax
 function listarUsuario(){
 	$.ajax({
@@ -536,6 +575,10 @@ $(document).on("click",".pagination li a",function(e){
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
 	var route = "usuarios/"+id+"/edit";
+<<<<<<< HEAD
+=======
+	var route = "{{url('usuarios')}}/"+id+"/edit";
+>>>>>>> ddaa247cbe309307b8734e30924d14bc03e6626e
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -553,6 +596,10 @@ $("#actualizarUsuario").click(function(){
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
 	var route = "usuarios/"+id+"";
+<<<<<<< HEAD
+=======
+	var route = "{{url('usuarios')}}/"+id+"";
+>>>>>>> ddaa247cbe309307b8734e30924d14bc03e6626e
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
@@ -623,4 +670,3 @@ $("#addUsuario").click(function(event){
     });
 });
 //==>>Fin de Usuarios<<==
-
