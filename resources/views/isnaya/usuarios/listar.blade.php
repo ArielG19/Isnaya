@@ -4,6 +4,7 @@
 		<th>Nombre</th>
 		<th>Cargo</th>
 		<th>Email</th>
+		<th>Pass</th>
 		<th>Tipo</th>
 		<th>Acciòn</th>
 	</thead>
@@ -21,6 +22,9 @@
 				</td>
 				<td>
 					{{$usuario->email}}
+				</td>
+				<td>
+					
 				</td>
 				<td>
 					@if($usuario->type =="admin")
@@ -43,5 +47,5 @@
 	</tbody>
 </table>
 <center>
-	<h4>{{$usuarios->render()}}</h4>
+	{{--<h4>{{$usuarios->render()}}</h4>--}}
 </center>

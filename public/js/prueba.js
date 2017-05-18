@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 $(document).ready(function(){
 	/*listarRubro();
 	listarColores();
@@ -8,7 +6,6 @@ $(document).ready(function(){
 	listarClientes();*/
 	
 });
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 //==>>Inicio de los Rubros<<==
 //creamos una funcion para listar atravez de ajax
 function listarRubro(){
@@ -293,8 +290,6 @@ $("#guardarFormato").click(function(event){
         data:{formato:formato,estado:estado},
         success:function(data){
             if(data.success=='true'){
-                //alert('Se registro');
-                document.location.href= "formatos"; 
             	listarFormato();
             	$("#myModalCreate").modal('toggle');
             	$("#message-save").fadeIn();
@@ -514,43 +509,7 @@ $("#actualizarCliente").click(function(){
 //==>>Fin de Clientes<<==
 
 //==>>Inicio de Usuarios<<==
-<<<<<<< HEAD
-$("#guardarUsuario").click(function(event){
-	//recuperamos el valor del input descripcion
-  	var name = $("#name").val();
-    var cargo = $("#cargo").val();
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var type = $("#type").val();
-  	//recuperamos la informacion del token
-  	var token = $("input[name=_token]").val();
-  	//la ruta donde se envia la informacion del formulario
-  	var route ="usuarios";
-  	var route ="{{route('usuarios.store')}}";
-    $.ajax({
-     	url:route,
-      	headers:{'X-CSRF-TOKEN':token},
-      	type:'post',
-      	datatype:'json',
-      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
-        success:function(data){
-          	if(data.success=='true'){
-                document.location.href= "usuarios"; 
-                document.location.href= "{{ route('usuarios.index')}}"; 
-            }
-        },
-        //aqui atrapamos los errores una vez validados atraves de un request
-        error:function(data){
-         	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.name);
-         	$("#message-error").fadeIn();
-            $("#message-error").show().delay(3000).fadeOut(3);
-        }
-    });
-});
 //creamos una funcion para listar atravez de ajax
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 function listarUsuario(){
 	$.ajax({
 		type:'get',
@@ -577,10 +536,6 @@ $(document).on("click",".pagination li a",function(e){
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
 	var route = "usuarios/"+id+"/edit";
-<<<<<<< HEAD
-	var route = "{{url('usuarios')}}/"+id+"/edit";
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -598,10 +553,6 @@ $("#actualizarUsuario").click(function(){
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
 	var route = "usuarios/"+id+"";
-<<<<<<< HEAD
-	var route = "{{url('usuarios')}}/"+id+"";
-=======
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
@@ -636,11 +587,11 @@ $("#myModal").on("hidden.bs.modal", function(){
 
 $("#addUsuario").click(function(event){
 	//recuperamos el valor del input descripcion
-  	var addName = $("#addName").val();
-    var addCargo = $("#addCargo").val();
-    var addEmail = $("#addEmail").val();
-    var addPassword = $("#addPassword").val();
-    var addType = $("#addType").val();
+  	var name = $("#addName").val();
+    var cargo = $("#addCargo").val();
+    var email = $("#addEmail").val();
+    var password = $("#addPassword").val();
+    var type = $("#addType").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
@@ -650,7 +601,7 @@ $("#addUsuario").click(function(event){
       	headers:{'X-CSRF-TOKEN':token},
       	type:'post',
       	datatype:'json',
-      	data:{addName:addName,addCargo:addCargo,addEmail:addEmail,addPassword:addPassword,addType:addType},
+      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
         success:function(data){
           	if(data.success=='true'){
           		listarUsuario();
@@ -665,7 +616,7 @@ $("#addUsuario").click(function(event){
         //aqui atrapamos los errores una vez validados atraves de un request
         error:function(data){
          	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.addName);
+         	$("#error").html(data.responseJSON.name);
          	$("#message-error").fadeIn();
             $("#message-error").show().delay(3000).fadeOut(3);
         }

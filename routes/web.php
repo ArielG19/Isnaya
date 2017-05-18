@@ -15,10 +15,19 @@ Route::get('/', function () {
     return view('isnaya/vistas/index');
 });
 Route::get('/prueba', function(){
-	return view('isnaya.costos.calcular');
+	return view('isnaya.proformas.proformasCreate');
 });
 
 Auth::routes();
+
+/*Route::get('pdf', function(){
+	$user = App\User::all();
+
+	$pdf = PDF::loadview('pdf',['user'=>$user]);
+	$pdf = PDF::loadview('isnaya.usuarios.index');
+	return $pdf->download('archivo.pdf');
+});*/
+Route::get('pdf','PDFController@index');
 
 Route::get('/home', 'HomeController@index');
 

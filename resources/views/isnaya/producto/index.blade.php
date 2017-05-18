@@ -11,57 +11,22 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-       	<div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none">
-	        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<strong> Se actualizo correctamente</strong>
-		</div>
-		<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title">
-						Lista de productos
-					</div>
-				</div>
-			<div class="panel-body">
-				{{--Agregamos un div con id donde traeremos la tabla--}}
-				<div id="listar-producto">
-						
-				</div>
-			</div>
-		</div>
-       			<div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none">
-	                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<strong> Se actualizo correctamente</strong>
-				</div>
-
-				<div class="panel panel-default">
-						<div class="panel-heading">
-							<div class="panel-title">
-							Lista de productos
-							</div>
-						</div>
-						<div class="panel-body">
-							{{--Agregamos un div con id donde traeremos la tabla--}}
-							<div id="listar-producto">
-						
-							</div>
-						</div>
-				</div>
 			{{--MENSAJES--}}
-			<div id="message-update" class="alert alert-info alert-dismissible" role="alert" style="display:none">
+		<div id="message-update" class="alert alert-info alert-dismissible" role="alert" style="display:none">
 	        	<button type="button" class="close" 
 	        			data-dismiss="alert" aria-label="Close">
 	        			<span aria-hidden="true">&times;</span>
 	        	</button>
 				<strong> Se actualizo correctamente</strong>
-			</div>
+		</div>
 
-			<div id="message-save" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+		<div id="message-save" class="alert alert-success alert-dismissible" role="alert" style="display:none">
 	        	<button type="button" class="close" 
 	        			data-dismiss="alert" aria-label="Close">
 	        			<span aria-hidden="true">&times;</span>
 	        	</button>
 				<strong> Se agrego correctamente</strong>
-			</div>
+		</div>
 			{{--FIN DE MENSAJES--}}
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -83,18 +48,11 @@
 </div>
 @endsection
 
-<<<<<<< HEAD
-@include('isnaya.producto.modal')
-
-@section('script')
-	<script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
-</script>
-=======
 @include('isnaya.producto.modalCreateProd')
 @include('isnaya.Producto.modalUpdateProd')
 
 
 @section('script')
-	<script>listarProducto();</script>
 	<script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
+	<script>listarProducto();</script>
 @endsection

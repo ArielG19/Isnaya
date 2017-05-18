@@ -10,21 +10,21 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="">
+	<div>
 		@include('isnaya/template.nav')
+		
 	</div>
 	
 	<div class="container-fluid">			
 		@yield('contenido')
 	</div>	
 
-
+	
 	@include('isnaya/template.footer')
 	<script src="{{asset('js/jquery.js')}}"></script>
 	<script src="{{asset('css/bootstrap/js/bootstrap.js')}}"></script>
 
 	@yield('script')
 
-	
 </body>
 </html>
