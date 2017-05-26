@@ -9,4 +9,8 @@ class Rubro extends Model
     protected $table='rubros';
 
     protected $fillable=['id','descripcion','cantidad','costo','tipo','estado','id_usuario'];
+
+    public function rubros(){
+        return $this->hasMany(Rubro::class);
+    }
 } 

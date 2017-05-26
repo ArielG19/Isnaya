@@ -23,22 +23,6 @@
                         
             </ul>
 
-<<<<<<< HEAD
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li>
-                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span>Acceder <i class="fa fa-rebel" aria-hidden="true"></i></span></a>
-                            </li>
-                            {{--<li><a href="{{ url('/login') }}">Acceder</a></li>--}}
-                            <li><a href="{{ url('/register') }}">Registrate</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-=======
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
@@ -75,7 +59,6 @@
                             </li>
                         </ul>
                     </li>
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -83,22 +66,10 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-<<<<<<< HEAD
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-@include('isnaya.template.collapse')
-=======
                         <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Perfil</a>
+                            </li>
                             <li>
                                 <a href="#">Configuración</a>
                             </li>
@@ -114,6 +85,7 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
+
                         </ul>
                     </li>
                 @endif
@@ -121,4 +93,3 @@
          </div>
     </div>
 </nav>
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8

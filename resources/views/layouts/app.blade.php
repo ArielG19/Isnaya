@@ -8,21 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Isnaya-Print</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
 </head>
 <body>
     <div id="app">
+<<<<<<< HEAD
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -85,6 +80,9 @@
                 </div>
             </div>
         </nav>
+=======
+        @include('layouts.nav')
+>>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 
         @yield('content')
     </div>

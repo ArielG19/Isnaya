@@ -33,4 +33,8 @@ class Proforma extends Model
 
         return $this->belonsgTo(Producto::class);
       }
+
+      public function rubros(){
+        return $this->belonsgTo(Rubro::class);
+      }
 }

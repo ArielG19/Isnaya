@@ -6,13 +6,20 @@
 	
 	<link rel="stylesheet" href="{{URL::to('css/bootstrap/css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.css')}}">
+	<link rel="stylesheet" href='css/estilos.css'>
+	
 	@yield('css')
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<<<<<<< HEAD
 	<div>
 		@include('isnaya/template.nav')
 		
+=======
+	<div class="">
+		@include('isnaya.template.nav')
+>>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 	</div>
 	
 	<div class="container-fluid">			

@@ -12,11 +12,16 @@
 */
 //---------------------------------------------------------------------------
 Route::get('/', function () {
-    return view('isnaya/vistas/index');
+    return view('auth/login');
 });
 Route::get('/prueba', function(){
+<<<<<<< HEAD
 	return view('isnaya.proformas.proformasCreate');
+=======
+	return view('isnaya.costos.calculostabs');
+>>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 });
+
 
 Auth::routes();
 
@@ -62,14 +67,7 @@ Route::get('/lisColores','ColorController@listar');
 Route::Resource('/proformas', 'ProformasController');
 Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
 
-
 Route::Resource('/bitacora', 'BitacoraController');
 
-
-Route::Resource('/bitacora', 'BitacoraController');
-
-Route::Resource('/color', 'ColorController');
-
-
-Route::Resource('/colores', 'ColorController');
-Route::get('/lisColores/{page?}','ColorController@listar');
+Route::Resource('/calculos', 'CalculosController');
+Route::get('/listados','CalculosController@listar');
