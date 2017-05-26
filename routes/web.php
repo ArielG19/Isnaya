@@ -27,6 +27,11 @@ Auth::routes();
 	$pdf = PDF::loadview('isnaya.usuarios.index');
 	return $pdf->download('archivo.pdf');
 });*/
+
+Route::get('perfil','UserController@perfil');
+Route::post('perfil','UserController@updatePerfil');
+
+
 Route::get('pdf','PDFController@index');
 
 Route::get('/home', 'HomeController@index');

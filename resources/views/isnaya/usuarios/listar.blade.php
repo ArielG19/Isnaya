@@ -1,19 +1,14 @@
-<table class="table table-bordered">
+<table class="table table-striped">
 	<thead>
-		<th>ID</th>
 		<th>Nombre</th>
 		<th>Cargo</th>
 		<th>Email</th>
-		<th>Pass</th>
 		<th>Tipo</th>
-		<th>Acciòn</th>
+		<th>Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($usuarios as $usuario)
 			<tr>
-				<td>
-					{{$usuario->id}}
-				</td>
 				<td>
 					{{$usuario->name}}
 				</td>
@@ -23,14 +18,12 @@
 				<td>
 					{{$usuario->email}}
 				</td>
-				<td>
-					
-				</td>
+				
 				<td>
 					@if($usuario->type =="admin")
 						<span class="label label-primary">{{$usuario->type}}</span>
 					@else
-						<span class="label label-success">{{$usuario->type}}</span>
+						<span class="label label-default">{{$usuario->type}}</span>
 					@endif
 				</td>									
 				<td>
@@ -47,5 +40,5 @@
 	</tbody>
 </table>
 <center>
-	{{--<h4>{{$usuarios->render()}}</h4>--}}
+	<h4>{{$usuarios->render()}}</h4>
 </center>

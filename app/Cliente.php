@@ -16,5 +16,10 @@ class Cliente extends Model
     public function proformas(){
       return $this->hasMany(Proforma::class);
     }
+    //--------------------------------------------------------------------------------------------------
+      public function scopeSearch($query,$nombre)
+    {
+        return $query->where('nombre','LIKE',"%$nombre%");
+    }
 
 }

@@ -15,11 +15,12 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        
-        return view('isnaya.producto.index');
+        //dd($request->get('descripcion'));
+        $productos = Producto::Search($request->get('descripcion'))->Orderby('descripcion','ASC')->paginate(5);
+        return view('isnaya.producto.index')->with('productos',$productos);
     }
 
     //1. creamos un un nuevo metodo para listar todo atravez de ajax.

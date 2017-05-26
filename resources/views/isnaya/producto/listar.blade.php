@@ -1,22 +1,22 @@
-<table class="table table-bordered">
+<table class="table table-striped">
 	<thead>
-		<th>ID</th>
 		<th>Productos</th>
-		<th>Accìòn</th>
+		<th id="op">Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($productos as $producto)
 			<tr>
-				<td>{{$producto->id}}</td>
 				<td>{{$producto->descripcion}}</td>
-				<td>
+				<td id="o">
              		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
              		<a class="btn btn-info" href="#" Onclick='MostrarProducto({{$producto->id}});' data-toggle='modal' data-target='#myModalProducto' style ="margin-right: 8px;">
               			<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               		</a>
-              		<a class="btn btn-warning" href="#" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}')">
-                		<i class="fa fa-times" aria-hidden="true"></i>  Eliminar
+
+              		<a id="op" class="btn btn-danger" href="#" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}')">
+                		<i class="fa fa-trash" aria-hidden="true"></i>
               		</a>
+
            		</td>
 			</tr>
 		@endforeach

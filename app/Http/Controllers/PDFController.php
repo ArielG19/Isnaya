@@ -11,7 +11,7 @@ class PDFController extends Controller
 {
     //
     public function index(){
-    	 $usuarios = User::all();
+    	 $usuarios = User::Orderby('id','DESC')->paginate(3);
             $pdf = PDF::loadview('isnaya.usuarios.listar',['usuarios'=>$usuarios]);
             return $pdf->download('archivo.pdf');
 

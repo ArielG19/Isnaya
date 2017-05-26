@@ -4,6 +4,7 @@
 
 @section('css')
 	<link rel="stylesheet" href="{{asset('css/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/estilostabla.css')}}">
 @endsection
 
 
@@ -28,9 +29,28 @@
 				<strong> Se agrego correctamente</strong>
 		</div>
 			{{--FIN DE MENSAJES--}}
+		
 			<div class="panel panel-default">
 				<div class="panel-heading">
-						<div class="panel-title">Lista de Productos</div>
+						<div class="panel-title">
+							<h5 style="margin-bottom:-15px;"> Lista de Productos</h5>
+							<hr width="50%" style="margin-bottom:-20px; margin-left: 1px;">
+				    	</div>
+				    <!--Inicio de buscador-->
+					<div class="row">
+						<div class="col-md-12" style="margin-bottom:-13px; margin-top: -20px;margin-left:-88px;">
+								{!!Form::open(['route'=>'productos.index','method'=>'GET','class'=>'navbar-form pull-right'])!!}
+							<div class="input-group">
+								{!!Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Buscar productos','aria-describedby'=>'search'])!!}
+								<span class="input-group-addon" id="search">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</span>
+							</div>
+								{!!Form::close()!!}
+							
+						</div>
+					</div>
+					<!--Fin-->
 						<p class="navbar-text navbar-right" style="margin-top: -15px;">
 						 	<a class="btn btn-info" href="#" data-toggle='modal' 
 						 	   data-target='#myModalCreateProd' 

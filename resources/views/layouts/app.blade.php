@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
 
     <!-- Scripts -->
     <script>
@@ -55,8 +56,10 @@
                             <li><a href="{{ url('/register') }}">Registrate</a></li>
                         @else
                             <li class="dropdown">
+                                
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                     <img src="imagenes/perfil/{{Auth::user()->imagen}}" 
+                                 style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -71,6 +74,10 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/perfil') }}"><i class="fa fa-btn fa-user"> Configuraciòn</i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -84,5 +91,7 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
 </body>
 </html>
+
