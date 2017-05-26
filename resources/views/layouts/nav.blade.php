@@ -68,6 +68,9 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="#">Perfil</a>
+                            </li>
+                            <li>
                                 <a href="#">Configuración</a>
                             </li>
                             <li class="divider"></li>
@@ -82,6 +85,7 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
+
                         </ul>
                     </li>
                 @endif

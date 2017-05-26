@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <table class="table table-bordered">
 	<thead>
 		<th>ID</th>
@@ -40,7 +39,6 @@
 <center>
 	<h4>{{$formatos->render()}}</h4>
 </center>
-=======
 	<table class="table table-bordered">
 								<thead>
 									<th>ID</th>
@@ -92,4 +90,3 @@
 	<center>
 		<h4>{{$formatos->render()}}</h4>
 	</center>
->>>>>>> 034b64f5aab6311cd5506c21e9a27e47fd1d4817
