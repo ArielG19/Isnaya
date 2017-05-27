@@ -11,12 +11,13 @@
     <title>Isnaya-Print</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::to('css/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href='css/estilos.css'>
 
 </head>
 <body>
     <div id="app">
-        @include('layouts.nav')
 
         @yield('content')
     </div>

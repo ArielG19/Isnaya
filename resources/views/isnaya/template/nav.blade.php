@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="/home">
                 <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="160px">
             </a>
         </div>

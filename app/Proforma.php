@@ -37,4 +37,10 @@ class Proforma extends Model
       public function rubros(){
         return $this->belonsgTo(Rubro::class);
       }
+      public function proforma_color(){
+        return $this->belonsgTo(Proforma_Color::class);
+      }
+      public function proforma_rubro(){
+        return $this->belonsgTo(Proforma_Rubro::class);
+      }
 }

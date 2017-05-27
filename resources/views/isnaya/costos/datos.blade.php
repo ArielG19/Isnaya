@@ -8,12 +8,15 @@
 	<div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-10"> 
-        <div class="row">
-          <div class="col-md-8">
+        <div class="row cabecera-mag">
+          <div class="col-md-6">
             <h4>
               Nueva Proforma
             </h4>
             <hr>
+          </div>
+          <div class="col-md-6">
+            <!-- Aqui la lista de pasos -->
           </div>
         </div>
 				<!-- Nav tabs -->
@@ -55,7 +58,7 @@
 								  </div>
 								  <div class="col-md-4">
 									  <br>
-									  <button type="button" class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 8px;">
+									  <button type="button" class="btn btn-info btn-cian-big" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 8px;">
                       Agregar +
                     </button> <br>
                     <br>
@@ -85,7 +88,7 @@
                   </div>
                 </div>
                 <!-- Boton de navegación -->
-                <button type="button" class="btn btn-info navbar-right" style="margin-top:10px; margin-bottom: 15px; margin-right: 15px;" href="#especificos" 
+                <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:10px; margin-bottom: 15px; margin-right: 15px;" href="#especificos" 
                   aria-controls="especificos" role="tab" data-toggle="tab">
                   Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
                 </button>
@@ -183,13 +186,13 @@
                 <!-- Boton de navegación -->
                 <div class="col-md-12">
                   <div class="row">
-                    <button type="button" class="btn btn-info navbar-right" style="margin-top:50px; margin-bottom: 15px; margin-right: -15px;" href="#adicionales"
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:50px; margin-bottom: 15px; margin-right: -15px;" href="#adicionales"
                       aria-controls="adicionales" role="tab" data-toggle="tab">
                       Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
                     </button>
-                    <button type="button" class="btn btn-info navbar-right" style="margin-top: 50px;margin-right: 15px; padding: 9px" href="#general" aria-controls="general"
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top: 50px;margin-right: 15px;" href="#general" aria-controls="general"
                        role="tab" data-toggle="tab">
-                      <span class="glyphicon glyphicon-triangle-left"> Atrás</span>
+                      <span class="glyphicon glyphicon-triangle-left"></span>Atrás
                     </button>
                   </div>
                 </div>
@@ -238,13 +241,13 @@
                 <!-- Boton de navegación -->
                 <div class="col-md-12">
                   <div class="row">
-                    <button type="button" class="btn btn-info navbar-right" style="margin-top:25px; margin-bottom: 15px; margin-right: -15px;" href="#"
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-bottom: 15px; margin-right: -15px;" href="#"
                       aria-controls="" role="tab" data-toggle="tab">
                       Calcular <span class="glyphicon glyphicon-triangle-right"></span>
                     </button>
-                    <button type="button" class="btn btn-info navbar-right" style="margin-top: 25px;margin-right: 15px; padding: 9px" href="#especificos"
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-right: 15px;" href="#especificos"
                       aria-controls="especificos" role="tab" data-toggle="tab">
-                      <span class="glyphicon glyphicon-triangle-left"> Atrás</span>
+                      <span class="glyphicon glyphicon-triangle-left"></span>Atrás
                     </button>
                   </div>
                 </div>

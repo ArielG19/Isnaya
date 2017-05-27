@@ -1,19 +1,20 @@
-<table class="table .table-responsive">
+<table class="table table-striped">
 	<thead>
-		<th>ID</th>
 		<th>Colores</th>
-		<th>Opción</th>
+		<th style="text-align: right;">Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($colores as $color)
 			<tr>
-				<td>{{$color->id}}</td>
 				<td>{{$color->color}}</td>					
-				<td>
+				<td style="text-align: right;">
              		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             		<a class="btn btn-primary" href="#" Onclick='MostrarColor({{$color->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
-              		<i class="fa fa-pencil-square-o" aria-hidden="true">Editar</i>
+             		<a class="btn btn-primary btn-cian" href="#" Onclick='MostrarColor({{$color->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+              		<i aria-hidden="true">Editar</i>
               		</a>
+              		<button type="button" class="btn btn-magenta" href="#">
+              			<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+              		</button>
            		</td>
 			</tr>
 		@endforeach

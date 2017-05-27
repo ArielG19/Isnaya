@@ -13,5 +13,5 @@ class Producto extends Model
     public function proforma(){
 
         return $this->hasMany(Proforma::class);
-      }
+    }
 }
