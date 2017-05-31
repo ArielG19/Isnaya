@@ -19,7 +19,7 @@ class ClienteController extends Controller
     }
     public function listar()
     {
-        $clientes = Cliente::Orderby('nombre','ASC')->paginate(3);
+        $clientes = Cliente::Orderby('nombre','ASC')->paginate(6);
         return view('isnaya.clientes.listar')->with('clientes',$clientes);
     }
     /**

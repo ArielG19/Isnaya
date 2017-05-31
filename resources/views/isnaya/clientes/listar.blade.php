@@ -5,7 +5,7 @@
 		<th>Telefono</th>
 		<th>Email</th>
 		<th>Fax</th>
-		<th style="text-align: right;">Opciones</th>
+		<th class="alitabla">Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($clientes as $cliente)
@@ -15,7 +15,7 @@
 				<td>{{$cliente->telefono}}</td>
 				<td>{{$cliente->email}}</td>
 				<td>{{$cliente->fax}}</td>			
-				<td style="text-align: right;">
+				<td class="alitabla">
              		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
              		<a class="btn btn-primary btn-cian" href="#" Onclick='MostrarCliente({{$cliente->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
               			<i aria-hidden="true">Editar</i>

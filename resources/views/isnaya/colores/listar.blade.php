@@ -1,18 +1,18 @@
 <table class="table table-striped">
 	<thead>
 		<th>Colores</th>
-		<th style="text-align: right;">Opciones</th>
+		<th class="alitabla">Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($colores as $color)
 			<tr>
 				<td>{{$color->color}}</td>					
-				<td style="text-align: right;">
+				<td class="alitabla">
              		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
              		<a class="btn btn-primary btn-cian" href="#" Onclick='MostrarColor({{$color->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
               		<i aria-hidden="true">Editar</i>
               		</a>
-              		<button type="button" class="btn btn-magenta" href="#">
+              		<button type="button" class="btn btn-magenta-small" href="#">
               			<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
               		</button>
            		</td>

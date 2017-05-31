@@ -14,10 +14,6 @@
 Route::get('/', function () {
     return view('auth/login');
 });
-Route::get('/prueba', function(){
-	return view('isnaya.costos.calculostabs');
-});
-
 
 Auth::routes();
 
@@ -53,3 +49,6 @@ Route::Resource('/bitacora', 'BitacoraController');
 
 Route::Resource('/calculos', 'CalculosController');
 Route::get('/listados','CalculosController@listar');
+
+
+//Nueva ruta

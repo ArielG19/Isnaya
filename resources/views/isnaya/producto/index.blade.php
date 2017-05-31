@@ -19,7 +19,6 @@
 	        	</button>
 				<strong> Se actualizo correctamente</strong>
 			</div>
-
 			<div id="message-save" class="alert alert-success alert-dismissible" role="alert" style="display:none">
 	        	<button type="button" class="close" 
 	        			data-dismiss="alert" aria-label="Close">

@@ -1,5 +1,18 @@
-h5{
-	margin: 15px 0px;	
+label{
+	margin-bottom: 5px;
+    margin-top: 6px;
+}
+ul{
+	list-style: none;
+}
+hr{
+	margin-top: 12px;
+	margin-bottom: 12px;
+	border-top: 1px solid #B4B4B4;
+	width: 100%;
+}
+.alitabla{
+	text-align: right;
 }
 /*Botones del sistema de isnaya*/
 .btn-yellow{
@@ -11,16 +24,21 @@ h5{
 	background-color: #F3E43E;
 	border-color:  #F3E43E;
 	color:#4D4D4D;
-	width: 190px;
+	width: 60%;
+}
+.btn-yellow: focus, .btn-yellow-big:focus{
+	
 }
 .btn-cian{
 	background-color: #00AFEA;
 	height: 35px;
 	width: 90px;
+	border-color: transparent;
 }
 .btn-cian-big{
 	background-color: #00AFEA;
-	width: 190px;
+	width: 100%;
+	border-color: transparent;
 }
 .btn-cian-small{
 	background-color: #00AFEA;
@@ -32,12 +50,12 @@ h5{
 	background-color: #51C9F2;
 }
 .btn-magenta{
-	background-color: #EF5EB8;
+	background-color: #ED5F66;
 	width: 90px;
 	color:#F4EFEF;
 }
 .btn-magenta-small{
-	background-color: #EF5EB8;
+	background-color: #ED5F66;
 	width: 40px;
 	color:#F4EFEF;
 }
@@ -45,7 +63,7 @@ h5{
 	background-color: #EF5EB8;
 	border-color:  #EF5EB8;
 	color:#F4EFEF;
-	width: 190px;
+	width: 60%;
 }
 .btn-magenta:focus, .btn-magenta-big:focus, .btn-magenta-small:focus,
 .btn-magenta:hover,.btn-magenta-big:hover,.btn-magenta-small:hover{
@@ -99,6 +117,12 @@ h5{
     border-bottom: 1px solid #727070;
     border-radius: 0px;
 }
+.tit-cal{
+	font-weight: bold;
+	font-style: italic;
+	font-size: 16px;
+	margin-left: 20px;
+}
 
 #inicio1{	
 	border: 1px solid #D9D7D7;
@@ -108,4 +132,3 @@ h5{
 	border: 1px solid #D9D7D7;
 	border-top: 7px solid #EF5EB8;
 }
-

@@ -63,7 +63,8 @@ class RubrosController extends Controller
      */
     public function show($id)
     {
-        
+        $rubro = Rubro::FindOrFail($id);
+        return $rubro;
     }
 
     /**
