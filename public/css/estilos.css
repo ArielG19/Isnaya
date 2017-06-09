@@ -114,8 +114,37 @@ hr{
 }
 .text-reset{
 	border: 0px;
-    border-bottom: 1px solid #727070;
-    border-radius: 0px;
+	border-color: #FFFFFF !important;
+    border-bottom: 1px solid #727070 !important;
+    border-radius: 0px; 
+    display: block;
+    width: 90%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+}
+#sizing-addon1
+{
+	background-color: #FFF;
+	border-color: #FFF;
+	border-bottom: 1px solid #727070 !important;
+	border-radius: 0px;
+}
+.text-reset:hover,
+.text-reset:focus
+{
+	border-color: #FFFFFF !important;
+    border-bottom: 2px solid #00AFEA!important;
+    border-radius: 0px; 
+
+}
+#email:focus{
+	outline: 0px;
+}
+#password{
+	outline: 0px;
 }
 .tit-cal{
 	font-weight: bold;

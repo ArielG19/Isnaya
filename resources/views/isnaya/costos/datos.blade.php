@@ -6,49 +6,49 @@
 	
 @section('contenido')
 	<div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12"> 
-        <div class="row cabecera-mag">
-          <div class="col-md-6">
-            <h4>
-              Nueva Proforma
-            </h4>
-            <hr>
-          </div>
-          <div class="col-md-6">
-            <!-- Aqui la lista de pasos 
-            <ul class="">
-                <li class="">
-                    <span>1</span>
-                </li>
-                <li class="">
-                    <span>2</span>
-                </li>
-                <li class="">
-                    <span>3</span>
-                </li>
-                <li class="">
-                    <span>calculo</span>
-                </li>
-            </ul>-->
-          </div>
-        </div>
+      <div class="row">
+         <div class="col-md-12 col-sm-12"> 
+            <div class="row cabecera-mag">
+               <div class="col-md-6">
+                  <h4>
+                     Nueva Proforma
+                  </h4>
+                  <hr>
+               </div>
+               <div class="col-md-6">
+                  <!-- Aqui la lista de pasos 
+                  <ul class="">
+                     <li class="">
+                        <span>1</span>
+                     </li>
+                     <li class="">
+                        <span>2</span>
+                     </li>
+                     <li class="">
+                        <span>3</span>
+                     </li>
+                     <li class="">
+                        <span>calculo</span>
+                     </li>
+                  </ul>-->
+               </div>
+            </div>
 				<!-- Nav tabs -->
-  			<ul class="nav nav-tabs" role="tablist">
-    			<li role="presentation" class="active">
-    				<a href="#general" aria-controls="general" role="tab" data-toggle="tab">Datos Generales</a>
-    			</li>
-    			<li role="presentation">
-    				<a href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab">Datos especificos</a>
-    			</li>
-    			<li role="presentation">
-    				<a href="#adicionales" aria-controls="adicionales" role="tab" data-toggle="tab">Datos Adicionales</a>
-    			</li>
-          <li role="presentation">
-            <a href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">Cálculos</a>
-          </li>
-  			</ul>	
-  			<!-- Tab panes -->
+  			   <ul class="nav nav-tabs" role="tablist">
+    			   <li role="presentation" class="active">
+    				   <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Datos Generales</a>
+    			   </li>
+    			   <li role="presentation">
+    				   <a href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab">Datos especificos</a>
+    			   </li>
+    			   <li role="presentation">
+    				   <a href="#adicionales" aria-controls="adicionales" role="tab" data-toggle="tab">Datos Adicionales</a>
+    			   </li>
+               <li role="presentation">
+                  <a href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">Cálculos</a>
+               </li>
+  			   </ul>	
+  			   <!-- Tab panes -->
   			<div class="tab-content">
   				<!-- Inicio de la primer Tab -->
     			<div role="tabpanel" class="tab-pane active pestania" id="general">
@@ -95,14 +95,14 @@
                     {!! Form::label('Producto:')!!} <br>
                     {!! Form::select('id_producto',$producto,null,['id'=>'id_producto','class'=>'form-control'])!!}<br>
                     {!! Form::label('Formato:')!!} <br>
-                    {!! Form::select('id_producto',$formato,null,['id'=>'id_producto','class'=>'form-control'])!!}
+                    {!! Form::select('id_formats',$formato,null,['id'=>'id_formats','class'=>'form-control'])!!}
                     {!! Field::checkbox('Formato Personalizado:','1')!!}
                     {!! Field::text(null,['placeholder'=>'Ingrese el formato personalizado','id' => 'formatopers'])!!}
                   </div>
                   <div class="col-md-4">
-                    {!! Field::text('volumen:', ['placeholder'=>'Volumen'])!!}
+                    {!! Field::text('volumen:', ['id' => 'vol_total','placeholder'=>'Volumen'])!!}
                     {!! Form::label('caras:')!!} <br>
-                    <select name="" id="" class="form-control" style="margin-top: 3px;">
+                    <select name="caras" id="caras" class="form-control" style="margin-top: 3px;">
                       <option value="1">1 Cara</option>
                       <option value="2">2 Caras</option>
                     </select>
@@ -124,7 +124,7 @@
                 <h5>Material de la Portada</h5>
                 <div class="row">
                   <div class="col-md-4">
-                    {!! Field::text('Nº Páginas:', ['placeholder'=>'Nº de Páginas'])!!}
+                    {!! Field::text('Nº Páginas:', ['id'=>'canPapelP' ,'placeholder'=>'Nº de Páginas'])!!}
                   </div>
                   <div class="col-md-4">
                     {!! Form::label('Material:')!!} 
@@ -144,7 +144,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     {!! Form::label('Nº Páginas:')!!}
-                    {!! Form::text('Nº Páginas:', null,['placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
+                    {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Material 1:')!!}
@@ -156,7 +156,7 @@
                   </div> 
                   <div class="col-md-3">
                     {!! Form::label('Nº Páginas:')!!}
-                    {!! Form::text('Nº Páginas:', null,['placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
+                    {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel2','placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Material 2:')!!}
@@ -171,7 +171,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     {!! Form::label('Nº Páginas:')!!}
-                    {!! Form::text('Nº Páginas:', null,['placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
+                    {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel3','placeholder'=>'Nº de Páginas','class'=>'form-control'])!!}
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Material 3:')!!} 
@@ -313,7 +313,7 @@
                 <!-- Fín de los botones -->
               </div>
             </div>
-					</div>
+		  </div>
           <!-- Fín de la tercera Tab -->
           <div role="tabpanel" class="tab-pane pestania" id="calculos">
             <div class="container-fluid">
@@ -389,7 +389,7 @@
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Volumen:')!!} 
-                    {!! Form::text('', null,['id' => 'vol3', 'class'=>'form-control'])!!} 
+                    {!! Form::text('', null,['id' => 'volport', 'class'=>'form-control'])!!} 
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Costo Unitario:')!!} 
@@ -397,7 +397,7 @@
                   </div>
                   <div class="col-md-3">
                     {!! Form::label('Costo Total:')!!} 
-                    {!! Form::text('', null,['id' => 'costot3', 'class'=>'form-control', 'disabled'])!!} 
+                    {!! Form::text('', null,['id' => 'costotalport', 'class'=>'form-control', 'disabled'])!!} 
                   </div>
                 </div>
                 <hr>
@@ -439,9 +439,138 @@
                 <!-- Boton de navegación -->
                 <div class="col-md-12">
                   <div class="row">
-                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-bottom: 15px; margin-right: -15px;" href="#"
-                      aria-controls="" role="tab" data-toggle="tab">
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-bottom: 15px; margin-right: -15px;" href="#manodeobra"
+                      aria-controls="manodeobra" role="tab" data-toggle="tab">
                       Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
+                    </button>
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-right: 15px;" href="#adicionales"
+                      aria-controls="adicionales" role="tab" data-toggle="tab">
+                      <span class="glyphicon glyphicon-triangle-left"></span>Atrás
+                    </button>
+                  </div>
+                </div>
+                <!-- Fín de los botones -->
+              </div>
+            </div>
+          </div>
+          <!-- Fín de la cuarta Tab -->
+          <!-- Inicio de la 5ta Tab -->
+          <div role="tabpanel" class="tab-pane pestania" id="manodeobra">
+            <div class="container-fluid">
+              <div class="col-md-6" style="border-right: 1px solid #D9D7D7;">
+                <h5>Mano de Obra</h5>
+                <div class="row">
+                    <h5>
+                        M.O. Fotomecánica:
+                    </h5>
+                    <div class="col-md-4">
+                        {!! Field::text('Volumen:', ['id' => 'volMOfot']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Unitario:', ['id' => 'cosMOfot']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Total:', ['id' => 'costotalMOfot']) !!}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <h5>
+                        M.O. Impresion offset:
+                    </h5>
+                    <div class="col-md-4">
+                        {!! Field::text('Volumen:', ['id' => 'volImOf']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Unitario:', ['id' => 'volImOf']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Total:', ['id' => 'volImOf']) !!}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        {!! Field::text('Fotocopia B/N:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Corte:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Compaginacion:') !!}
+                    </div>
+                </div>
+              </div>
+               <!-- separacion de las columnas-->
+              <div class="col-md-6">
+                <h5></h5>
+                <!-- separacion de los row -->
+                <div class="row">
+                    <h5>
+                        Grapado:
+                    </h5>
+                    <div class="col-md-4">
+                        {!! Field::text('Volumen:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Unitario:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Total:') !!}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <h5>
+                        Encolado/Encolochado:
+                    </h5>
+                    <div class="col-md-4">
+                        {!! Field::text('Volumen:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Unitario:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Total:') !!}
+                    </div>
+                </div>
+                <hr><!-- separacion de los row  -->
+                <div class="row">
+                    <h5>
+                       Cocido:
+                    </h5>
+                    <div class="col-md-4">
+                        {!! Field::text('Volumen:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Unitario:') !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Field::text('Costo Total:') !!}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        {!! Field::text('Numerado:') !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Field::text('Troquelado:') !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Field::text('Plastificado:') !!}
+                    </div>    
+                    <div class="col-md-3">
+                        {!! Field::text('Otros') !!}
+                    </div>             
+                </div>
+
+
+                <!-- Boton de navegación -->
+                <div class="col-md-12">
+                  <div class="row">
+                    <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-bottom: 15px; margin-right: -15px;" href="#calculos"
+                      aria-controls="calculos" role="tab" data-toggle="tab">
+                      Calcular <span class="glyphicon glyphicon-triangle-right"></span>
                     </button>
                     <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:25px; margin-right: 15px;" href="#especificos"
                       aria-controls="especificos" role="tab" data-toggle="tab">
@@ -453,8 +582,8 @@
               </div>
             </div>
           </div>
-          <!-- Fín de la cuarta Tab -->
-				</div>
+          <!-- Fín de la 5ta tab -->
+		</div>
       </div>
     </div>
 	</div>
@@ -466,91 +595,78 @@
   <script>
     listarClientes();
 
-    //Inicio de metodos para mostrar la descripcion y el costo del papel
-    var id_rubro = $('#id_rubro');//Obtenemos el select
-    var materialCalc = $('#Matpor');//Obtenemos el text atraves del id
-    var costUnit = $('#cotunitport');//obtenemos el text de costo unitario
-    //console.log(id_rubro);
-    //Función para saber cuando se ha hecho un cambio en el select
-    id_rubro.on('change', function(){
-      //aqui almacenamos el texto del select en una variable
-      var esteVal = $('#id_rubro option:selected').text();
-      //aqui almacenamos el id de la seleccion en una variable
-      var idport = $('#id_rubro option:selected').val();
-      //aqui mostramos el material seleccionado en la caja de texto
-      materialCalc.val(esteVal);
-      /*Funcion con ajax atraves de la cual obtenemos el costo despues de aver
-      seleccionado un tipo de mateial en el select*/
-      $.ajax({
-        method: "GET",
-        url: "/rubros/"+idport
-      })
-      .done(function(data){
-        costUnit[0].value = data.costo;
-      });
-    });
-    
-    var id_rubro1 = $('#id_rubro1');
-    var materialCalc1 = $ ('#Mat1');
-    var costUnit1 = $('#cotunit1');
-    id_rubro1.on('change', function(){
-      var valMat1 = $('#id_rubro1 option:selected').text();
-      var id1 = $('#id_rubro1 option:selected').val();
-      materialCalc1.val(valMat1);
-      $.ajax({
-        method:"GET",
-        url: "/rubros/"+id1 
-      })
-      .done(function(data){
-        costUnit1[0].value=data.costo;
-      });
-    });
-
-    var id_rubro2 = $('#id_rubro2');
-    var materialCalc2 = $ ('#Mat2');
-    var costUnit2 = $('#cotunit2');
-    id_rubro2.on('change', function(){
-      var valMat2 = $('#id_rubro2 option:selected').text();
-      var id2 = $('#id_rubro2 option:selected').val();
-      materialCalc2.val(valMat2);
-      $.ajax({
-        method:"GET",
-        url: "/rubros/"+id2 
-      })
-      .done(function(data){
-        costUnit2[0].value=data.costo;
-      });
-    });
-
-    var id_rubro3 = $('#id_rubro3');
-    var materialCalc3 = $ ('#Mat3');
-    var costUnit3 = $('#cotunit3');
-    id_rubro3.on('change', function(){
-      var valMat3 = $('#id_rubro3 option:selected').text();
-      var id3 = $('#id_rubro3 option:selected').val();
-      materialCalc3.val(valMat3);
-      $.ajax({
-        method:"GET",
-        url: "/rubros/"+id3 
-      })
-      .done(function(data){
-        costUnit3[0].value=data.costo;
-      });
-    });
-    //Fín
-    //Inicio de los calculos de los totales
     //Calculos papel 1
     var volumen1 = $('#vol1');
     var cosun1 = $('#cotunit1');
-    var cost1= $('#costotal1');
-    volumen1.val(0);
-    var valVol1 = 0;
-    //blur es el evento que permite hacer calculos despues de desenfocar un textbox
-    volumen1.on('blur', function(){
-      valVol1 = $(this).val();
-      valCostUnit1 = cosun1.val();
-      cost1.val(valVol1*valCostUnit1);
+    var cost1 = $('#costotal1');
+    valCostUnit1 = cosun1.val();
+    var formato = $('#id_formats');
+    var volGeneral = $('#vol_total');
+    var cantPapel1 = $('#cantPapel1');
+    //seleccion de caras
+    var caras = $('#caras');
+    caras.on('change', function(){
+    var carasval = $('#caras option:selected').val();
+    console.log(carasval);
     });
+    //seleccion de formato
+    formato.on('change', function(){
+      var valFormato = $('#id_formats option:selected').text();
+      var elemento = valFormato.split('/');
+      var tam_pap = elemento[1];
+      formato = parseInt(tam_pap);
+      console.log(formato);
+    });   
+
+    volGeneral.on('change', function(){
+      valvoltotal = $(this).val();
+      var por_vol =  valvoltotal*1.20;
+      console.log(por_vol);
+    });
+
+    cantPapel1.on('change', function(){
+      papel1 = $(this).val();
+      var pagForm=papel1/formato;
+      console.log(pagForm);
+    });
+
+      var aux=(por_vol*pagForm);
+      console.log(aux);
+      var total=aux/caras;
+      var tot=Math.round(total);
+      console.log(tot);
+      volumen1.val(tot);
+      
+      cost1.val(valVol1*valCostUnit1);
+      console.log(cost1);
+   
+    //Función para saber cuando se ha hecho un cambio en el select
+    //var volumen1 = $('#vol1');
+    //var cosun1 = $('#cotunit1');
+    //var cost1= $('#costotal1');
+    //volumen1.val(0);
+    //var valVol1t = 0;
+    ////blur es el evento que permite hacer calculos despues de desenfocar un textbox
+    //volumen1.on('blur', function(){
+      //valVol1 = $(this).val();
+      //valCostUnit1 = cosun1.val();
+      //cost1.val(valVol1*valCostUnit1);
+    //});
+
+    //Inicio de los calculos de los totales
+    //calculos de la portada
+    var volumenport = $('#volport');
+    var cosunport = $('#cotunitport');
+    var costport= $('#costotalport');
+    volumenport.val(0);
+    var valVolport = 0;
+    //blur es el evento que permite hacer calculos despues de desenfocar un textbox
+    volumenport.on('blur', function(){
+      valVolport = $(this).val();
+      valCostUnitport = cosunport.val();
+      costport.val(valVolport*valCostUnitport);
+    });
+
     //calculos papel 2
     var volumen2 = $('#vol2');
     var cosun2 = $('#cotunit2');
