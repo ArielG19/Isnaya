@@ -1,68 +1,50 @@
-<div class="table-responsive">
-	<table class="table table-bordered">
+<table class="table table-striped">
 								<thead>
-									<th>Id</th>
-									<th># de pagina</th>
-									<th>Solicitante</th>
-									<th>Caras</th>
-									<th>Volumen</th>
-									<th>Subtotal</th>
-									<th>Gastos</th>
-									<th>Costo total</th>
-									<th>Utilidad bruta</th>
-									<th>Valor de venta</th>
-									<th>Precio de Venta</th>
-									<th>Descuento</th>
-									<th>Iva</th>
+									<th>Cliente</th>
 									<th>Fecha</th>
-									<th>Tipo</th>
+									<th>Producto</th>
 									<th>Estado</th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th>Accìòn</th>
-
+									<th>Total</th>
+									<th>Opciones</th>
 								</thead>
 						<tbody>
+						@foreach($proformas as $proforma)
 							
 								<tr>
-								
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									
+									<td>{{$proforma->cliente->nombre}}</td>
+									<td>{{$proforma->created_at->format('d-m-Y')}}</td>
+									<td>{{$proforma->producto->descripcion}}</td>
+
 									<td>
-             							{{--<a class="btn btn-info" href="#" Onclick='Mostrar();' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+										@if($proforma->estado =="activo")
+											<span class="label label-info">{{$proforma->estado}}</span>
+										@else
+											<span class="label label-danger">{{$proforma->estado}}</span>
+										@endif										
+									</td>
+									<td>Total</td>
+           							<td>
+           								<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalDetalles' style ="margin-right: 8px;">
+              								Detalles
+              							</a>
+
+              							<a id="imprimir" class="btn btn-default" href="/pdf" style ="margin-right: 8px;">
+              								<i class="fa fa-print" aria-hidden="true"> PDF</i>
+              							</a>
+
+             							<a class="btn btn-info" href="#" Onclick='MostrarProducto({{$proforma->id}});' data-toggle='modal' data-target='#myModalProducto' style ="margin-right: 8px;">
               								<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               							</a>
 
-              							<a class="btn btn-warning" href="#" onclick="Eliminar('','')">
-                						<i class="fa fa-times" aria-hidden="true"></i>  Eliminar
-              							</a>--}}
+              							<a id="op" class="btn btn-danger" href="#" onclick="">
+                							<i class="fa fa-trash" aria-hidden="true"></i>
+              							</a>
            							</td>
-
-
 								</tr>
-							
+						@endforeach
 						</tbody>
 </table>
 	<center>
-		<h4></h4>
+		<h4>{{$proformas->render()}}</h4>
 	</center>
 </div>

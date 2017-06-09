@@ -10,11 +10,13 @@ class Producto extends Model
 
     protected $fillable=['id','descripcion','estado'];
 
-    public function proforma(){
-
-        return $this->hasMany(Proforma::class);
+    //------------------------------------------------------------------------
+    public function proformas()
+    {
+      return $this->hasMany('App\Proforma');
     }
 
+    //------------------------------------------------------------------------
     public function scopeSearch($query,$descripcion)
     {
         //return $query->where('descripcion','LIKE',"%$descripcion%");

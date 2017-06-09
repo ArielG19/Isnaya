@@ -1,6 +1,6 @@
 <div class="modal fade" id="myModalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
-	    <div class="modal-content">
+	    <div class="modal-content mod-yellow">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span> 
@@ -27,7 +27,7 @@
 			<div class="modal-footer">
 				<div class="form-group">
                     <!--Agregamos nuestro link para trabajar ajax-->
-                    {!!link_to('#','Guardar',['id'=>'guardarFormato','class'=>'btn btn-primary btn-sm-mt-10'])!!}
+                    {!!link_to('#','Guardar',['id'=>'guardarFormato','class'=>'btn btn-info btn-sm-mt-10'])!!}
                 </div>
 			</div>		
 	    </div>

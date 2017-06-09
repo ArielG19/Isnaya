@@ -19,12 +19,20 @@ class ProformasController extends Controller
     public function index()
     {
         //
-        return view('isnaya.proformas.index');
+        return view('isnaya.proformas.reportes');
     }
 
     public function listarProforma(){
-        $proformas = Proforma::Orderby('id','ASC')->paginate(1);
-            return view('isnaya.proformas.listar')->with('proformas',$proformas);
+        $proformas = Proforma::Orderby('id','ASC')->paginate(5);
+
+        $proformas->each(function($proformas){
+            $proformas->cliente;
+            $proformas->producto;
+            //dd($proformas->cliente);
+            
+        });
+
+        return view('isnaya.proformas.listar')->with('proformas',$proformas);    
     }
 
     /**

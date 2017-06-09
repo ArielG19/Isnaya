@@ -390,7 +390,7 @@ $("#addProducto").click(function(event){
           	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
           	$("#addProdError").html(data.responseJSON.descripcion);
           	$("#addProdMessage-error").fadeIn();
-               $("#addProdMessage-error").show().delay(3000).fadeOut(3);
+            $("#addProdMessage-error").show().delay(3000).fadeOut(3);
         }
     });
 });

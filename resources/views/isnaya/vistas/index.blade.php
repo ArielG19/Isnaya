@@ -10,8 +10,8 @@
 
 
 @section('contenido')
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -24,10 +24,6 @@
 	<br>
 	<br>
 	<center><h1>Inicio del sistema de Gestión de Isnaya</h1></center>
-	</div>
-	
-	
-</div>
 	
 @endsection
 

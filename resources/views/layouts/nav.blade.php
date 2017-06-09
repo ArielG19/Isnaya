@@ -62,16 +62,13 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <img src="/img/users.png" class="img-circle" alt="User Image" width="35px"> 
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                                     <img src="imagenes/perfil/{{Auth::user()->imagen}}" 
+                                 style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#">Perfil</a>
-                            </li>
-                            <li>
-                                <a href="#">Configuración</a>
+                                <a href="{{ url('/perfil') }}">Configuración</a>
                             </li>
                             <li class="divider"></li>
                             <li>

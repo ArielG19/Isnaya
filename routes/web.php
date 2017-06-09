@@ -15,11 +15,9 @@ Route::get('/', function () {
     return view('auth/login');
 });
 Route::get('/prueba', function(){
-<<<<<<< HEAD
-	return view('isnaya.proformas.proformasCreate');
-=======
+
+	//return view('isnaya.proformas.proformasCreate');
 	return view('isnaya.costos.calculostabs');
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 });
 
 

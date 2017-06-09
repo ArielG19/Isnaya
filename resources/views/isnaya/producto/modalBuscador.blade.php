@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModalCreateProd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModalBuscador" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content mod-yellow">
 			<div class="modal-header">
@@ -13,18 +13,9 @@
 				<div id="addProdMessage-error" class="alert alert-danger danger" role="alert" style="display:none">
 					<strong id="addProdError"></strong>
 				</div>
-				{{--cremos el formulario con un id para usar ajax--}}
-				{!!Form::open(['id'=>'form'])!!}
-					<input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
-					<input type="hidden" id="id">
-
-				<div class="form-group">
-                    <!--Nombramos las cajas de texto igual que los campos de la bd-->
-                    {!!form::label('Descripcion:')!!}
-                    {!!form::text('descripcion',null,['id'=>'addDescripcion','class'=>'form-control','placeholder'=>'Escriba una descripcion'])!!}
-                {!!Form::close()!!}
-                </div>
-
+				@foreach($producto as $pro)
+					<p>{{$pro}}</p>
+				@endforeach
 			</div>
 
 			<div class="modal-footer">

@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="/home">
                 <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="160px">
             </a>
         </div>
@@ -20,25 +20,9 @@
                     <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 &nbsp;
-                        
+
             </ul>
 
-<<<<<<< HEAD
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li>
-                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span>Acceder <i class="fa fa-rebel" aria-hidden="true"></i></span></a>
-                            </li>
-                            {{--<li><a href="{{ url('/login') }}">Acceder</a></li>--}}
-                            <li><a href="{{ url('/register') }}">Registrate</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-=======
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
@@ -50,17 +34,20 @@
                             <span id="ico" class=""></span>Funciones<strong     class="caret"></strong></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="/colores">Colores</a>
+                                <a id="funciones" href="/productos">Productos</a>
                             </li>
                             <li>
-                                <a href="/clientes">Clientes</a>
+                                <a id="funciones" href="/rubros">Rubros</a>
                             </li>
                             <li>
-                                <a href="/productos">Productos</a>
+                                <a id="funciones" href="/clientes">Clientes</a>
                             </li>
                             <li>
-                                <a href="/rubros">Rubros</a>
+                                <a id="funciones" href="/colores">Colores</a>
                             </li>
+                            <li>
+                                <a id="funciones" href="/formatos">Formatos</a>
+                            </li>                           
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -68,39 +55,23 @@
                             <span id="ico" class=""></span>Proformas<strong     class="caret"></strong></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Mostrar</a>
+                                <a id="proformas" href="">Mostrar</a>
                             </li>
                             <li>
-                                <a href="/calculos">Agregar</a>
+                                <a id="proformas" href="/calculos">Agregar</a>
                             </li>
                         </ul>
                     </li>
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <img src="/img/users.png" class="img-circle" alt="User Image" width="35px"> 
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                                     <img src="imagenes/perfil/{{Auth::user()->imagen}}"
+                                 style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
 
-<<<<<<< HEAD
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-@include('isnaya.template.collapse')
-=======
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#">Configuración</a>
+                                <a href="{{ url('/perfil') }}">Configuración</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -121,4 +92,5 @@
          </div>
     </div>
 </nav>
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
+
+                       

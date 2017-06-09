@@ -1,8 +1,203 @@
-h5{
-	margin: 15px 0px;	
+label{
+	margin-bottom: 5px;
+    margin-top: 6px;
+}
+ul{
+	list-style: none;
+}
+hr{
+	margin-top: 12px;
+	margin-bottom: 12px;
+	border-top: 1px solid #B4B4B4;
+	width: 100%;
+}
+.alitabla{
+	text-align: right;
+}
+/*Botones del sistema de isnaya*/
+.btn-yellow{
+	background-color: #F3E43E;
+	width: 90px;
+	color:#4D4D4D;
+}
+.btn-yellow-big{
+	background-color: #F3E43E;
+	border-color:  #F3E43E;
+	color:#4D4D4D;
+	width: 60%;
+}
+.btn-yellow: focus, .btn-yellow-big:focus{
+	
+}
+.btn-cian{
+	background-color: #00AFEA;
+	height: 35px;
+	width: 90px;
+	border-color: transparent;
+}
+.btn-cian-big{
+	background-color: #00AFEA;
+	width: 100%;
+	border-color: transparent;
+}
+.btn-cian-login{
+	background-color: #00AFEA;
+	width: 50%;
+	border-color: transparent;
 }
 
+.btn-cian-small{
+	background-color: #00AFEA;
+	width: 40px;
+}
+.btn-cian:focus, .btn-cian-big:focus, .btn-cian-small:focus,
+.btn-cian:hover,.btn-cian-big:hover,.btn-cian-small:hover{
+	border-color: #0486B2;
+	background-color: #51C9F2;
+}
+.btn-magenta{
+	background-color: #ED5F66;
+	width: 90px;
+	color:#F4EFEF;
+}
+.btn-magenta-small{
+	background-color: #ED5F66;
+	width: 40px;
+	color:#F4EFEF;
+}
+.btn-magenta-big{
+	background-color: #EF5EB8;
+	border-color:  #EF5EB8;
+	color:#F4EFEF;
+	width: 60%;
+}
+.btn-magenta:focus, .btn-magenta-big:focus, .btn-magenta-small:focus,
+.btn-magenta:hover,.btn-magenta-big:hover,.btn-magenta-small:hover{
+	border-color: #DA329A;
+	background-color: #E77BBE;
+}
+
+/*Fin de Botones del sistema de isnaya*/
+/*Inicio de diseño de los contenedores del sistema de isnaya*/
+.cabecera-yellow{
+	border-left: 7px solid #F3E43E;
+	margin-bottom: 15px;
+	height: 55px;
+}
+.cabecera-mag{
+	border-left: 7px solid #EF5EB8;
+	margin-bottom: 15px;
+	height: 55px;
+}
+.login{
+	border-top: 10px solid #00AFEA;
+}
+.log-container{
+	margin-top: 50px;
+}
+/*Inicio de diseño de los modales del sistema de isnaya*/
+.mod-yellow{
+	border: 1px solid #D9D7D7;
+	border-top: 7px solid #F3E43E;
+	border-radius: 0px 0px 10px 10px;
+	margin-top: 100px;
+}
+.mod-magenta{
+	border: 1px solid #D9D7D7;
+	border-radius: 0px 0px 10px 10px;
+	border-top: 7px solid #EF5EB8;
+	margin-top: 100px;
+}
+/*Fin de diseño de los contenedores del sistema de isnaya*/
+.navbar-default{
+	background-color: #fff;
+    border-color: transparent;
+    box-shadow: rgba(0,0,0,0.2) 5px 5px 20px;
+}
 .pestania{
 	border: 1px solid #D9D7D7;
 	border-radius: 10px;
 }
+.text-reset{
+	border: 0px;
+    border-bottom: 1px solid #727070;
+    border-radius: 0px;
+}
+.tit-cal{
+	font-weight: bold;
+	font-style: italic;
+	font-size: 16px;
+	margin-left: 20px;
+}
+
+#inicio1{	
+	border: 1px solid #D9D7D7;
+	border-top: 7px solid #F3E43E;
+}
+#inicio2{
+	border: 1px solid #D9D7D7;
+	border-top: 7px solid #EF5EB8;
+}
+
+/*Estilos para productos*/
+th#opc{
+	padding-left: 560px;
+
+}
+
+td#op{
+	padding-left: 560px;
+}
+
+/*modal add*/
+.modal-header.prod{
+	border-top: 7px solid #F3E43E;
+
+}
+
+/*a#edit.btn.btn-info{
+	margin-left: 5px;
+}*/
+a#elim.btn.btn-danger{
+	background-color: #EC0909;
+	/*margin-left: 80px;*/
+}
+
+/*Estilos para proformas*/
+a#imprimir{
+	background: #EDF50F;
+}
+
+.fa.fa-print{
+	color: #453737;
+	font-size: 17px;
+}
+
+.modal-header.deta{
+	border-top: 7px solid #EF5EB8;
+
+}
+
+/*Formatos*/
+th#thop{
+	padding-left: 500px;
+
+}
+
+td#tdop{
+	padding-left: 500px;
+}
+
+a#funciones:hover{
+		border-left: 5px solid #F3E43E;
+		color: #00AFEA;
+		
+}
+a#proformas:hover{
+		border-left: 5px solid #EF5EB8;
+		color: #00AFEA;
+		
+}
+
+
+

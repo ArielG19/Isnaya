@@ -14,27 +14,29 @@ class Proforma extends Model
 
     //--------------------------------------------------------------------------------------------------
     //Relaciones de las tablas
-      public function user(){
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente','id_cliente');
+    }
+
+    public function user(){
 
       	return $this->belonsgTo(User::class);
-      }
-
-       public function clientes(){
-
-      	return $this->belonsgTo(Cliente::class);
-      }
-
-      public function formatos(){
+    }
+    public function formato()
+    {
 
         return $this->belonsgTo(Formato::class);
-      }
+    }
 
-      public function productos(){
+    public function producto()
+    {
+        return $this->belongsTo('App\producto','id_producto');
+    }
 
-        return $this->belonsgTo(Producto::class);
-      }
 
-      public function rubros(){
-        return $this->belonsgTo(Rubro::class);
-      }
+    public function rubro()
+    {
+      return $this->belonsgTo(Rubro::class);
+    }
 }

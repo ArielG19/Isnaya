@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('isnaya/template.nav')
 @section('content')
 <div class="container">
     <div class="row">

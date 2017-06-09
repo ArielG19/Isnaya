@@ -19,13 +19,13 @@ class ProductoController extends Controller
     {
         //
         //dd($request->get('descripcion'));
-        $productos = Producto::Search($request->get('descripcion'))->Orderby('descripcion','ASC')->paginate(5);
+        $productos = Producto::Search($request->get('descripcion'))->Orderby('descripcion','ASC')->paginate(4);
         return view('isnaya.producto.index')->with('productos',$productos);
     }
 
     //1. creamos un un nuevo metodo para listar todo atravez de ajax.
     public function listarTodo(){
-        $productos = Producto::Orderby('descripcion','ASC')->paginate(6);
+        $productos = Producto::Orderby('descripcion','ASC')->paginate(5);
         return view('isnaya.producto.listar')->with('productos',$productos);
 
     }
@@ -76,8 +76,10 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   $producto = Producto::where('descripcion', $id)->get();
+        return response()->json($producto);
+
+        //return view('isnaya.producto.modal')->with('producto',$producto);
     }
 
     /**

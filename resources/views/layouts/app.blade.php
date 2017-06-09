@@ -11,85 +11,19 @@
     <title>Isnaya-Print</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="{{URL::to('css/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 
 </head>
 <body>
     <div id="app">
-<<<<<<< HEAD
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                        <li><a href="#">Item1</a></li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Acceder</a></li>
-                            <li><a href="{{ url('/register') }}">Registrate</a></li>
-                        @else
-                            <li class="dropdown">
-                                
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                     <img src="imagenes/perfil/{{Auth::user()->imagen}}" 
-                                 style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('/perfil') }}"><i class="fa fa-btn fa-user"> Configuraciòn</i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-=======
-        @include('layouts.nav')
->>>>>>> 04769f9afa6d74201a59d659af3018ce5f4ac7c8
 
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-
 </body>
 </html>
 
