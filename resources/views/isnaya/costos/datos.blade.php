@@ -6,17 +6,17 @@
 	
 @section('contenido')
 	<div class="container">
-      <div class="row">
-         <div class="col-md-12 col-sm-12"> 
-            <div class="row cabecera-mag">
-               <div class="col-md-6">
-                  <h4>
-                     Nueva Proforma
-                  </h4>
-                  <hr>
-               </div>
-               <div class="col-md-6">
-                  <!-- Aqui la lista de pasos 
+    <div class="row">
+      <div class="col-md-12 col-sm-12"> 
+        <div class="row cabecera-mag">
+          <div class="col-md-6">
+            <h4>
+              Nueva Proforma
+            </h4>
+            <hr>
+          </div>
+          <div class="col-md-6">
+            <!-- Aqui la lista de pasos 
                   <ul class="">
                      <li class="">
                         <span>1</span>
@@ -31,25 +31,32 @@
                         <span>calculo</span>
                      </li>
                   </ul>-->
-               </div>
-            </div>
+          </div>
+          
+        </div>
 				<!-- Nav tabs -->
-  			   <ul class="nav nav-tabs" role="tablist">
-    			   <li role="presentation" class="active">
-    				   <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Datos Generales</a>
-    			   </li>
-    			   <li role="presentation">
-    				   <a href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab">Datos especificos</a>
-    			   </li>
-    			   <li role="presentation">
-    				   <a href="#adicionales" aria-controls="adicionales" role="tab" data-toggle="tab">Datos Adicionales</a>
-    			   </li>
-               <li role="presentation">
-                  <a href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">Cálculos</a>
-               </li>
-  			   </ul>	
-  			   <!-- Tab panes -->
+  			<ul class="nav nav-tabs" role="tablist">
+    			<li role="presentation" class="active">
+    				<a href="#general" aria-controls="general" role="tab" data-toggle="tab">Datos Generales</a>
+    			</li>
+    			<li role="presentation">
+    				<a href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab">Datos especificos</a>
+    			</li>
+    			<li role="presentation">
+    				<a href="#adicionales" aria-controls="adicionales" role="tab" data-toggle="tab">Datos Adicionales</a>
+    			</li>
+          <li role="presentation">
+            <a href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">Cálculos</a>
+          </li>
+  			</ul>	
+  			<!-- Tab panes -->
   			<div class="tab-content">
+          <div role="tabpanel" class="tab-pane active pestania" id="general">
+            <div class="container">
+              
+            </div>
+          </div>
+        </div>
   				<!-- Inicio de la primer Tab -->
     			<div role="tabpanel" class="tab-pane active pestania" id="general">
     				<div class="container">
@@ -77,7 +84,7 @@
                       </div>
                     </div>
 								  </div>
-								  <div class="col-md-4 col-sm-4">
+								  <div class="col-md-4">
 									  <br>
 									  <button type="button" class="btn btn-info btn-cian-big btn-responsive" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 8px;">
                       Agregar +
@@ -102,19 +109,18 @@
                   <div class="col-md-4">
                     {!! Field::text('volumen:', ['id' => 'vol_total','placeholder'=>'Volumen'])!!}
                     {!! Form::label('caras:')!!} <br>
-                    <select name="caras" id="caras" class="form-control" style="margin-top: 3px;">
+                    <select name="" id="" class="form-control" style="margin-top: 3px;">
                       <option value="1">1 Cara</option>
                       <option value="2">2 Caras</option>
                     </select>
                   </div>
+                  <div>
+                    <!-- Boton de navegación --> 
+                    <button type="button" class="btn btn-info navbar-right" href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab" style="margin-top:10px; margin-bottom: 15px; margin-right: 15px;">
+                    Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
+                    </button>
+							    </div>
                 </div>
-                <!-- Boton de navegación -->
-                <button type="button" class="btn btn-info btn-cian navbar-right" style="margin-top:10px; margin-bottom: 15px; margin-right: 15px;" href="#especificos" 
-                  aria-controls="especificos" role="tab" data-toggle="tab">
-                  Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
-                </button>
-							</div>
-            </div>
 					</div>
 					<!-- Fín de la primer Tab -->
 					<div role="tabpanel" class="tab-pane pestania" id="especificos">
@@ -132,13 +138,14 @@
                       @foreach($rubros as $rubro)
                         <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
                       @endforeach
-                    </select>
+                   </select> 
                   </div>
                   <div class="col-md-4">
                     {!! Form::label('Color:')!!}
                     {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
                   </div> 
-                </div>{{-- separación --}}
+                </div>
+                {{-- separación --}}
                 <hr>
                 <h5>Materiales del cuerpo</h5>
                 <div class="row">
@@ -180,9 +187,7 @@
                         <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
                       @endforeach
                     </select>
-                  </div> 
                 </div>
-              </div>
               <!-- separación de las dos columnas -->
               <div class="col-md-6 col-sm-6" style="border-left: 1px solid #D9D7D7;">
                 <h5>Colores de las páginas del cuerpo</h5>
@@ -209,6 +214,14 @@
                   <div class="col-md-3 col-sm-6"> 
                     {!! Form::label('Nº Páginas:')!!} 
                     {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
+                    {!! Form::label('Color:')!!}
+                    {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
+                  </div>
+                  <div class="col-md-3 col-sm-6"> 
+                    {!! Form::label('Nº Páginas:')!!} 
+                    {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
+                    {!! Form::label('Nº Páginas:')!!} 
+                    {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!}
                   </div>
                   <div class="col-md-3 col-sm-6"> 
                     {!! Form::label('Color:')!!}
@@ -224,24 +237,6 @@
                   </div>
                 </div>
                 <hr>
-                <div class="row">
-                  <div class="col-md-3 col-sm-6"> 
-                    {!! Form::label('Nº Páginas:')!!} 
-                    {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
-                  </div>
-                  <div class="col-md-3 col-sm-6"> 
-                    {!! Form::label('Color:')!!}
-                    {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
-                  </div>
-                  <div class="col-md-3 col-sm-6"> 
-                    {!! Form::label('Nº Páginas:')!!} 
-                    {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
-                  </div>
-                  <div class="col-md-3 col-sm-6"> 
-                    {!! Form::label('Color:')!!}
-                    {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
-                  </div>
-                </div>
                 <!-- Boton de navegación -->
                 <div class="col-md-12">
                   <div class="row">
@@ -313,7 +308,7 @@
                 <!-- Fín de los botones -->
               </div>
             </div>
-		  </div>
+		      </div>
           <!-- Fín de la tercera Tab -->
           <div role="tabpanel" class="tab-pane pestania" id="calculos">
             <div class="container-fluid">
@@ -563,8 +558,6 @@
                         {!! Field::text('Otros') !!}
                     </div>             
                 </div>
-
-
                 <!-- Boton de navegación -->
                 <div class="col-md-12">
                   <div class="row">
@@ -583,13 +576,14 @@
             </div>
           </div>
           <!-- Fín de la 5ta tab -->
-		</div>
-      </div>
+				</div>
+			</div>
     </div>
 	</div>
 @endsection
 
 @include('isnaya.costos.modalcreate')
+
 @section('script')
   <script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
   <script>
@@ -697,6 +691,5 @@
       //console.log(cost3);
       //console.log (valVol3);
     });
-
   </script>
 @endsection

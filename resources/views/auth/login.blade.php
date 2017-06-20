@@ -3,22 +3,21 @@
 @section('content')
 <div class="container">
     <div class="col-md-10 col-md-offset-1 log-container">
-            <div class="col-md-6">
+        <div class="col-md-6">
             <a class="navbar-brand" href="">
                 <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="160px">
             </a>
-            </div>
-            <div class="col-md-6">
-                <div class="row login">
-                    <center>
-                        <h3>Iniciar Sesión</h3>
-                        <h5>Por favor ingrese su usuario y clave</h5>
-                        <br>
-                    </center>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+        </div>
+        <div class="col-md-6">
+            <div class="row login">
+                <center>
+                    <h3>Iniciar Sesión</h3>
+                    <h5>Por favor ingrese su usuario y clave</h5>
+                    <br>
+                </center>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-
                         <div class="col-md-10 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon" id="sizing-addon1"><b>Usuario</b></span>
@@ -46,16 +45,24 @@
                             </div>
                         </div>
                     </div>
-
+                    {{--<div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                             <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordar Contraseña
+                                </label>
+                            </div>
+                        </div>
+                    </div>--}}
+                    <br>
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2">
-                            <button type="submit" class="btn btn-primary btn-cian-big">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary btn-cian-login">
                                 Entrar
                             </button>
                             <br><br>
                             <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                <span class="glyphicon glyphicon-triangle-right"></span>
-                                ¿Olvidaste tu contraseña?
+                                <span class="glyphicon glyphicon-triangle-right">¿Olvidaste tu contraseña?</span>
                             </a>
                         </div>
                     </div>

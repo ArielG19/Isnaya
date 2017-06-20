@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{URL::to('css/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.css')}}">
     <link rel="stylesheet" href='css/estilos.css'>
-
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 </head>
 <body>
     <div id="app">
@@ -26,3 +26,4 @@
     <script src="/js/app.js"></script>
 </body>
 </html>
+

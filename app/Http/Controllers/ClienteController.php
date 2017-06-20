@@ -13,9 +13,10 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('isnaya.clientes.index');
+        $clientes = Cliente::Search($request->nombre)->Orderby('id','ASC')->paginate(5);
+        return view('isnaya.clientes.index')->with('clientes',$clientes);
     }
     public function listar()
     {

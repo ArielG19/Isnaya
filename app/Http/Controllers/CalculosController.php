@@ -23,16 +23,19 @@ class CalculosController extends Controller
     {
   
         $clientes= DB::table('clientes')->get();
+
         $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
         $colores = Color::Orderby('color','ASC')->pluck('color', 'id')->prepend('Seleccione el color');
         $producto = Producto::pluck('descripcion','id')->prepend('Seleccione el producto');
         //$rubros= Rubro::pluck('descripcion', 'id')->prepend('Seleccione el Rubro');
         //$tip="Papel";
        // $material=Rubro::where('tipo', $tip)->get();
+
         $rubros= DB::table('rubros')->where('tipo','Papel')->get();/*->pluck('descripcion','id')->prepend('Materiales');*/
 
         //return $rubros; //response()->json($rubros);
-        return view('isnaya.costos.datos')->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto)->with('rubros',$rubros)->with('colores',$colores);
+
+        return view('isnaya.costos.proforma')->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto)->with('rubros',$rubros)->with('colores',$colores);
     }
 
     /**

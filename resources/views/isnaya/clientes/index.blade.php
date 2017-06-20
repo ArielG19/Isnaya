@@ -1,4 +1,4 @@
- @extends('isnaya/template/main')
+@extends('isnaya/template/main')
 
 @section('title')
 	Clientes
@@ -62,3 +62,4 @@
 		listarClientes();
 	</script>
 @endsection
+

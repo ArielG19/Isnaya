@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\updateUserRequest;
 use App\User;
+use Auth;
+use Image;
 
 class UserController extends Controller
 {
@@ -23,6 +25,26 @@ class UserController extends Controller
     public function listarUsuarios(){
              $usuarios = User::Orderby('id','DESC')->paginate(3);
             return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
+    }
+
+    //--------METODOS PARA EL PERFIL------------------------------------------------
+    public function perfil(){
+        return view('isnaya.perfil.perfil',array('user' => Auth::user() ));
+    }
+
+    public function updatePerfil(Request $request)
+    {
+        if($request->hasFile('imagen'))
+        {
+            $imagen= $request->file('imagen');
+            $filename= time(). '.'. $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(300,300)->save(public_path('imagenes/perfil/'.$filename));
+
+            $user=Auth::user();
+            $user->imagen =$filename;
+            $user->save();
+        }
+        return view('isnaya.perfil.perfil', array('user'=> Auth::user() ));
     }
 
     /**

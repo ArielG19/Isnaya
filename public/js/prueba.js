@@ -282,8 +282,6 @@ $("#guardarFormato").click(function(event){
         data:{formato:formato,estado:estado},
         success:function(data){
             if(data.success=='true'){
-                //alert('Se registro');
-                document.location.href= "formatos"; 
             	listarFormato();
             	$("#myModalCreate").modal('toggle');
             	$("#message-save").fadeIn();
@@ -392,7 +390,7 @@ $("#addProducto").click(function(event){
           	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
           	$("#addProdError").html(data.responseJSON.descripcion);
           	$("#addProdMessage-error").fadeIn();
-               $("#addProdMessage-error").show().delay(3000).fadeOut(3);
+            $("#addProdMessage-error").show().delay(3000).fadeOut(3);
         }
     });
 });
@@ -503,39 +501,6 @@ $("#actualizarCliente").click(function(){
 //==>>Fin de Clientes<<==
 
 //==>>Inicio de Usuarios<<==
-$("#guardarUsuario").click(function(event){
-	//recuperamos el valor del input descripcion
-  	var name = $("#name").val();
-    var cargo = $("#cargo").val();
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var type = $("#type").val();
-  	//recuperamos la informacion del token
-  	var token = $("input[name=_token]").val();
-  	//la ruta donde se envia la informacion del formulario
-  	var route ="usuarios";
-  	var route ="{{route('usuarios.store')}}";
-    $.ajax({
-     	url:route,
-      	headers:{'X-CSRF-TOKEN':token},
-      	type:'post',
-      	datatype:'json',
-      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
-        success:function(data){
-          	if(data.success=='true'){
-                document.location.href= "usuarios"; 
-                document.location.href= "{{ route('usuarios.index')}}"; 
-            }
-        },
-        //aqui atrapamos los errores una vez validados atraves de un request
-        error:function(data){
-         	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.name);
-         	$("#message-error").fadeIn();
-            $("#message-error").show().delay(3000).fadeOut(3);
-        }
-    });
-});
 //creamos una funcion para listar atravez de ajax
 function listarUsuario(){
 	$.ajax({
@@ -563,7 +528,6 @@ $(document).on("click",".pagination li a",function(e){
 //funcion para el boton de editar, aqui traemos los datos.
 function MostrarUsuario(id){
 	var route = "usuarios/"+id+"/edit";
-	var route = "{{url('usuarios')}}/"+id+"/edit";
 	$.get(route, function(data){
 		//alert(id); traemos todos los datos
 		$("#id").val(data.id);
@@ -581,7 +545,6 @@ $("#actualizarUsuario").click(function(){
 	var cargo = $("#cargo").val();
 	var type = $("#type").val();
 	var route = "usuarios/"+id+"";
-	var route = "{{url('usuarios')}}/"+id+"";
 	var token = $("#token").val();
 	$.ajax({
 		url:route,
@@ -616,11 +579,11 @@ $("#myModal").on("hidden.bs.modal", function(){
 
 $("#addUsuario").click(function(event){
 	//recuperamos el valor del input descripcion
-  	var addName = $("#addName").val();
-    var addCargo = $("#addCargo").val();
-    var addEmail = $("#addEmail").val();
-    var addPassword = $("#addPassword").val();
-    var addType = $("#addType").val();
+  	var name = $("#addName").val();
+    var cargo = $("#addCargo").val();
+    var email = $("#addEmail").val();
+    var password = $("#addPassword").val();
+    var type = $("#addType").val();
   	//recuperamos la informacion del token
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
@@ -630,7 +593,7 @@ $("#addUsuario").click(function(event){
       	headers:{'X-CSRF-TOKEN':token},
       	type:'post',
       	datatype:'json',
-      	data:{addName:addName,addCargo:addCargo,addEmail:addEmail,addPassword:addPassword,addType:addType},
+      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
         success:function(data){
           	if(data.success=='true'){
           		listarUsuario();
@@ -645,7 +608,7 @@ $("#addUsuario").click(function(event){
         //aqui atrapamos los errores una vez validados atraves de un request
         error:function(data){
          	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.addName);
+         	$("#error").html(data.responseJSON.name);
          	$("#message-error").fadeIn();
             $("#message-error").show().delay(3000).fadeOut(3);
         }
@@ -656,16 +619,16 @@ $("#addUsuario").click(function(event){
 
 //Inicio de metodos para mostrar la descripcion y el costo del papel
 
-var id_rubro = $('#id_rubro');//Obtenemos el select
+var id_rubro = $('#id_rubroport');//Obtenemos el select
 var materialCalc = $('#Matpor');//Obtenemos el text atraves del id
 var costUnit = $('#cotunitport');//obtenemos el text de costo unitario
 //console.log(id_rubro);
 //Función para saber cuando se ha hecho un cambio en el select
 id_rubro.on('change', function(){
 	//aqui almacenamos el texto del select en una variable
-	var esteVal = $('#id_rubro option:selected').text();
+	var esteVal = $('#id_rubroport option:selected').text();
       //aqui almacenamos el id de la seleccion en una variable
-	var idport = $('#id_rubro option:selected').val();
+	var idport = $('#id_rubroport option:selected').val();
 	//aqui mostramos el material seleccionado en la caja de texto
 	materialCalc.val(esteVal);
 	/*Funcion con ajax atraves de la cual obtenemos el costo despues de aver
@@ -695,14 +658,16 @@ id_rubro1.on('change', function(){
    		costUnit1[0].value=data.costo;
   	});
 });
+
 //separación de métodos
 var id_rubro2 = $('#id_rubro2');
 var materialCalc2 = $ ('#Mat2');
 var costUnit2 = $('#cotunit2');
-id_rubro2.on('change', function(){
+function rubro2Cambio(){
   	var valMat2 = $('#id_rubro2 option:selected').text();
   	var id2 = $('#id_rubro2 option:selected').val();
   	materialCalc2.val(valMat2);
+
   	$.ajax({
     	method:"GET",
     	url: "/rubros/"+id2 
@@ -710,12 +675,13 @@ id_rubro2.on('change', function(){
   	.done(function(data){
     	costUnit2[0].value=data.costo;
   	});
-});
+};
+
 //separación de métodos
 var id_rubro3 = $('#id_rubro3');
 var materialCalc3 = $ ('#Mat3');
 var costUnit3 = $('#cotunit3');
-id_rubro3.on('change', function(){
+function rubro3Cambio(){ 
     var valMat3 = $('#id_rubro3 option:selected').text();
     var id3 = $('#id_rubro3 option:selected').val();
     materialCalc3.val(valMat3);
@@ -726,5 +692,5 @@ id_rubro3.on('change', function(){
     .done(function(data){
     	costUnit3[0].value=data.costo;
     });
-});
+};
 //Fín

@@ -38,7 +38,11 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
                         <div class="form-group">
+=======
+                        {{--<div class="form-group">
+>>>>>>> 0ca077cdf4806ef1e31215713075cc7ce185dacc
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
@@ -46,7 +50,11 @@
                                     </label>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
+=======
+                        </div>--}}
+>>>>>>> 0ca077cdf4806ef1e31215713075cc7ce185dacc
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">

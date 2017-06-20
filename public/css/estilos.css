@@ -11,6 +11,19 @@ hr{
 	border-top: 1px solid #B4B4B4;
 	width: 100%;
 }
+.btn-siguiente{
+	margin-top:25px;
+	margin-bottom: 15px;
+	margin-right: 2px;
+	margin-left: 7px;
+}
+#telphone{
+	background-color: #fff;
+}
+.btn-atras{
+	margin-top:25px;
+	margin-bottom: 15px;
+}
 .alitabla{
 	text-align: right;
 }
@@ -40,6 +53,13 @@ hr{
 	width: 100%;
 	border-color: transparent;
 }
+
+.btn-cian-login{
+	background-color: #00AFEA;
+	width: 50%;
+	border-color: transparent;
+}
+
 .btn-cian-small{
 	background-color: #00AFEA;
 	width: 40px;
@@ -114,6 +134,7 @@ hr{
 }
 .text-reset{
 	border: 0px;
+
 	border-color: #FFFFFF !important;
     border-bottom: 1px solid #727070 !important;
     border-radius: 0px; 
@@ -145,6 +166,8 @@ hr{
 }
 #password{
 	outline: 0px;
+    border-bottom: 1px solid #727070;
+    border-radius: 0px;
 }
 .tit-cal{
 	font-weight: bold;
@@ -160,4 +183,64 @@ hr{
 #inicio2{
 	border: 1px solid #D9D7D7;
 	border-top: 7px solid #EF5EB8;
+}
+
+/*Estilos para productos*/
+th#opc{
+	padding-left: 560px;
+
+}
+
+td#op{
+	padding-left: 560px;
+}
+
+/*modal add*/
+.modal-header.prod{
+	border-top: 7px solid #F3E43E;
+
+}
+
+/*a#edit.btn.btn-info{
+	margin-left: 5px;
+}*/
+a#elim.btn.btn-danger{
+	background-color: #EC0909;
+	/*margin-left: 80px;*/
+}
+
+/*Estilos para proformas*/
+a#imprimir{
+	background: #EDF50F;
+}
+
+.fa.fa-print{
+	color: #453737;
+	font-size: 17px;
+}
+
+.modal-header.deta{
+	border-top: 7px solid #EF5EB8;
+
+}
+
+/*Formatos*/
+th#thop{
+	padding-left: 500px;
+
+}
+
+td#tdop{
+	padding-left: 500px;
+}
+
+a#funciones:hover{
+		border-left: 5px solid #F3E43E;
+		color: #00AFEA;
+		
+}
+a#proformas:hover{
+		border-left: 5px solid #EF5EB8;
+		color: #00AFEA;
+		
 }

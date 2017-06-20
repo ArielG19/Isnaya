@@ -31,3 +31,4 @@
 <center>
 	<h4>{{$clientes->render()}}</h4>
 </center>
+
