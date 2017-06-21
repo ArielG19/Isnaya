@@ -615,3 +615,84 @@ $("#addUsuario").click(function(event){
     });
 });
 //==>>Fin de Usuarios<<==
+
+
+//Inicio de metodos para mostrar la descripcion y el costo del papel
+
+var id_rubro = $('#id_rubroport');//Obtenemos el select
+var materialCalc = $('#Matpor');//Obtenemos el text atraves del id
+var costUnit = $('#cotunitport');//obtenemos el text de costo unitario
+//console.log(id_rubro);
+//Función para saber cuando se ha hecho un cambio en el select
+id_rubro.on('change', function(){
+	//aqui almacenamos el texto del select en una variable
+	var esteVal = $('#id_rubroport option:selected').text();
+      //aqui almacenamos el id de la seleccion en una variable
+	var idport = $('#id_rubroport option:selected').val();
+	//aqui mostramos el material seleccionado en la caja de texto
+	materialCalc.val(esteVal);
+	/*Funcion con ajax atraves de la cual obtenemos el costo despues de aver
+	seleccionado un tipo de mateial en el select*/
+	$.ajax({
+        method: "GET",
+        url: "/rubros/"+idport
+	})
+    .done(function(data){
+        costUnit[0].value = data.costo;
+            //console.log(costUnit);
+    });
+
+});
+
+//separación de métodos
+var id_rubro1 = $('#id_rubro1');
+var materialCalc1 = $ ('#Mat1');
+var costUnit1 = $('#cotunit1');
+id_rubro1.on('change', function(){
+	var valMat1 = $('#id_rubro1 option:selected').text();
+	var id1 = $('#id_rubro1 option:selected').val();
+	materialCalc1.val(valMat1);
+	$.ajax({
+    	method:"GET",
+    	url: "/rubros/"+id1 
+  	})
+  	.done(function(data){
+   		costUnit1[0].value=data.costo;
+  	});
+});
+
+//separación de métodos
+var id_rubro2 = $('#id_rubro2');
+var materialCalc2 = $ ('#Mat2');
+var costUnit2 = $('#cotunit2');
+function rubro2Cambio(){
+  	var valMat2 = $('#id_rubro2 option:selected').text();
+  	var id2 = $('#id_rubro2 option:selected').val();
+  	materialCalc2.val(valMat2);
+
+  	$.ajax({
+    	method:"GET",
+    	url: "/rubros/"+id2 
+  	})
+  	.done(function(data){
+    	costUnit2[0].value=data.costo;
+  	});
+};
+
+//separación de métodos
+var id_rubro3 = $('#id_rubro3');
+var materialCalc3 = $ ('#Mat3');
+var costUnit3 = $('#cotunit3');
+function rubro3Cambio(){ 
+    var valMat3 = $('#id_rubro3 option:selected').text();
+    var id3 = $('#id_rubro3 option:selected').val();
+    materialCalc3.val(valMat3);
+    $.ajax({
+    	method:"GET",
+       	url: "/rubros/"+id3 
+    })
+    .done(function(data){
+    	costUnit3[0].value=data.costo;
+    });
+};
+//Fín

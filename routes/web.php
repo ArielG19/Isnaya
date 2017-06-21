@@ -17,19 +17,11 @@ Route::get('/', function () {
 Route::get('/prueba', function(){
 
 	//return view('isnaya.proformas.proformasCreate');
-	return view('isnaya.costos.calculostabs');
+	return view('isnaya.costos.proforma');
 });
 
 
 Auth::routes();
-
-/*Route::get('pdf', function(){
-	$user = App\User::all();
-
-	$pdf = PDF::loadview('pdf',['user'=>$user]);
-	$pdf = PDF::loadview('isnaya.usuarios.index');
-	return $pdf->download('archivo.pdf');
-});*/
 
 Route::get('perfil','UserController@perfil');
 Route::post('perfil','UserController@updatePerfil');

@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <img src="imagenes/perfil/{{$user->imagen}}" 
+                            <img src="/imagenes/perfil/{{$user->imagen}}" 
                                  style="width: 250px; height: 250px; float: left;border-radius: 5%; margin-right: 25px;">
                         </div>
                         <div class="col-md-4 ">
