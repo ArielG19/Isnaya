@@ -6,3 +6,9 @@
 [0529/152426.979:ERROR:process_info.cc(625)] range at 0x0, size 0xc2 fully unreadable
 [0529/152428.027:ERROR:http_transport_win.cc(214)] WinHttpSendRequest: No se pudo resolver el nombre de servidor o su dirección  (0x2ee7)
 [0601/160101.455:ERROR:process_info.cc(373)] UncheckedAllocate
+[0610/223149.801:ERROR:process_info.cc(625)] range at 0xe205295000000000, size 0x139 fully unreadable
+[0610/223149.837:ERROR:process_info.cc(625)] range at 0xe205297000000000, size 0x139 fully unreadable
+[0610/223149.837:ERROR:process_info.cc(625)] range at 0x0, size 0x139 fully unreadable
+[0620/141448.571:ERROR:process_info.cc(625)] range at 0x7452295000000000, size 0x1c9 fully unreadable
+[0620/141448.631:ERROR:process_info.cc(625)] range at 0x7452297000000000, size 0x1c9 fully unreadable
+[0620/141448.631:ERROR:process_info.cc(625)] range at 0x0, size 0x1c9 fully unreadable

@@ -1,31 +1,27 @@
-<table class="table .table-responsive">
+<table class="table table-striped">
 	<thead>
-		<th>ID</th>
 		<th>Descripción</th>
 		<th>Cantidad</th>
 		<th>Costo</th>
 		<th>Tipo</th>
-		<th>Opción</th>
+		<th class="alitabla">Opciones</th>
 	</thead>
 	<tbody>
 		@foreach($rubros as $rubro)
 			<tr>
-				<td>{{$rubro->id}}</td>
 				<td>{{$rubro->descripcion}}</td>
 				<td>{{$rubro->cantidad}}</td>
 				<td>{{$rubro->costo}}</td>
-				<td>{{$rubro->tipo}}</td>
-									
-					<td>
-             			<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-             			 <a class="btn btn-primary" href="#" Onclick='MostrarRubro({{$rubro->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
-              				<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
-              			</a>
-
-              			{{--<a href="#" onclick="Eliminar('{{$producto->id}}','{{$categoria->nombre}}')">
-                		<i class="fa fa-times" aria-hidden="true"></i>  Eliminar
-              			</a>--}}
-           			</td>
+				<td>{{$rubro->tipo}}</td>				
+				<td class="alitabla">
+             		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
+             		<a class="btn btn-info btn-cian" href="#" Onclick='MostrarRubro({{$rubro->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;">
+              			<i aria-hidden="true">Editar</i>
+              		</a>
+              		<button type="button" class="btn btn-magenta-small" href="#">
+              			<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+              		</button>
+           		</td>
            			<!--<td>
            				en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego
              			 <a class="btn btn-danger" href="#" Onclick='Eliminar($rubro->id);' data-toggle='modal' data-target='#myModal2' style ="margin-right: 8px;">

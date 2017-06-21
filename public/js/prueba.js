@@ -639,9 +639,13 @@ id_rubro.on('change', function(){
 	})
     .done(function(data){
         costUnit[0].value = data.costo;
+<<<<<<< HEAD
             //console.log(costUnit);
     });
 
+=======
+    });
+>>>>>>> 1a10c078a38e20022f2cacd0cb1823bc0ccf7dfe
 });
 
 //separación de métodos

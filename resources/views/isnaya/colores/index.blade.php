@@ -6,27 +6,37 @@
 	
 @section('contenido')
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-6 col-md-offset-3">
 		<div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none">
 			<strong>Se ha actualizado correctamente</strong>
 		</div>
-		<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title">
-						Lista de Colores
+		<div class="row cabecera-yellow"> 
+			<div class="col-md-6">
+				<h5>Lista de Colores</h5>
+				<hr>
+			</div>
+			<div class="col-md-6">
+				<div class="col-md-8">
+					<br>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Buscar...">
 					</div>
-					<p class="navbar-text navbar-right" style="margin-top: -11px;">
-						<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-bottom:1px; margin-top: -11px;margin-right: 8px; padding: 4px 18px;">
-					 		<span>
-					 			Agregar<i class="fa fa-plus-circle" aria-hidden="true"></i>
-					 		</span>
+				</div>
+				<div class="col-md-4">
+					<p class="navbar-text navbar-right">
+						<a class="btn btn-info btn-cian" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 5px; margin-right: -15px; padding: 5px 18px;">
+							<span>
+								Agregar + <i aria-hidden="true"></i>
+							</span>
               			</a>
 					</p>
 				</div>
-			<div class="panel-body">
-				<div id="listar-colores">
+			</div>
+		</div>
+		<div class="row">
+			{{--Agregamos un div con id donde traeremos la tabla--}}
+			<div id="listar-colores">
 						
-				</div>
 			</div>
 		</div>
 	</div>

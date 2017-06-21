@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth/login');
 });
+
 Route::get('/prueba', function(){
 
 	//return view('isnaya.proformas.proformasCreate');
@@ -28,7 +29,6 @@ Route::post('perfil','UserController@updatePerfil');
 
 
 Route::get('pdf','PDFController@index');
-
 Route::get('/home', 'HomeController@index');
 
 Route::Resource('/usuarios','UserController');
@@ -60,4 +60,7 @@ Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
 Route::Resource('/bitacora', 'BitacoraController');
 
 Route::Resource('/calculos', 'CalculosController');
+
+Route::get('/listados','CalculosController@listar');
+//Nueva ruta
 Route::get('/listados','CalculosController@listar');

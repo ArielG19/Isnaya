@@ -14,8 +14,10 @@ class Producto extends Model
     public function proformas()
     {
       return $this->hasMany('App\Proforma');
+      //return $this->hasMany(Proforma::class);
     }
 
+        
     //------------------------------------------------------------------------
     public function scopeSearch($query,$descripcion)
     {
@@ -24,6 +26,5 @@ class Producto extends Model
         	//$query->where('descripcion',$descripcion);
          return $query->where('descripcion', 'LIKE', '%'.$descripcion.'%' );
         //}
-        
     }
 }

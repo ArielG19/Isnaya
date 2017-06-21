@@ -17,12 +17,10 @@
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+            <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 &nbsp;
-
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
@@ -52,7 +50,8 @@
                     </li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle drop" data-toggle="dropdown">
-                            <span id="ico" class=""></span>Proformas<strong     class="caret"></strong></a>
+                            <span id="ico" class=""></span>Proformas<strong class="caret"></strong>
+                        </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a id="proformas" href="">Mostrar</a>
@@ -62,13 +61,11 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                      <img src="imagenes/perfil/{{Auth::user()->imagen}}"
                                  style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
-
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ url('/perfil') }}">Configuración</a>
@@ -80,7 +77,6 @@
                                     document.getElementById('logout-form').submit();">
                                     Salir
                                 </a>
-
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
@@ -89,8 +85,6 @@
                     </li>
                 @endif
             </ul>
-         </div>
+        </div>
     </div>
 </nav>
-
-                       
