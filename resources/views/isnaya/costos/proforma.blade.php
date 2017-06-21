@@ -59,7 +59,8 @@
                                  <option value="{{ $cliente->id }}">{{ $cliente->nombre }}  {{ $cliente->apellido }}</option>
                                @endforeach
                            </select>
-                           {!! Field::text('Solicitante:', ['placeholder'=>'Ingrese el nombre del solicitante...'])!!}
+                           <label>Solicitante</label>
+                           {!! Form::text('Solicitante:',null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre del solicitante...'])!!}
                            <div class="row">
                               <div class="col-md-6">
                                  <label for="">Telefono:</label> <br>
@@ -76,12 +77,13 @@
                         <!--separacion de columnas -->
                         <div class="col-md-4">
                            <br>
-                           <button type="button" class="btn btn-info btn-cian-big btn-responsive" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 8px;">
+                           <button type="button" class="btn btn-info btn-cian-big btn-responsive" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 9px; margin-bottom:2px;">
                               Agregar +
                            </button><br>
-                           <br>
-                           {!! Field::date('fecha:')!!}
-                           {!! Field::date('fecha de Entrega:')!!}
+                           <label for="date">Fecha</label>
+                           {!! Form::date('',null,['id'=>'fechaE','class'=>'form-control'])!!}
+                           <label for="date">Fecha Entrega</label>
+                           {!! Form::date('',null,['id'=>'fechaE','class'=>'form-control'])!!}
                         </div>
                      </div>
                   </div>
@@ -110,7 +112,7 @@
                      </div>
                      <div class="row">
                         <!-- Boton de navegación --> 
-                        <button type="button" class="btn btn-info navbar-right btn-siguiente" href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab" >
+                        <button type="button" class="btn btn-info btn-cian navbar-right btn-siguiente " href="#especificos" aria-controls="especificos" role="tab" data-toggle="tab" >
                            Siguiente <span class="glyphicon glyphicon-triangle-right"></span>
                         </button>
                      </div>
@@ -142,7 +144,11 @@
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
+                           <select id="" class="form-control">
+                              @foreach($colores as $color)
+                                 <option value="{{ $color->id }}">{{ $color->color }}</option>
+                              @endforeach
+                           </select>
                         </div> 
                      </div>
                      {{-- separación --}}
@@ -162,79 +168,66 @@
                         <div class="col-md-3">
                            <span class="btn btn-info btn-cian" id="mostrar1">Calcular</span>
                         </div>
-                     </div>
-                     <div class="container-fluid">
-                        <div class="row">
-                           <ul id="materiales" class="col-md-12">
-                              <li class="material material1">
-                                 <div class="col-md-3">
-                                    {!! Form::label('Nº Páginas:')!!}
-                                    {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
-                                 </div>
-                                 <div class="col-md-3">
-                                    {!! Form::label('Material 1:')!!}
-                                    <select id="id_rubro1" class="form-control">
-                                       @foreach($rubros as $rubro)
-                                          <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
-                                       @endforeach
-                                    </select>
-                                 </div>
-                              </li>
-                           </ul> 
-                        </div>
-                     </div>
+                     </div><br>
 
+                     <div class="row mat-cuerpo">
+                        <ul id="materiales" class="col-md-12 mat">
+                           <li class="material material1">
+                              <div class="col-md-3">
+                                 {!! Form::label('Nº Páginas:')!!}
+                                 {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
+                              </div>
+                              <div class="col-md-3">
+                                 {!! Form::label('Material 1:')!!}
+                                 <select id="id_rubro1" class="form-control">
+                                    @foreach($rubros as $rubro)
+                                       <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </li>
+                        </ul> 
+                     </div>
+                     <!-- Fín de materiales -->
                   </div>
                   <!-- separación de las dos columnas -->
                   <div class="col-md-6" style="border-left: 1px solid #D9D7D7;">
-                     <h5>
-                        Colores de las páginas del cuerpo
-                     </h5>
-                     <div class="row">
-                        <div class="col-md-3 col-sm-6"> 
-                           {!! Form::label('Nº Páginas:')!!}           
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
+                     <div class="row cab-titulos" >
+                        <div class="col-md-6">
+                           <h5>
+                              Colores de las páginas del cuerpo
+                           </h5>           
                         </div>
-                        <div class="col-md-3 col-sm-6">
-                           {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
+                        <div class="col-md-3">
+                           <span id="btn-add1" class="btn btn-info btn-cian">
+                              Agregar +
+                           </span>  
                         </div>
-                        <div class="col-md-3 col-sm-6">
-                           {!! Form::label('Nº Páginas:')!!}                 
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!}
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
+                        <div class="col-md-3">
+                           <span class="btn btn-info btn-cian" id="mostrarcolor">Calcular</span>
                         </div>
                      </div>
-                     <hr>
-                     <div class="row">
-                        <div class="col-md-3 col-sm-6"> 
-                           {!! Form::label('Nº Páginas:')!!} 
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
-                           {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
-                        </div>
-                        <div class="col-md-3 col-sm-6"> 
-                           {!! Form::label('Nº Páginas:')!!} 
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!} 
-                           {!! Form::label('Nº Páginas:')!!} 
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!}
-                        </div>
-                        <div class="col-md-3 col-sm-6"> 
-                           {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           {!! Form::label('Nº Páginas:')!!} 
-                           {!! Form::text('Páginas:', null,['placeholder' => 'Nº Páginas', 'class'=>'form-control'])!!}
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           {!! Form::label('Color:')!!}
-                           {!! Form::select('id_color',$colores,null,['id'=>'id_color','class'=>'form-control'])!!}
-                        </div>
-                     </div>  
+                     
+                     <div class="row mat-cuerpo">
+                        <ul id="colores" class="col-md-12 mat">
+                           <li class="color">
+                              <div class="col-md-3">
+                                 {!! Form::label('Nº Páginas:')!!}
+                                 {!! Form::text('Nº Páginas:', null,['id'=>'cantPapelcolor1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
+                              </div>
+                              <div class="col-md-3">
+                                 {!! Form::label('Color:')!!}
+                                 <select id="" class="form-control">
+                                    @foreach($colores as $color)
+                                       <option value="{{ $color->id }}">{{ $color->color }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </li>
+                        </ul> 
+                     </div>
+                     <!-- Fín de colores-->
+                  
                      <!-- Botones de navegación -->
                      <div class="row">
                         <button type="button" class="btn btn-info btn-cian navbar-right btn-siguiente" href="#adicionales" aria-controls="adicionales" role="tab" data-toggle="tab">
@@ -564,11 +557,10 @@
                </div>  
             </div>
             <!--Fín de la quinta pestaña -->
-
         	</div>
   		</div>
 	</div>
-</div>
+</div> 
 @endsection
 
 @include('isnaya.costos.modalcreate')
@@ -579,6 +571,24 @@
 
       listarClientes();
 
+      $btnAdd1 = $('#btn-add1');
+      $btnAdd1.click(function(){
+         var tamaño = $('li.color').length;
+         var claseNuEl = tamaño + 1;
+
+      if(tamaño == 6){
+         console.log('no puedes insertar más');
+      } else {
+         if(tamaño==2){
+            $("#colores").append("<div class='row'></div> <hr>");
+         }if(tamaño==4){
+            $("#colores").append("<div class='row'></div> <hr>");
+         }
+         $("#colores").append("<li class='color color" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control' id='' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Color " + claseNuEl + "</label> <select id='" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "'> <?php foreach ($colores as $color) {echo"<option value='$color->id'>$color->color</option>";}?></select></div> </li>");
+         } 
+      });
+
+
       $btnAdd = $('#btn-add');
       $btnAdd.click(function(){
          var tamaño = $('li.material').length;
@@ -587,7 +597,9 @@
       if(tamaño == 3){
          console.log('no puedes insertar más');
       } else {
-
+         if(tamaño==2){
+            $("#materiales").append("<div class='row'></div> <hr>");
+         }
          $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
          } 
       });

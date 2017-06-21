@@ -25,7 +25,10 @@ class CalculosController extends Controller
         $clientes= DB::table('clientes')->get();
 
         $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
-        $colores = Color::Orderby('color','ASC')->pluck('color', 'id')->prepend('Seleccione el color');
+       /* $colores = DB::table('colores')->OrderBy('color','ASC');/*->pluck('color', 'id')->prepend('Seleccione el color');*/
+       $colores = DB::table('colores')->orderBy('color', 'asc')->get();
+
+                     
         $producto = Producto::pluck('descripcion','id')->prepend('Seleccione el producto');
         //$rubros= Rubro::pluck('descripcion', 'id')->prepend('Seleccione el Rubro');
         //$tip="Papel";
