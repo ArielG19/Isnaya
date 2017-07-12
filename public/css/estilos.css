@@ -81,7 +81,7 @@ hr{
 	color:#F4EFEF;
 }
 .btn-magenta-big{
-	background-color: #EF5EB8;
+	background-color: #ED5F66;
 	border-color:  #EF5EB8;
 	color:#F4EFEF;
 	width: 60%;
@@ -89,7 +89,7 @@ hr{
 .btn-magenta:focus, .btn-magenta-big:focus, .btn-magenta-small:focus,
 .btn-magenta:hover,.btn-magenta-big:hover,.btn-magenta-small:hover{
 	border-color: #DA329A;
-	background-color: #E77BBE;
+	background-color: #F3777D;
 }
 
 /*Fin de Botones del sistema de isnaya*/
@@ -133,11 +133,11 @@ hr{
 	border: 1px solid #D9D7D7;
 	border-radius: 10px;
 }
+
 .text-reset{
 	border: 0px;
-
 	border-color: #FFFFFF !important;
-    border-bottom: 1px solid #727070 !important;
+    /*border-bottom: 1px solid #727070 !important;*/
     border-radius: 0px; 
     display: block;
     width: 90%;
@@ -147,32 +147,35 @@ hr{
     line-height: 1.42857143;
     color: #555;
 }
-#field_fecha:
-{
-	margin-bottom: 2px !important;
-}
-#sizing-addon1
-{
-	background-color: #FFF;
-	border-color: #FFF;
-	border-bottom: 1px solid #727070 !important;
-	border-radius: 0px;
-}
-.text-reset:hover,
+/*.text-reset:hover,
 .text-reset:focus
 {
 	border-color: #FFFFFF !important;
     border-bottom: 2px solid #00AFEA!important;
-    border-radius: 0px; 
-
+    border-radius: 0px;  
+}*/
+.linea{
+	margin-top: 0px;
 }
 #email:focus{
 	outline: 0px;
 }
 #password{
 	outline: 0px;
-    border-bottom: 1px solid #727070;
+    /*border-bottom: 1px solid #727070;*/
     border-radius: 0px;
+}
+#sizing-addon1
+{
+	background-color: #FFF;
+	border-color: #FFF;
+	/*border-bottom: 1px solid #727070 !important;*/
+	border-radius: 0px;
+}
+
+#field_fecha:
+{
+	margin-bottom: 2px !important;
 }
 .tit-cal{
 	font-weight: bold;
@@ -193,7 +196,6 @@ hr{
 /*Estilos para productos*/
 th#opc{
 	padding-left: 560px;
-
 }
 
 td#op{

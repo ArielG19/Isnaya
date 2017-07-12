@@ -15,13 +15,13 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        return view('isnaya.rubro.index');
+        return view('isnaya.rubro.index'); 
     }
 
 
     public function listar()
     {
-        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(5);
+        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(6);
         return view('isnaya.rubro.listar')->with('rubros',$rubros);
     }
 

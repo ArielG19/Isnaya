@@ -5,41 +5,43 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Mi perfil</div>
-
-                <div class="panel-body">
+                <div class="panel-heading" id="perfil-bordes"><i><b>Informacion de usuario</b></i></div>
+                <div class="panel-body" id="perfil-bor">
                     <div class="row">
-                        <div class="col-md-8">
-                            <img src="imagenes/perfil/{{$user->imagen}}" 
-                                 style="width: 250px; height: 250px; float: left;border-radius: 5%; margin-right: 25px;">
-                        </div>
-                        <div class="col-md-4 ">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item disabled">
-                                        Informaciòn basica:
-                                    </a>
-                                    <span class="list-group-item">Nombre: {{$user->name}}</span>
-                                    <span class="list-group-item">Cargo: {{$user->cargo}}</span>
-                                    <span class="list-group-item">Tipo: {{$user->type}}</span>
-                                    <span class="list-group-item">Correo: {{$user->email}}</span>
+                        <div class="col-md12">
+                            <div class="col-md-6" style="padding-left:90px;">
+                                    <br>
+                                    Nombre: <b id="perfil-name">{{$user->name}}</b>
+                                    <br><br>
+                                    Correo: <b id="perfil-name">{{$user->email}}</b>
+                                    <br><br>
                                     
-                                </div>
+                                    @if($user->type =="admin")
+                                          <img src="/imagenes/perfil/tipo/bleach.jpg" 
+                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
+                                    @else
+                                          <img src="/imagenes/perfil/tipo/hollow.jpg" 
+                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
+                                    @endif
+                            </div>
+                            <div class="col-md-6" style="padding-left:50px;border-left: 4px solid #9E9E9E;">
+                                   <img src="/imagenes/perfil/{{$user->imagen}}" 
+                                         style="width: 400px; height: 400px; float: left;border-radius: 5%; margin-right: 25px;">
+                                   <form enctype="multipart/form-data" action="/perfil" method="POST">
+                                        <h3><label for="">Actualizar imagen de perfil</label></h3>
+                                        <input type="file" name="imagen">
+                                        <input type="hidden" name="_token" value="{{csrf_token ()}}">
+                                        <hr style="border-top: 4px solid #9E9E9E;">
+                                        <input type="submit" value="Actualizar" class="pull-right btn btn-sm btn-info">
+                                    </form>
+
+                            </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="row">
-                          <div class="col-md-6">
-                            <form enctype="multipart/form-data" action="/perfil" method="POST">
-                            <h3><label for="">Actualizar imagen de perfil</label></h3>
-                            <input type="file" name="imagen">
-                            <input type="hidden" name="_token" value="{{csrf_token ()}}">
-                            <br>
-                            <input type="submit" value="Actualizar" class="pull-left btn btn-sm btn-primary">
-                        </form>
-                        </div> 
-                    </div>     
+                    
                 </div>
             </div>
+            <br><br>
         </div>
     </div>
 </div>

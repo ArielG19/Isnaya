@@ -11,7 +11,7 @@
 				<td>{{$producto->descripcion}}</td>
 				<td class="alitabla">
              		<!--en la ruta pasamos el parametro para mostrar el id y poder editar o eliminar luego-->
-              		<button type="button" class="btn btn-info btn-cian" href="#" Onclick='MostrarProducto({{$producto->id}});' data-toggle='modal' data-target='#myModalCreateProd'>
+              		<button type="button" class="btn btn-info btn-cian" href="#" Onclick='MostrarProducto({{$producto->id}});' data-toggle='modal' data-target='#myModalProducto'>
               			Editar
               		</button>
               		<button type="button" class="btn btn-magenta-small" href="#" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}')">

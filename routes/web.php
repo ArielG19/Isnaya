@@ -56,3 +56,13 @@ Route::Resource('/bitacora', 'BitacoraController');
 Route::Resource('/calculos', 'CalculosController');
 
 Route::get('/listados','CalculosController@listar');
+
+
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('Administrador',function()
+    {
+        return view('/home');
+    });
+
+});

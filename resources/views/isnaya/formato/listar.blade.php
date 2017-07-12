@@ -27,7 +27,7 @@
              		<a class="btn btn-info" href="#" Onclick='MostrarFormato({{$formato->id}});' data-toggle='modal' data-target='#myModal' style ="margin-right: 8px;"><i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               		</a>
 
-              		<a id="elim" class="btn btn-danger" href="#" onclick="Eliminar('{{$formato->id}}','{{$formato->nombre}}')"> <i class="fa fa-trash" aria-hidden="true"></i>
+              		<a id="elim" class="btn btn-magenta-small" href="#" onclick="Eliminar('{{$formato->id}}','{{$formato->nombre}}')"> <i class="fa fa-trash" aria-hidden="true"></i>
               		</a>
            		</td>
 			</tr>

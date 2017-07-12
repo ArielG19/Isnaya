@@ -38,7 +38,17 @@
     			</li>
             <li role="presentation">
                <a href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">
-                  Cálculos
+                  Costos 
+               </a>
+            </li>
+            <li role="presentation">
+               <a href="#manodeobra" aria-controls="manodeobra" role="tab" data-toggle="tab">
+                  Mano de Obra
+               </a>
+            </li>
+            <li role="presentation">
+               <a href="#totales" aria-controls="totales" role="tab" data-toggle="tab">
+                  Total
                </a>
             </li>
   			</ul>
@@ -144,7 +154,7 @@
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Color:')!!}
-                           <select id="" class="form-control">
+                           <select id="selectPort" class="form-control">
                               @foreach($colores as $color)
                                  <option value="{{ $color->id }}">{{ $color->color }}</option>
                               @endforeach
@@ -213,11 +223,11 @@
                            <li class="color">
                               <div class="col-md-3">
                                  {!! Form::label('Nº Páginas:')!!}
-                                 {!! Form::text('Nº Páginas:', null,['id'=>'cantPapelcolor1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
+                                 {!! Form::text('Nº Páginas:', null,['id'=>'cant1','placeholder'=>'Nº de Páginas','class'=>'form-control este-color'])!!}
                               </div>
                               <div class="col-md-3">
                                  {!! Form::label('Color:')!!}
-                                 <select id="" class="form-control">
+                                 <select id="color1" class="form-control select-color">
                                     @foreach($colores as $color)
                                        <option value="{{ $color->id }}">{{ $color->color }}</option>
                                     @endforeach
@@ -409,13 +419,16 @@
                      <div class="row">
                         <h5 class="tit-cal">Láminas</h5>
                         <div class="col-md-3">
-                           {!! Field::text('Volumen:') !!}
+                           {!! Field::text('Volumen:',['id'=>'laminas']) !!}
                         </div>
+                        @foreach($lamina as $laminas )
                         <div class="col-md-3">
-                           {!! Field::text('Costo Unitario:') !!}
+                           {!! Form::label('Costo Unitario:')!!} 
+                           {!! Form::text('', $laminas->costo,['id' => 'costUnitLam', 'class'=>'form-control'])!!}
                         </div>
+                        @endforeach
                         <div class="col-md-3">
-                           {!! Field::text('Costo Total:') !!}
+                           {!! Field::text('Costo Total:',['id'=>'totLaminas']) !!}
                         </div>
                         <div class="col-md-3">
                            {!! Field::text('Tintas offset:') !!}
@@ -438,8 +451,8 @@
 
             <div role="tabpanel" class="tab-pane pestania" id="manodeobra">
                <div class="container-fluid">
+                  <center><h5><b>Mano de Obra</b></h5></center>
                   <div class="col-md-6">
-                     <h5>Mano de Obra</h5>
                      <div class="row">
                         <h5>
                            M.O. Fotomecánica:
@@ -448,7 +461,8 @@
                            {!! Field::text('Volumen:', ['id' => 'volMOfot']) !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Unitario:', ['id' => 'cosMOfot']) !!}
+                           {!! Form::label('Costo Unitario:')!!} 
+                           {!! Form::text('', $MOFot[0]->costo, ['id' => 'cosMOfot', 'class'=>'form-control'])!!}
                         </div>
                         <div class="col-md-4">
                            {!! Field::text('Costo Total:', ['id' => 'costotalMOfot']) !!}
@@ -463,10 +477,11 @@
                            {!! Field::text('Volumen:', ['id' => 'volImOf']) !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Unitario:', ['id' => 'volImOf']) !!}
+                           {!! Form::label('Costo Unitario:')!!} 
+                           {!! Form::text('costounit',$MOImpOff[0]->costo,['id' => 'cosImOf', 'class'=>'form-control'])!!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:', ['id' => 'volImOf']) !!}
+                           {!! Field::text('Costo Total:', ['id' => 'costotalImOf']) !!}
                         </div>
                      </div>
                      <hr>
@@ -482,9 +497,9 @@
                         </div>
                      </div>
                   </div>
+
                   <div class="col-md-6">
-                     <h5></h5>
-                     <!-- separacion de los row -->
+                     <!-- separacion de los row -->   
                      <div class="row">
                         <h5>
                            Grapado:
@@ -540,13 +555,13 @@
                            {!! Field::text('Plastificado:') !!}
                         </div>    
                         <div class="col-md-3">
-                           {!! Field::text('Otros') !!}
+                           {!! Field::text('otros') !!}
                         </div>             
                      </div>
                      <!-- Boton de navegación -->
                      <div class="row">
-                        <button type="button" class="btn btn-info btn-cian navbar-right btn-siguiente" href="#" aria-controls="" role="tab" data-toggle="tab">
-                           Calcular <span class="glyphicon glyphicon-triangle-right"></span>
+                        <button type="button" class="btn btn-info btn-cian navbar-right btn-siguiente" href="#totales" aria-controls="totales" role="tab" data-toggle="tab">
+                           siguiente <span class="glyphicon glyphicon-triangle-right"></span>
                         </button>
                         <button type="button" class="btn btn-info btn-cian navbar-right btn-atras" href="#calculos" aria-controls="calculos" role="tab" data-toggle="tab">
                            <span class="glyphicon glyphicon-triangle-left"></span>Atrás
@@ -557,10 +572,56 @@
                </div>  
             </div>
             <!--Fín de la quinta pestaña -->
-        	</div>
-  		</div>
-	</div>
-</div> 
+
+            <div role="tabpanel" class="tab-pane pestania" id="totales">
+               <div class="container-fluid">
+                  <center><h3><b>Totales</b></h3></center>
+                  <div class="col-md-6">
+                     <div class="col-md-6">
+                        {!! Field::text('subtotal')!!}
+                     </div>
+                     <div class="col-md-6">
+                        {!! Field::text('gastos')!!}
+                     </div>
+                     <div class="col-md-6">
+                        {!! Field::text('descuento en C$')!!}
+                        <div class="checkbox">
+                           <label for="">       
+                              <input type="checkbox" class="checkbox">IVA
+                           </label> 
+                        </div>
+                        {!! Form::text('',null,['id' => 'iva','disabled', 'class' => 'form-control'])!!} 
+                        <label for="">Valor Total de Venta:</label>
+                        {!! Form::text('',null,['class' => 'form-control'])!!}
+                         <label for="">Precio Unitario:</label>
+                        {!! Form::text('', null,['class' => 'form-control'])!!}
+                     </div>
+                  </div>
+
+                  <div class="col-md-6">
+                     <div class="col-md-6">
+                        {!! Field::text('costo Total',['id'=>'costoTotal'])!!}
+                     </div>
+                     <div class="col-md-6">
+                        {!! Field::text('Utilidad Bruta',['id'=>'utilBruta'])!!}
+                     </div>  
+  
+                  
+                     <!-- Boton de navegación -->
+                     <div class="row">
+                        <button type="button" class="btn btn-info btn-cian navbar-right btn-atras" href="#" aria-controls="" role="tab" data-toggle="tab">
+                           <span class="glyphicon glyphicon-triangle-left"></span>Atrás
+                        </button>
+                     </div>
+                  </div>
+                  <!-- Fín de los botones -->
+               </div>
+            </div>
+            <!--Fín de la sexta pestaña -->  
+         </div>
+      </div>
+  	</div>
+</div>
 @endsection
 
 @include('isnaya.costos.modalcreate')
@@ -568,26 +629,25 @@
 @section('script')
    <script type="text/javascript" src="{{asset('/js/prueba.js')}}"></script>
    <script>
-
       listarClientes();
-
+      //agregar cajas para colores
       $btnAdd1 = $('#btn-add1');
       $btnAdd1.click(function(){
          var tamaño = $('li.color').length;
          var claseNuEl = tamaño + 1;
 
-      if(tamaño == 6){
-         console.log('no puedes insertar más');
-      } else {
-         if(tamaño==2){
-            $("#colores").append("<div class='row'></div> <hr>");
-         }if(tamaño==4){
-            $("#colores").append("<div class='row'></div> <hr>");
-         }
-         $("#colores").append("<li class='color color" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control' id='' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Color " + claseNuEl + "</label> <select id='" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "'> <?php foreach ($colores as $color) {echo"<option value='$color->id'>$color->color</option>";}?></select></div> </li>");
-         } 
+         if(tamaño == 6){
+            console.log('no puedes insertar más');
+         } else {
+            if(tamaño==2){
+               $("#colores").append("<div class='row'></div> <hr>");
+            }
+            if(tamaño==4){
+               $("#colores").append("<div class='row'></div> <hr>");
+            }
+            $("#colores").append("<li class='color color" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-color' id='cant" + claseNuEl +"' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Color " + claseNuEl + "</label> <select id='color" + claseNuEl +"' class='form-control select-color' onChange='color" + claseNuEl + "'> <?php foreach ($colores as $color) {echo"<option value='$color->id'>$color->color</option>";}?></select></div> </li>");
+            } 
       });
-
 
       $btnAdd = $('#btn-add');
       $btnAdd.click(function(){
@@ -598,112 +658,23 @@
          console.log('no puedes insertar más');
       } else {
          if(tamaño==2){
-            $("#materiales").append("<div class='row'></div> <hr>");
+            $("#materiales").append("<div class='row'></div><hr>");
          }
          $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
          } 
       });
 
-      var caras = $('#caras');
-      //seleccion de caras
-      caras.on('change', function(){
-         var carasval = $('#caras option:selected').val();
-         caras= carasval;
-         console.log(caras);
-      });
-
-      var formato = $('#id_formats');
-      //seleccion de formato
-      formato.on('change', function(){
-         var valFormato = $('#id_formats option:selected').text();
-         var elemento = valFormato.split('/');
-         var tam_pap = elemento[1];
-         formato = parseInt(tam_pap);
-         console.log(formato);
-      }); 
-
-      $btnMostrar = $('#mostrar1');
-      var volGeneral = $('#vol_total');
-
-      $btnMostrar.click(function(){
-         $materiales = $(".este-material");
-         var totPapelxMat = 0;
-         var totxMt = 0;
-         //recorre los materiales del cuerpo
-         $materiales.each(function(index) {
-            totPapelxMat += parseInt($(this).val());
-            
-            volGral(totPapelxMat);
-            //var totEsteMat = ( ( parseInt( $(this).val() ) * 1.20) / formato ) / caras.val();
-            //var totGral = ( (volGeneral.val() * 1.20) * (volGeneral.val() / formato) ) / 2;
-            var totGral = ( (parseInt($(this).val()) * 1.20) * (parseInt($(this).val()) / formato) ) / caras;
-
-            console.log(index)
-            var ide = "#vol"+(index+1);
-            totalmat=  Math.round(totGral);
-            $(ide).val(totalmat);       
-         });
-
-         //calculo de portada
-         var volport = $('#vol0');
-         cantPortada = $('#papelPort');
-         portada=cantPortada.val();
-         totportada= ((portada * 1.20) * (portada/formato) )/ caras;
-         aux = Math.round(totportada);
-         volport.val(aux);
-      });
-
-      function volGral(hxm) {         
-         volGeneral.val(hxm)
-      }
-
+      /*     
       var volumen1 = $('#vol1');
       var cosun1 = $('#cotunit1');
       var cost1 = $('#costotal1');
 
       valCostUnit1 = cosun1.val();
-
       volumen1.on('blur', function(){
          valVol1 = $(this).val();
          valCostUnit1 = cosun1.val();
-         cost1.val(valVol1*valCostUnit1);
-      });
-
-      var volumen2 = $('#vol2');
-      var cosun2 = $('#cotunit2');
-      var cost2 = $('#costotal2');
-
-      valCostUnit2 = cosun2.val();
-
-      volumen2.on('blur', function(){
-         valVol2 = $(this).val();
-         valCostUnit2 = cosun1.val();
-         cost2.val(valVol2*valCostUnit2);
-      });
-  
-      var volumen3 = $('#vol3');
-      var cosun3 = $('#cotunit3');
-      var cost3 = $('#costotal3');
-
-      valCostUnit3 = cosun3.val();
-
-      volumen3.on('blur', function(){
-         valVol3 = $(this).val();
-         valCostUnit3 = cosun3.val();
-         cost3.val(valVol3*valCostUnit3);
-      });
-
-      var volumen0 = $('#vol0');
-      var cosun0 = $('#cotunitport');
-      var cost0 = $('#costotalport');
-
-      valCostUnit0 = cosun0.val();
-
-      volumen0.on('blur', function(){
-         valVol0 = $(this).val();
-         valCostUnit0 = cosun0.val();
-         cost0.val(valVol0*valCostUnit0);
-      });
+         cost1.val(valVol1*valCostUnit1);  
+      });*/
    </script>
 
 @endsection

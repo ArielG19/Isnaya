@@ -21,7 +21,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon" id="sizing-addon1"><b>Usuario</b></span>
-                                <input id="email"  type="email" class="text-reset" name="email" value="{{ old('email') }}" required autofocus placeholder="Ingrese su usuario...">
+                                <input id="email"  type="email" class="text-reset sinborde" name="email" value="{{ old('email') }}" required autofocus placeholder="Ingrese su usuario...">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -29,13 +29,14 @@
                                     </span>
                                 @endif
                             </div>
+                            <hr class="linea">
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon" id="sizing-addon1"><b>Contraseña</b></span>
-                                <input id="password" type="password" class="text-reset" name="password" required placeholder="Ingrese su contraseña">
+                                <input id="password" type="password" class="text-reset sinborde" name="password" required placeholder="Ingrese su contraseña">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -43,6 +44,7 @@
                                     </span>
                                 @endif
                             </div>
+                            <hr class="linea">
                         </div>
                     </div>
                     {{--<div class="form-group">
