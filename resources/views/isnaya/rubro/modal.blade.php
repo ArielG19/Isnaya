@@ -19,7 +19,7 @@
 				<div class="form-group">
                     <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Descripcion:')!!}
-                        {!!form::text('descripcion',null,['id'=>'descripcion','class'=>'form-control','placeholder'=>'Escriba una descripcion'])!!}
+                    {!!form::text('descripcion',null,['id'=>'descripcion','class'=>'form-control','placeholder'=>'Escriba una descripcion'])!!}
                     {!!Form::close()!!}
                 </div>
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 <div class="form-group">
                      <!--Nombramos las cajas de texto igual que los campos de la bd-->
                     {!!form::label('Tipo:')!!}
-                        {!!form::text('tipo',null,['id'=>'tipo','class'=>'form-control','placeholder'=>'Escriba el Tipo de Rubro'])!!}
+                    {!!form::text('tipo',null,['id'=>'tipo','class'=>'form-control','placeholder'=>'Escriba el Tipo de Rubro'])!!}
                     {!!Form::close()!!}
                 </div>
 			</div>

@@ -21,28 +21,27 @@
 				<strong> Se actualizo correctamente</strong>
 			</div>
 			<div class="row cabecera-yellow">
-							<div class="col-md-6">
-								<h5>Lista de Usuarios</h5>
-								<hr>
-							</div>
-							<div class="col-md-6">
-									<p class="navbar-text navbar-right" style="margin-right:75px; margin-top:7px;">
-					    				<a class="btn btn-info btn-cian" href="#" data-toggle='modal' data-target='#myModalcreateUser'>
-					 						<span>Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-              							</a>
-									</p>
-							</div>			
+				<div class="col-md-6">
+					<h5>Lista de Usuarios</h5>
+					<hr>
+				</div>
+				<div class="col-md-6">
+					<p class="navbar-text navbar-right" style="margin-right:75px; margin-top:7px;">
+					    <a class="btn btn-info btn-cian" href="#" data-toggle='modal' data-target='#myModalAdd'>
+					 		<span>Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+              			</a>
+					</p>
+				</div>			
 			</div>
 		
 			<div class="row">
 				<div id="listar-usuarios"></div>
 			</div>
-
-					
+		
 		</div>
 </div>
 @endsection
-@include('isnaya.usuarios.modalCreateUser')
+@include('isnaya.usuarios.modalAdd')
 @include('isnaya.usuarios.modal')
 
 @section('script')

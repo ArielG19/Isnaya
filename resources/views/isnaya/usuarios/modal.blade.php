@@ -33,7 +33,7 @@
                         		{!!Form::label('Tipo')!!}
                         		{!!Form::select('type',['admin'=>'administrador','usuario'=>'Usuario'],null,['id'=>'type','class'=>'form-control'])!!}
                     		</div>
-                		{!!Form::close()!!}
+                		{!!Form::close()!!} 
 					</div>
 
 					<div class="modal-footer">
