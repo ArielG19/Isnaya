@@ -91,7 +91,7 @@ $("#guardarRubro").click(function(event){
       	success:function(data){
 			if(data.success=='true'){
                 //alert('Se registro');
-            	listarColores();
+            	listarRubro();
             	$("#myModalCreate").modal('toggle');
             	$("#message-save").fadeIn();
         	}
@@ -370,7 +370,7 @@ $("#addProducto").click(function(event){
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
   	var route = "productos";
-  	var dataSting = "descripcion="+descripcion;
+  	var dataSting = "descripcion="+ descripcion;
       $.ajax({
      	url:route,
       	headers:{'X-CSRF-TOKEN':token},
@@ -416,7 +416,7 @@ $("#guardarCliente").click(function(event){
     	success:function(data){
 			if(data.success=='true'){
                 //alert('Se registro');
-            	listarFormato();
+            	listarClientes();
             	$("#myModalCreate").modal('toggle');
             	$("#message-save").fadeIn();
                 //alert('Se registro');
@@ -577,48 +577,44 @@ $("#myModal").on("hidden.bs.modal", function(){
 	$("#message-error").fadeOut();
 });
 
-$("#addUsuario").click(function(event){
-	//recuperamos el valor del input descripcion
-  	var name = $("#addName").val();
+
+$("#guardarUsuario").click(function(event){
+  	var nombre = $("#addNombre").val();
     var cargo = $("#addCargo").val();
     var email = $("#addEmail").val();
     var password = $("#addPassword").val();
-    var type = $("#addType").val();
-  	//recuperamos la informacion del token
-  	var token = $("input[name=_token]").val();
+    var type = $("#addTipo").val();
   	//la ruta donde se envia la informacion del formulario
-  	var route ="usuarios";
+  	var route = "/usuarios";
     $.ajax({
-     	url:route,
-      	headers:{'X-CSRF-TOKEN':token},
-      	type:'post',
-      	datatype:'json',
-      	data:{name:name,cargo:cargo,email:email,password:password,type:type},
-        success:function(data){
-          	if(data.success=='true'){
-          		listarUsuario();
-				$("#myModalcreateUser").modal('toggle');
-				//pintamos un mensaje
-				$("#message-save").fadeIn();
-				$("#message-save").show().delay(3000).fadeOut(3);
-
-                
-            }
-        },
+		url:route,
+    	headers:{'X-CSRF-TOKEN':token},
+    	type:'post',
+    	datatype:'json',
+    	data:{name:nombre,cargo:cargo,email:email,password:password,type:type},
+    	success:function(data){
+			if(data.success=='true'){
+                //alert('Se registro');
+            	listarUsuario();
+            	$("#myModalAdd").modal('toggle');
+            	$("#message-save").fadeIn();
+                //alert('Se registro');
+        	}
+    	},
         //aqui atrapamos los errores una vez validados atraves de un request
-        error:function(data){
+      	error:function(data){
          	//obtenemos el mensaje de validacion console.log(data.responseJSON.nombre);
-         	$("#error").html(data.responseJSON.name);
+         	//$("#error").html(data.responseJSON.name);
          	$("#message-error").fadeIn();
             $("#message-error").show().delay(3000).fadeOut(3);
         }
     });
 });
+
 //==>>Fin de Usuarios<<==
 
 
 //Inicio de metodos para mostrar la descripcion y el costo del papel
-
 var id_rubro = $('#id_rubroport');//Obtenemos el select
 var materialCalc = $('#Matpor');//Obtenemos el text atraves del id
 var costUnit = $('#cotunitport');//obtenemos el text de costo unitario
@@ -639,10 +635,8 @@ id_rubro.on('change', function(){
 	})
     .done(function(data){
         costUnit[0].value = data.costo;
-            //console.log(costUnit);
     });
-
-    });
+});
 
 //separación de métodos
 var id_rubro1 = $('#id_rubro1');
@@ -696,3 +690,175 @@ function rubro3Cambio(){
     });
 };
 //Fín
+
+var caras = $('#caras');
+//seleccion de caras
+caras.on('change', function(){
+    var carasval = $('#caras option:selected').val();
+    caras= carasval;
+    console.log(caras);
+});
+
+var formato = $('#id_formats');
+//seleccion de formato
+formato.on('change', function(){
+    var valFormato = $('#id_formats option:selected').text();
+    var elemento = valFormato.split('/');
+    var tam_pap = elemento[1];
+    formato = parseInt(tam_pap);
+    console.log(formato);
+});
+
+//calculos de las laminas por color
+$btnCalColor = $('#mostrarcolor');
+$calTotal=$("#totLaminas");
+$costUnitLam=$("#costUnitLam");
+$cosMOfot=$("#cosMOfot");
+$costotalMOfot=$("#costotalMOfot");
+$cosImOf= $("#cosImOf"); 
+$costotalImOf= $("#costotalImOf");
+var subtotal = $('#subtotal');
+
+$btnCalColor.click(function(){
+    $cantPag = $(".este-color");
+    $colorselect = $(".select-color");
+    $selectport=$('#selectPort');
+    var port = $('#selectPort option:selected').val();
+    cantPortada = $('#papelPort');
+    var format= formato/2;
+    //calculo de cantidad de láminas x color portada 
+    var aux = (cantPortada.val() / format) * port;
+    var totGral=aux;
+    /*$colorselect.each(function(index){
+        console.log($(this));
+    });*/
+    //recorre los colores del cuerpo
+    $cantPag.each(function(index) {    
+        //calculo de cantidad de láminas x color del cuerpo
+        totGral += ( ( (parseInt($(this).val())) / format ) * $colorselect[index].value);
+        totalxColor=  Math.round(totGral);
+    });   
+    //console.log(totalxColor);
+    $laminas =$("#laminas");
+    $volMOfot = $("#volMOfot");
+    $volImOf = $("#volImOf");
+    $laminas.val(totalxColor);
+    $volMOfot.val(totalxColor);
+    $volImOf.val(totalxColor);  
+
+    //calculo total del costo de las laminas x colores
+    $calTotal.val($laminas.val()*$costUnitLam.val());
+    $costotalMOfot.val($cosMOfot.val()*$costUnitLam.val());
+    $costotalImOf.val($cosImOf.val()*$costUnitLam.val());
+
+    subtotal.val(0);
+   	var gastos= $('#gastos');
+
+   	var caltotl=parseInt( $calTotal.val());
+   	var caltotMOF=parseInt($costotalMOfot.val());
+   	var caltotImp=parseInt($costotalImOf.val());
+	var sub=costo0 + costo1 + costo2 + costo3 + caltotl + caltotMOF + caltotImp;
+    subtotal.val(sub);
+    //console.log(subtotal.val());
+
+});
+$sepcolores = $("#sepcolores");
+$aydis = $("#aydis");
+$levtext = $("#levtext");
+$electro = $("#electro");
+
+$sepcolores.val(0);
+$aydis.val(0);
+$levtext.val(0);
+$electro.val(0);
+
+$sepcolores.on('blur', function(){
+	var sep= parseInt($sepcolores.val());
+	var subt =parseInt(subtotal.val());
+	var aux=(subt + sep);
+	//console.log(aux);
+	subtotal.val(aux);
+}); 
+
+$aydis.on('blur', function(){
+	var ayd= parseInt($aydis.val());
+	var subt =parseInt(subtotal.val());
+	var aux=(subt + ayd);
+	//console.log(aux);
+	subtotal.val(aux);
+});  
+
+$levtext.on('blur', function(){
+	var levtxt= parseInt($levtext.val());
+	var subt =parseInt(subtotal.val());
+	var aux=(subt + levtxt);
+	//console.log(aux);
+	subtotal.val(aux);
+}); 
+
+$electro.on('blur', function(){
+	var electro= parseInt($electro.val());
+	var subt =parseInt(subtotal.val());
+	var aux=(subt + electro);
+	//console.log(aux);
+	subtotal.val(aux);
+}); 
+
+
+$btnMostrar = $('#mostrar1');
+var volGeneral = $('#vol_total');
+
+$btnMostrar.click(function(){
+    $materiales = $(".este-material");
+    var totPapelxMat = 0;
+    var totxMt = 0;
+    //recorre los materiales del cuerpo
+    $materiales.each(function(index) {
+ 	    totPapelxMat += parseInt($(this).val());
+            
+        volGral(totPapelxMat);
+        //var totEsteMat = ( ( parseInt( $(this).val() ) * 1.20) / formato ) / caras.val();
+        //var totGral = ( (volGeneral.val() * 1.20) * (volGeneral.val() / formato) ) / 2;
+        var totGral = ( (parseInt($(this).val()) * 1.20) * (parseInt($(this).val()) / formato) ) / caras;
+        console.log(index)
+        var ide = "#vol"+(index+1);
+        totalmat=  Math.round(totGral);
+        $(ide).val(totalmat);       
+    });
+
+    //calculo de portada
+    var volport = $('#vol0');
+    cantPortada = $('#papelPort');
+    portada=cantPortada.val();
+    totportada= ((portada * 1.20) * (portada/formato) )/ caras;
+    aux = Math.round(totportada);
+    volport.val(aux);
+
+    var volumen1 = $('#vol1');
+    var cosun1 = $('#cotunit1');
+    var cost1 = $('#costotal1');
+    costo1 = volumen1.val() * cosun1.val();
+    cost1.val(costo1);
+
+    var volumen2 = $('#vol2');
+    var cosun2 = $('#cotunit2');
+    var cost2 = $('#costotal2');
+    costo2 = volumen2.val() * cosun2.val();
+    cost2.val(costo2);
+
+    var volumen3 = $('#vol3');
+    var cosun3 = $('#cotunit3');
+    var cost3 = $('#costotal3');
+    costo3 = volumen3.val() * cosun3.val();
+    cost3.val(costo3);
+
+    var volumen0 = $('#vol0');
+    var cosun0 = $('#cotunitport');
+    var cost0 = $('#costotalport');
+    costo0 = volumen0.val() * cosun0.val();
+    cost0.val(costo0);
+});
+
+function volGral(hxm) {         
+    volGeneral.val(hxm)
+}

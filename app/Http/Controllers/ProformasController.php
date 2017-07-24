@@ -19,7 +19,7 @@ class ProformasController extends Controller
     public function index()
     {
         //
-        return view('isnaya.proformas.reportes');
+        return view('isnaya.proformas.index');
     }
 
     public function listarProforma(){
