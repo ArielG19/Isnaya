@@ -431,7 +431,7 @@
                            {!! Field::text('Costo Total:',['id'=>'totLaminas']) !!}
                         </div>
                         <div class="col-md-3">
-                           {!! Field::text('Tintas offset:') !!}
+                           {{--!! Field::text('Tintas offset:') !!--}}
                         </div>
                      </div>
                      <!-- Boton de navegación -->
