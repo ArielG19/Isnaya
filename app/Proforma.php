@@ -8,8 +8,8 @@ class Proforma extends Model
 {
   protected $table='proformas';
 
-  protected $fillable=['id','num_pag','solicitante','caras','volumen','subtotal','gastos','costo_total',
-  'utilidad_bruta','valor_venta','precio_venta','descuento','iva','fecha','tipo','estado','id_producto','id_formato','id_cliente','id_usuario'];
+  protected $fillable=['id','num_pag','solicitante','telefono','fax','fecha','fechaFin','caras','volumen','subtotal','gastos','costo_total',
+  'utilidad_bruta','valor_venta','precio_venta','descuento','iva','tipo','estado','id_producto','id_formato','id_cliente','id_usuario'];
 
   //--------------------------------------------------------------------------------------------------
   //Relaciones de las tablas

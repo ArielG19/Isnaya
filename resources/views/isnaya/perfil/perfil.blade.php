@@ -17,16 +17,16 @@
                                     <br><br>
                                     
                                     @if($user->type =="admin")
-                                          <img src="/imagenes/perfil/tipo/bleach.jpg" 
-                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
+                                          <img src="/imagenes/perfil/tipo/admin.png"  class="img-responsive"
+                                          style="float: left;border-radius: 5%;">
                                     @else
-                                          <img src="/imagenes/perfil/tipo/hollow.jpg" 
-                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
+                                          <img src="/imagenes/perfil/tipo/user.jpg" class="img-responsive" 
+                                          style="float: left;border-radius: 5%;">
                                     @endif
                             </div>
                             <div class="col-md-6" style="padding-left:50px;border-left: 4px solid #9E9E9E;">
-                                   <img src="/imagenes/perfil/{{$user->imagen}}" 
-                                         style="width: 400px; height: 400px; float: left;border-radius: 5%; margin-right: 25px;">
+                                   <img src="/imagenes/perfil/{{$user->imagen}}" class="img-responsive"
+                                         style="float: left;border-radius: 5%;">
                                    <form enctype="multipart/form-data" action="/perfil" method="POST">
                                         <h3><label for="">Actualizar imagen de perfil</label></h3>
                                         <input type="file" name="imagen">

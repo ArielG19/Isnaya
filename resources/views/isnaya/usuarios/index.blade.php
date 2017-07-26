@@ -27,7 +27,7 @@
 				</div>
 				<div class="col-md-6">
 					<p class="navbar-text navbar-right" style="margin-right:75px; margin-top:7px;">
-					    <a class="btn btn-info btn-cian" href="#" data-toggle='modal' data-target='#myModalAdd'>
+					    <a class="btn btn-info" href="#myModalcreateUser" data-toggle='modal' data-target='#myModalcreateUser'>
 					 		<span>Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></span>
               			</a>
 					</p>
@@ -41,7 +41,7 @@
 		</div>
 </div>
 @endsection
-@include('isnaya.usuarios.modalAdd')
+@include('isnaya.usuarios.modalCreateUser')
 @include('isnaya.usuarios.modal')
 
 @section('script')

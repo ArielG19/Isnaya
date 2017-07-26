@@ -9,6 +9,9 @@ use \App\Producto;
 use \App\Rubro;
 use \App\Formato;
 use \App\Proforma;
+use \App\Proforma_Color;
+use \App\Proforma_Rubro;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Sesion;
 
@@ -56,18 +59,65 @@ class CalculosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        if($request->ajax()){
-            $clientes = Cliente::create($request->all());
-            //si no hay error entonces
-            if($clientes){
-                //Session::flash('save','Se ha creado correctamente');
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
+        //$name = $request->solicitante;
+       /*$valores = $request->all(); 
+
+        echo $id_formato;  
+        $valores = $request->all();
+        return $valores; 
+        $valores = $request->all();
+        $proforma->id_usuario= Auth::User()->id;
+       
+        */       
+          
+        $valores = $request->all(); 
+        return $valores;
+
+/*
+
+        $proforma= new Proforma($request->all());
+        $proforma->id_usuario=Auth::User()->id;
+        $proforma->save();
+        $idproforma=$proforma->id;
+  
+        $proformaRubro= new Proforma_Rubro();
+        
+        if ($request ['Mat1']) {
+            $proformaRubro->costo=$request['costot1'];
+            $proformaRubro->volumen=$request['vol1'];
+            $proformaRubro->numero=$request['numero'];
+            $proformaRubro->pag_unit=$request['pag_unit1'];
+            $proformaRubro->id_rubro=$request['idMat1'];
+            $proformaRubro->id_proforma=$idproforma;
+
+            $proformaRubro->save();
         }
+        if ($request ['Mat2']) {
+            $proformaRubro->costo=$request['costot2'];
+            $proformaRubro->volumen=$request['vol2'];
+            $proformaRubro->numero=$request['numero2'];
+            $proformaRubro->pag_unit=$request['pag_unit2'];
+            $proformaRubro->id_rubro=$request['idMat2'];
+            $proformaRubro->id_proforma=$idproforma;
+
+            $proformaRubro->save();
+        }
+        if ($request ['Mat3']) {
+            $proformaRubro->costo=$request['costot3'];
+            $proformaRubro->volumen=$request['vol3'];
+            $proformaRubro->numero=$request['numero3'];
+            $proformaRubro->pag_unit=$request['pag_unit3'];
+            $proformaRubro->id_rubro=$request['idMat3'];
+            $proformaRubro->id_proforma=$idproforma;
+            
+            $proformaRubro->save();
+        }
+        
+        return "listo!!";*/
+    
     }
 
     /**

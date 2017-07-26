@@ -20,10 +20,7 @@ class CreateRubrosTable extends Migration
             $table->double('costo');
             $table->string('tipo',30);
             $table->enum('estado',['Activo','Inactivo'])->default('Activo');
-            $table->integer('id_usuario')->unsigned();
             $table->timestamps();
-
-            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 

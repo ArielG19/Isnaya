@@ -61,26 +61,30 @@
                      <h5>
                         Datos Generales del Cliente
                      </h5>
-                     <div class="row">
+                     <div class="row"> 
+                     	<form class="form-horizontal" action="{{ url('/calculos') }}" method="POST"  enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <!-- Formulario con los datos generales de la proforma-->  
                         <div class="col-md-8">
                            {!! Form::label('Cliente:')!!}<br>
-                           <select id="id_cliente" class="form-control">
+                           <select name="id_cliente" id="id_cliente" class="form-control">
                               @foreach($clientes as $cliente)
                                  <option value="{{ $cliente->id }}">{{ $cliente->nombre }}  {{ $cliente->apellido }}</option>
                                @endforeach
                            </select>
-                           <label>Solicitante</label>
-                           {!! Form::text('Solicitante:',null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre del solicitante...'])!!}
+                           <label>Solicitante:</label>
+                           {!! Form::text('solicitante',null, ['id'=>'solicitante','class'=>'form-control','placeholder'=>'Ingrese el nombre del solicitante...'])!!}
                            <div class="row">
                               <div class="col-md-6">
                                  <label for="">Telefono:</label> <br>
                                  <div class="input-group">
                                     <span class="input-group-addon" id="telphone">+505 </span>
-                                    <input type="text" class="form-control" placeholder="Teléfono...">
+                                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono...">
                                  </div>
                               </div>
                               <div class="col-md-6">
-                                 {!! Field::text('fax:',['placeholder'=>'Fax...'])!!}
+                                <label for="">Fax:</label>
+                                {!! Form::text('fax',null, ['id'=>'fax','class'=>'form-control','placeholder'=>'Fax...'])!!}
                               </div>
                            </div>
                         </div>
@@ -91,9 +95,9 @@
                               Agregar +
                            </button><br>
                            <label for="date">Fecha</label>
-                           {!! Form::date('',null,['id'=>'fechaE','class'=>'form-control'])!!}
+                           {!! Form::date('fecha',null,['id'=>'fechaE','class'=>'form-control'])!!}
                            <label for="date">Fecha Entrega</label>
-                           {!! Form::date('',null,['id'=>'fechaE','class'=>'form-control'])!!}
+                           {!! Form::date('fechaFin',null,['id'=>'fechaE','class'=>'form-control'])!!}
                         </div>
                      </div>
                   </div>
@@ -107,14 +111,16 @@
                            {!! Form::label('Producto:')!!} <br>
                            {!! Form::select('id_producto',$producto,null,['id'=>'id_producto','class'=>'form-control'])!!}<br>
                            {!! Form::label('Formato:')!!} <br>
-                           {!! Form::select('id_formats',$formato,null,['id'=>'id_formats','class'=>'form-control'])!!}
+                           {!! Form::select('id_formato',$formato,null,['id'=>'id_formats','class'=>'form-control'])!!}
                            {!! Field::checkbox('Formato Personalizado:','1')!!}
                            {!! Field::text(null,['placeholder'=>'Ingrese el formato personalizado','id' => 'formatopers'])!!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('volumen:', ['id' => 'vol_total','placeholder'=>'Volumen', 'disabled'])!!}
+                           {!! Form::label('Volumen:')!!} 
+                           {!! Form::text('num_pag',null, ['class' => 'form-control','id' => 'vol_total','placeholder'=>'Volumen'])!!}
+                           <br>
                            {!! Form::label('caras:')!!} <br>
-                           <select name="" id="caras" class="form-control" style="margin-top: 3px;">
+                           <select name="caras" id="caras" class="form-control" style="margin-top: 3px;">
                               <option value="1">1 Cara</option>
                               <option value="2">2 Caras</option>
                            </select>
@@ -142,7 +148,7 @@
                      <div class="row">
                         <div class="col-md-4">
                            {!! Form::label('Nº Páginas:')!!}
-                           {!! Form::text('Nº Páginas:', null,['id'=>'papelPort','placeholder'=>'Nº de Páginas','class'=>'form-control']) !!}
+                           {!! Form::text('numero1', null,['id'=>'papelPort','placeholder'=>'Nº de Páginas','class'=>'form-control']) !!}
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Material:')!!} 
@@ -185,7 +191,7 @@
                            <li class="material material1">
                               <div class="col-md-3">
                                  {!! Form::label('Nº Páginas:')!!}
-                                 {!! Form::text('Nº Páginas:', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
+                                 {!! Form::text('numero', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
                               </div>
                               <div class="col-md-3">
                                  {!! Form::label('Material 1:')!!}
@@ -223,7 +229,7 @@
                            <li class="color">
                               <div class="col-md-3">
                                  {!! Form::label('Nº Páginas:')!!}
-                                 {!! Form::text('Nº Páginas:', null,['id'=>'cant1','placeholder'=>'Nº de Páginas','class'=>'form-control este-color'])!!}
+                                 {!! Form::text('', null,['id'=>'cant1','placeholder'=>'Nº de Páginas','class'=>'form-control este-color'])!!}
                               </div>
                               <div class="col-md-3">
                                  {!! Form::label('Color:')!!}
@@ -260,19 +266,24 @@
                      <h5>Encuadernación</h5>
                      <div class="row">
                         <div class="col-md-4">
-                           {!! Field::checkbox('Grapado')!!}
+                            <label>Grapado</label>
+                           {!! Form::checkbox('',null,['class' => 'form-control'])!!}
                         </div>
-                        <div class="col-md-4">        
-                           {!! Field::checkbox('Granel') !!}
+                        <div class="col-md-4">
+                            <label>Granel</label>        
+                           {!! Form::checkbox('',null,['class' => 'form-control']) !!}
                         </div>
-                        <div class="col-md-4">  
-                           {!! Field::checkbox('Encolado/Encolochado')!!}
+                        <div class="col-md-4"> 
+                            <label>Encolado/Encolochado</label> 
+                           {!! Form::checkbox('',null,['class' => 'form-control'])!!}
                         </div>                
-                        <div class="col-md-4">        
-                           {!! Field::checkbox('Barniz ultavioleta')!!}
+                        <div class="col-md-4">
+                            <label>Barniz ultavioleta</label>        
+                           {!! Form::checkbox('',null,['class' => 'form-control'])!!}
                         </div>
-                        <div class="col-md-4">        
-                           {!! Field::checkbox('Plasticado')!!}
+                        <div class="col-md-4"> 
+                            <label>Plasticado</label>       
+                           {!! Form::checkbox('',null,['class' => 'form-control'])!!}
                         </div>
                      </div>
                   </div>
@@ -281,11 +292,11 @@
                      <div class="row">
                         <div class="col-md-6"> 
                            {!! Form::label('Imprenta:')!!}        
-                           {{  Form::radio('rimprenta','1')}}
+                           {{  Form::radio('','1')}}
                         </div>
                         <div class="col-md-6">
                            {!! Form::label('Cliente:')!!} 
-                           {{ Form::radio('rcliente', '1',true)}}   
+                           {{ Form::radio('', '1',true)}}   
                         </div>
                         <div class="col-md-12">
                            {!! Form::label('Otros datos:')!!} 
@@ -315,19 +326,23 @@
                         <h5 class="tit-cal">costo de papel Nº 1</h5>
                         <div class="col-md-3">
                            {!! Form::label('Material:')!!} 
-                           {!! Form::text('', null,['id' => 'Mat1', 'class'=>'form-control'])!!} 
+                           {!! Form::text('Mat1', null,['id' => 'Mat1', 'class'=>'form-control'])!!}
+                           {!! Form::hidden('idMat1', 'secret', array ('id' => 'idmate1') )!!}
+                           
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Volumen:')!!} 
-                           {!! Form::text('', null,['id' => 'vol1', 'class'=>'form-control'])!!} 
+                           {!! Form::text('vol1', null,['id' => 'vol1', 'class'=>'form-control'])!!} 
+                           {!! Form::hidden('numero2', 'secret', array ('id' => 'num2') )!!}
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Unitario:')!!} 
-                           {!! Form::text('', null,['id' => 'cotunit1', 'class'=>'form-control'])!!} 
+                           {!! Form::text('pag_unit1', null,['id' => 'cotunit1', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Total:')!!} 
-                           {!! Form::text('', null,['id' => 'costotal1', 'class'=>'form-control', 'disabled'])!!} 
+                           {!! Form::text('costot1', null,['id' => 'costotal1', 'class'=>'form-control'])!!} 
+                            {!! Form::hidden('numero3', 'secret', array ('id' => 'num3') )!!}
                         </div>
                      </div> 
                      <!-- Separación-->
@@ -336,19 +351,20 @@
                         <h5 class="tit-cal">costo de papel Nº 2</h5>
                         <div class="col-md-3">
                            {!! Form::label('Material:')!!} 
-                           {!! Form::text('', null,['id' => 'Mat2', 'class'=>'form-control'])!!} 
+                           {!! Form::text('Mat2', null,['id' => 'Mat2', 'class'=>'form-control'])!!} 
+                           {!! Form::hidden('idMat2', 'secret', array ('id' => 'idmate2') )!!}
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Volumen:')!!} 
-                           {!! Form::text('', null,['id' => 'vol2', 'class'=>'form-control'])!!} 
+                           {!! Form::text('vol2', null,['id' => 'vol2', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Unitario:')!!} 
-                           {!! Form::text('', null,['id' => 'cotunit2', 'class'=>'form-control'])!!} 
+                           {!! Form::text('pag_unit2', null,['id' => 'cotunit2', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Total:')!!} 
-                           {!! Form::text('', null,['id' => 'costotal2', 'class'=>'form-control', 'disabled'])!!} 
+                           {!! Form::text('costot2', null,['id' => 'costotal2', 'class'=>'form-control'])!!} 
                         </div>
                      </div>
                      <!-- Separación-->
@@ -357,19 +373,20 @@
                         <h5 class="tit-cal">costo de papel Nº 3</h5>
                         <div class="col-md-3">
                            {!! Form::label('Material:')!!} 
-                           {!! Form::text('', null,['id' => 'Mat3', 'class'=>'form-control'])!!} 
+                           {!! Form::text('Mat3', null,['id' => 'Mat3', 'class'=>'form-control'])!!} 
+                           {!! Form::hidden('idMat3', 'secret', array ('id' => 'idmate3') )!!}
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Volumen:')!!} 
-                           {!! Form::text('', null,['id' => 'vol3', 'class'=>'form-control'])!!} 
+                           {!! Form::text('vol3', null,['id' => 'vol3', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Unitario:')!!} 
-                           {!! Form::text('', null,['id' => 'cotunit3', 'class'=>'form-control'])!!} 
+                           {!! Form::text('pag_unit3', null,['id' => 'cotunit3', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Total:')!!} 
-                           {!! Form::text('', null,['id' => 'costotal3', 'class'=>'form-control', 'disabled'])!!}
+                           {!! Form::text('costot3', null,['id' => 'costotal3', 'class'=>'form-control'])!!}
                         </div>
                      </div>
                      <!-- Separación-->
@@ -381,19 +398,20 @@
                         <h5 class="tit-cal">Portada</h5>
                         <div class="col-md-3">
                            {!! Form::label('Material:')!!} 
-                           {!! Form::text('', null,['id' => 'Matpor', 'class'=>'form-control'])!!} 
+                           {!! Form::text('Mat0', null,['id' => 'Matpor', 'class'=>'form-control'])!!} 
+                           {!! Form::hidden('idMat0', 'secret', array ('id' => 'idmate0') )!!}
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Volumen:')!!} 
-                           {!! Form::text('', null,['id' => 'vol0', 'class'=>'form-control'])!!} 
+                           {!! Form::text('vol0', null,['id' => 'vol0', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Unitario:')!!} 
-                           {!! Form::text('', null,['id' => 'cotunitport', 'class'=>'form-control'])!!} 
+                           {!! Form::text('pag_unit', null,['id' => 'cotunitport', 'class'=>'form-control'])!!} 
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Total:')!!} 
-                           {!! Form::text('', null,['id' => 'costotalport', 'class'=>'form-control', 'disabled'])!!} 
+                           {!! Form::text('costot0', null,['id' => 'costotalport', 'class'=>'form-control'])!!} 
                         </div>
                      </div>
                      <hr>
@@ -419,7 +437,8 @@
                      <div class="row">
                         <h5 class="tit-cal">Láminas</h5>
                         <div class="col-md-3">
-                           {!! Field::text('Volumen:',['id'=>'laminas']) !!}
+                            <label for="">Láminas:</label>
+                            {!! Form::text('volumen',null,['id'=>'laminas','class'=>'form-control']) !!}
                         </div>
                         @foreach($lamina as $laminas )
                         <div class="col-md-3">
@@ -428,10 +447,16 @@
                         </div>
                         @endforeach
                         <div class="col-md-3">
-                           {!! Field::text('Costo Total:',['id'=>'totLaminas']) !!}
+                            <label for="">Costo Total:</label>
+                            {!! Field::text('',['id'=>'totLaminas']) !!}
                         </div>
                         <div class="col-md-3">
+<<<<<<< HEAD
                            {{--!! Field::text('Tintas offset:') !!--}}
+=======
+                            <label for="">Tintas offset:</label>
+                           {!! Field::text('',['id' => 'TintasOffset']) !!}
+>>>>>>> 7cbc38441054a85ddd216c83e28d956f254acbda
                         </div>
                      </div>
                      <!-- Boton de navegación -->
@@ -458,14 +483,16 @@
                            M.O. Fotomecánica:
                         </h5>
                         <div class="col-md-4">
-                           {!! Field::text('Volumen:', ['id' => 'volMOfot']) !!}
+                            <label for="">Volumen:</label>
+                            {!! Field::text('', ['id' => 'volMOfot']) !!}
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Costo Unitario:')!!} 
                            {!! Form::text('', $MOFot[0]->costo, ['id' => 'cosMOfot', 'class'=>'form-control'])!!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:', ['id' => 'costotalMOfot']) !!}
+                            <label for="">Costo Total:</label>
+                            {!! Field::text('', ['id' => 'costotalMOfot']) !!}
                         </div>
                      </div>
                      <hr>
@@ -474,26 +501,31 @@
                            M.O. Impresion offset:
                         </h5>
                         <div class="col-md-4">
-                           {!! Field::text('Volumen:', ['id' => 'volImOf']) !!}
+                            <label for="">Volumen:</label>
+                            {!! Field::text('', ['id' => 'volImOf']) !!}
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Costo Unitario:')!!} 
-                           {!! Form::text('costounit',$MOImpOff[0]->costo,['id' => 'cosImOf', 'class'=>'form-control'])!!}
+                           {!! Form::text('',$MOImpOff[0]->costo,['id' => 'cosImOf', 'class'=>'form-control'])!!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:', ['id' => 'costotalImOf']) !!}
+                            <label for="">Costo Total:</label>
+                            {!! Field::text('', ['id' => 'costotalImOf']) !!}
                         </div>
                      </div>
                      <hr>
                      <div class="row">
                         <div class="col-md-4">
-                           {!! Field::text('Fotocopia B/N:') !!}
+                            <label for="">Fotocopia B/N:</label>
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Corte:') !!}
+                            <label for="">Corte:</label>
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Compaginacion:') !!}
+                            {!! Form::label('Compaginación:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                      </div>
                   </div>
@@ -505,13 +537,16 @@
                            Grapado:
                         </h5>
                         <div class="col-md-4">
-                           {!! Field::text('Volumen:') !!}
+                            {!! Form::label('Volumen:')!!} 
+                           {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Unitario:') !!}
+                            {!! Form::label('Costo Unitario:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:') !!}
+                            {!! Form::label('Costo Total:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                      </div>
                      <hr>
@@ -520,13 +555,16 @@
                            Encolado/Encolochado:
                         </h5>
                         <div class="col-md-4">
-                           {!! Field::text('Volumen:') !!}
+                            {!! Form::label('Volumen:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Unitario:') !!}
+                            {!! Form::label('Costo Unitario:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:') !!}
+                            {!! Form::label('Costo Total:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                      </div>
                      <hr><!-- separacion de los row  -->
@@ -535,27 +573,34 @@
                            Cocido:
                         </h5>
                         <div class="col-md-4">
-                           {!! Field::text('Volumen:') !!}
+                            {!! Form::label('Volumen:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Unitario:') !!}
+                            {!! Form::label('Costo Unitario:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-4">
-                           {!! Field::text('Costo Total:') !!}
+                            {!! Form::label('Costo Total:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-md-3">
-                           {!! Field::text('Numerado:') !!}
+                            {!! Form::label('Numerado:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-3">
-                           {!! Field::text('Troquelado:') !!}
+                            {!! Form::label('Troquelado:')!!} 
+                            {!! Field::text('') !!}
                         </div>
                         <div class="col-md-3">
-                           {!! Field::text('Plastificado:') !!}
+                            {!! Form::label('Plastificado:')!!} 
+                            {!! Field::text('') !!}
                         </div>    
                         <div class="col-md-3">
-                           {!! Field::text('otros') !!}
+                            {!! Form::label('Otros:')!!} 
+                            {!! Field::text('') !!}
                         </div>             
                      </div>
                      <!-- Boton de navegación -->
@@ -578,41 +623,50 @@
                   <center><h3><b>Totales</b></h3></center>
                   <div class="col-md-6">
                      <div class="col-md-6">
-                        {!! Field::text('subtotal')!!}
+                        {!! Form::label('Subtotal:')!!} 
+                        {!! Form::text('subtotal',null,['id'=>'subtotal', 'class'=>'form-control'])!!}
                      </div>
                      <div class="col-md-6">
-                        {!! Field::text('gastos')!!}
+                        {!! Form::label('Gastos:')!!} 
+                        {!! Form::text('gastos',null,['id'=>'gastos','class'=>'form-control'])!!}
                      </div>
                      <div class="col-md-6">
-                        {!! Field::text('descuento en C$')!!}
+                        {!! Form::label('Descuento en C$:')!!} 
+                        {!! Form::text('descuento',null, ['id'=>'descuento','class'=>'form-control'])!!}
                         <div class="checkbox">
                            <label for="">       
-                              <input type="checkbox" class="checkbox">IVA
+                              <input type="checkbox" class="checkbox" id="iva">IVA
                            </label> 
                         </div>
-                        {!! Form::text('',null,['id' => 'iva','disabled', 'class' => 'form-control'])!!} 
+                        {!! Form::text('iva',null,['class' => 'form-control'])!!} 
                         <label for="">Valor Total de Venta:</label>
-                        {!! Form::text('',null,['class' => 'form-control'])!!}
-                         <label for="">Precio Unitario:</label>
-                        {!! Form::text('', null,['class' => 'form-control'])!!}
+                        {!! Form::text('valor_venta',null,['id'=>'valor_venta','class' => 'form-control'])!!}
+                        <label for="">Precio Unitario:</label>
+                        {!! Form::text('precio_venta', null,['id'=>'precio_venta','class' => 'form-control'])!!}
                      </div>
                   </div>
 
                   <div class="col-md-6">
                      <div class="col-md-6">
-                        {!! Field::text('costo Total',['id'=>'costoTotal'])!!}
+                        {!! Form::label('Costo Total:')!!} 
+                        {!! Form::text('costo_total',null,['id'=>'costoTotal','class'=>'form-control'])!!}
                      </div>
                      <div class="col-md-6">
-                        {!! Field::text('Utilidad Bruta',['id'=>'utilBruta'])!!}
+                        {!! Form::label('Utilidad Bruta:')!!}
+                        {!! Form::text('utilidad_bruta',null,['id'=>'utilBruta','class'=>'form-control'])!!} 
                      </div>  
   
-                  
                      <!-- Boton de navegación -->
                      <div class="row">
-                        <button type="button" class="btn btn-info btn-cian navbar-right btn-atras" href="#" aria-controls="" role="tab" data-toggle="tab">
+                        <button class="btn btn-info btn-cian pull-right btn-siguiente" type="submit" name='enviar' href="#" id="guardarProforma">
+                          Guardar
+                        </button>
+                        </form>
+                        <button type="button" class="btn btn-info btn-cian pull-right btn-atras" href="#" aria-controls="" role="tab" data-toggle="tab">
                            <span class="glyphicon glyphicon-triangle-left"></span>Atrás
                         </button>
                      </div>
+                     
                   </div>
                   <!-- Fín de los botones -->
                </div>
@@ -660,21 +714,9 @@
          if(tamaño==2){
             $("#materiales").append("<div class='row'></div><hr>");
          }
-         $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
+         $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='papel" + claseNuEl + "' onChange='papel" + claseNuEl + "Cambio()" + "' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
          } 
       });
-
-      /*     
-      var volumen1 = $('#vol1');
-      var cosun1 = $('#cotunit1');
-      var cost1 = $('#costotal1');
-
-      valCostUnit1 = cosun1.val();
-      volumen1.on('blur', function(){
-         valVol1 = $(this).val();
-         valCostUnit1 = cosun1.val();
-         cost1.val(valVol1*valCostUnit1);  
-      });*/
-   </script>
+  </script>
 
 @endsection
