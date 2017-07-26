@@ -23,8 +23,8 @@ class UserController extends Controller
     }
 
     public function listarUsuarios(){
-        $usuarios = User::Orderby('id','DESC')->paginate(3);
-        return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
+             $usuarios = User::Orderby('id','DESC')->paginate(5);
+            return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
     }
 
     //--------METODOS PARA EL PERFIL------------------------------------------------
@@ -44,8 +44,10 @@ class UserController extends Controller
             $user->imagen =$filename;
             $user->save();
         }
+        //return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
         return view('isnaya.perfil.perfil', array('user'=> Auth::user() ));
     }
+    //--------METODOS PARA EL PERFIL------------------------------------------------
 
     /**
      * Show the form for creating a new resource.
@@ -70,7 +72,6 @@ class UserController extends Controller
             if($request->ajax()){
             $usuarios = User::create($request->all());
             $usuarios->password=bcrypt($request->password);
-            //$usuarios->fill(['password' => encrypt($request->password)])->save();
             $usuarios->save();
             //si no hay error entonces
             if($usuarios){

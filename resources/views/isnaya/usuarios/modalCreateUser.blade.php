@@ -46,7 +46,7 @@
 					</div>
 
 					<div class="modal-footer">
-						{!!link_to('#',$title ='Guardar',$attributes= ['id'=>'guardarUsuario','class'=>'btn btn-info'],$secure = null)!!}
+						{!!link_to('#',$title ='Guardar',$attributes= ['id'=>'addUsuario','class'=>'btn btn-info'],$secure = null)!!}
 					</div>		
 		</div>
 	</div>
