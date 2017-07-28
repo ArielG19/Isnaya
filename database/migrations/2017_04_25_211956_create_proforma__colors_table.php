@@ -16,7 +16,6 @@ class CreateProformaColorsTable extends Migration
         Schema::create('proforma__colores', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cantidad');
-            $table->string('tipo', 35);
             $table->integer('numero');
             $table->integer('id_proforma')->unsigned();
             $table->integer('id_color')->unsigned();

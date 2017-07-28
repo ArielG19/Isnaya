@@ -230,6 +230,26 @@
                               <div class="col-md-3">
                                  {!! Form::label('Nº Páginas:')!!}
                                  {!! Form::text('', null,['id'=>'cant1','placeholder'=>'Nº de Páginas','class'=>'form-control este-color'])!!}
+                                 {!! Form::hidden('color1', '', array ('id' => 'col1') )!!}
+                                 {!! Form::hidden('color2', '', array ('id' => 'col2') )!!}
+                                 {!! Form::hidden('color3', '', array ('id' => 'col3') )!!}
+                                 {!! Form::hidden('color4', '', array ('id' => 'col4') )!!}
+                                 {!! Form::hidden('color5', '', array ('id' => 'col5') )!!}
+                                 {!! Form::hidden('color6', '', array ('id' => 'col6') )!!}
+
+                                {!! Form::hidden('idcolor1', '', array ('id' => 'idcol1') )!!}
+                                {!! Form::hidden('idcolor2', '', array ('id' => 'idcol2') )!!}
+                                {!! Form::hidden('idcolor3', '', array ('id' => 'idcol3') )!!}
+                                {!! Form::hidden('idcolor4', '', array ('id' => 'idcol4') )!!}
+                                {!! Form::hidden('idcolor5', '', array ('id' => 'idcol5') )!!}
+                                {!! Form::hidden('idcolor6', '', array ('id' => 'idcol6') )!!}
+
+                                {!! Form::hidden('num1', '', array ('id' => 'numcolor1') )!!}
+                                {!! Form::hidden('num2', '', array ('id' => 'numcolor2') )!!}
+                                {!! Form::hidden('num3', '', array ('id' => 'numcolor3') )!!}
+                                {!! Form::hidden('num4', '', array ('id' => 'numcolor4') )!!}
+                                {!! Form::hidden('num5', '', array ('id' => 'numcolor5') )!!}
+                                {!! Form::hidden('num6', '', array ('id' => 'numcolor6') )!!}
                               </div>
                               <div class="col-md-3">
                                  {!! Form::label('Color:')!!}
@@ -333,7 +353,7 @@
                         <div class="col-md-3">
                            {!! Form::label('Volumen:')!!} 
                            {!! Form::text('vol1', null,['id' => 'vol1', 'class'=>'form-control'])!!} 
-                           {!! Form::hidden('numero2', 'secret', array ('id' => 'num2') )!!}
+                           {!! Form::hidden('numero2', 'secret', array ('id' => 'numrubro2') )!!}
                         </div>
                         <div class="col-md-3">
                            {!! Form::label('Costo Unitario:')!!} 
@@ -342,7 +362,7 @@
                         <div class="col-md-3">
                            {!! Form::label('Costo Total:')!!} 
                            {!! Form::text('costot1', null,['id' => 'costotal1', 'class'=>'form-control'])!!} 
-                            {!! Form::hidden('numero3', 'secret', array ('id' => 'num3') )!!}
+                            {!! Form::hidden('numero3', 'secret', array ('id' => 'numrubro3') )!!}
                         </div>
                      </div> 
                      <!-- Separación-->
@@ -710,7 +730,7 @@
          if(tamaño==2){
             $("#materiales").append("<div class='row'></div><hr>");
          }
-         $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='papel" + claseNuEl + "' onChange='papel" + claseNuEl + "Cambio()" + "' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
+         $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='papel" + claseNuEl + "' onBlur='papel" + claseNuEl + "Cambio()" + "' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
          } 
       });
   </script>

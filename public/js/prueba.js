@@ -685,12 +685,10 @@ var id_rubro3 = $('#id_rubro3');
 var materialCalc3 = $ ('#Mat3');
 var costUnit3 = $('#cotunit3');
 var idmat3=$('#idmate3');
-
 function rubro3Cambio(){ 
     var valMat3 = $('#id_rubro3 option:selected').text();
     var id3 = $('#id_rubro3 option:selected').val();
     materialCalc3.val(valMat3);
-
 	idmat3.val(id3);
     $.ajax({
     	method:"GET",
@@ -754,7 +752,21 @@ $btnCalColor.click(function(){
         console.log($(this));
     });*/
     //recorre los colores del cuerpo
-    $cantPag.each(function(index) {    
+    $cantPag.each(function(index) {
+		aux=index+1;
+		var col=$('#col'+ aux);
+		var num = $('#numcolor'+aux);
+		num.val(aux);
+		console.log(num.val());
+		var color=$('#cant'+aux);
+		col.val(color.val());
+		//console.log(col.val());
+		var idcol = $('#idcol'+aux);
+		idcol.val($colorselect[index].value);
+
+		//console.log(idcol.val());
+		//console.log(idcol.val());
+
         //calculo de cantidad de láminas x color del cuerpo
         totGral += ( ( (parseInt($(this).val())) / format ) * $colorselect[index].value);
         totalxColor=  Math.round(totGral);
@@ -998,13 +1010,22 @@ $btnMostrar.click(function(){
 function volGral(hxm) {         
     volGeneral.val(hxm)
 }
-
 //separación de métodos
-canti2=$('#materiales .material2 #papel2');
 
-function papel2Cambio(){ 
-	var mat2=canti2.val();
-	alert(canti2.val());
-	console.log(mat2);
+function papel2Cambio(){ 	
+	canti2=$('#materiales .material2 #papel2');
+	var mat2=parseInt(canti2.val());
+	var num2=$('#numrubro2');
+
+	num2.val(mat2);
+	console.log(num2.val());
+};
+
+function papel3Cambio(){ 	
+	canti3=$('#materiales .material3 #papel3');
+	var mat3=parseInt(canti3.val());
+	var num3=$('#numrubro3');
+
+	num3.val(mat3);
 };
 //Fín
