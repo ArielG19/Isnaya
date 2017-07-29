@@ -451,12 +451,10 @@
                             {!! Field::text('',['id'=>'totLaminas']) !!}
                         </div>
                         <div class="col-md-3">
-<<<<<<< HEAD
                            {{--!! Field::text('Tintas offset:') !!--}}
-=======
                             <label for="">Tintas offset:</label>
                            {!! Field::text('',['id' => 'TintasOffset']) !!}
->>>>>>> 7cbc38441054a85ddd216c83e28d956f254acbda
+
                         </div>
                      </div>
                      <!-- Boton de navegación -->

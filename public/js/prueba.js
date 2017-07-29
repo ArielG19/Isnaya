@@ -1000,11 +1000,10 @@ function volGral(hxm) {
 }
 
 //separación de métodos
-canti2=$('#materiales .material2 #papel2');
 
 function papel2Cambio(){ 
-	var mat2=canti2.val();
-	alert(canti2.val());
-	console.log(mat2);
+	canti2=$('#materiales .material2 #papel2');
+ 	var cant3 = canti2.val();
+	console.log(cant3);
 };
 //Fín
