@@ -634,8 +634,10 @@ id_rubro.on('change', function(){
 	})
     .done(function(data){
         costUnit[0].value = data.costo;
+            //console.log(costUnit);
     });
-});
+
+    });
 
 //separación de métodos
 var id_rubro1 = $('#id_rubro1');
