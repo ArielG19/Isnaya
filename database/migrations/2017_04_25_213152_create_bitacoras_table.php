@@ -19,11 +19,9 @@ class CreateBitacorasTable extends Migration
             $table->date('fecha');
             $table->string('operacion');
             $table->integer('id_usuario')->unsigned();
-            $table->integer('id_proforma')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_proforma')->references('id')->on('proformas');
         });
     }
 

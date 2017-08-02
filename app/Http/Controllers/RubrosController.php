@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rubro;
+use \App\Bitacora;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,18 +44,27 @@ class RubrosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {      
          if($request->ajax()){
             $rubros = Rubro::create($request->all());
             //si no hay error entonces
             if($rubros){
                 Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
+                    /*$bitacora= new Bitacora();
+                    $bitacora->tabla="Rubro";
+                    $bitacora->fecha=new Date();
+                    $bitacora->operaciion="Agregar";
+                    $bitacora->id_usuario=Auth::User()->id;
+
+                    $bitacora->save();*/
+
             }else{
                 return response()->json(['success'=>'false']);
             }
         }   
-    }
+        
+    } 
 
     /**
      * Display the specified resource.

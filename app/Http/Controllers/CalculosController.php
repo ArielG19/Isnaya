@@ -11,6 +11,7 @@ use \App\Formato;
 use \App\Proforma;
 use \App\Proforma_Color;
 use \App\Proforma_Rubro;
+use \App\Bitacora;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Sesion;
@@ -24,7 +25,6 @@ class CalculosController extends Controller
      */
     public function index()
     {
-  
         $clientes= DB::table('clientes')->get();
 
         $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
