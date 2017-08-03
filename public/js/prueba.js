@@ -363,6 +363,7 @@ $("#myModalProducto").on("hidden.bs.modal", function(){
 	$("#message-errorProducto").fadeOut();
 });
 //Funcion para guardar producto
+
 $("#addProducto").click(function(event){
 	//recuperamos el valor del input descripcion
   	var descripcion = $("#addDescripcion").val();
@@ -370,7 +371,7 @@ $("#addProducto").click(function(event){
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
   	var route = "productos";
-  	var dataSting = "descripcion="+ descripcion;
+  	var dataSting = "descripcion="+descripcion;
       $.ajax({
      	url:route,
       	headers:{'X-CSRF-TOKEN':token},
@@ -1012,12 +1013,7 @@ function volGral(hxm) {
 }
 //separación de métodos
 
-<<<<<<< HEAD
-function papel2Cambio(){ 
-	canti2=$('#materiales .material2 #papel2');
- 	var cant3 = canti2.val();
-	console.log(cant3);
-=======
+
 function papel2Cambio(){ 	
 	canti2=$('#materiales .material2 #papel2');
 	var mat2=parseInt(canti2.val());
@@ -1033,6 +1029,5 @@ function papel3Cambio(){
 	var num3=$('#numrubro3');
 
 	num3.val(mat3);
->>>>>>> 1af6b898b0ba2f865683dd369ad35f6b9beefd01
 };
 //Fín

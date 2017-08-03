@@ -18,12 +18,13 @@ class Proforma extends Model
     return $this->belongsTo('App\Cliente','id_cliente');
   }
 
+   public function formato()
+  {
+    return $this->belongsTo('App\Formato','id_formato');
+  }
+
   public function user(){
     return $this->belonsgTo(User::class);
-  }
-  public function formato()
-  {
-    return $this->belonsgTo(Formato::class);
   }
 
   public function producto()

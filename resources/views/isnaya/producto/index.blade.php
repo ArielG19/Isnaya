@@ -80,7 +80,7 @@
 		        if(data == ''){
 		       		$("#buscar").empty().text('no hay considencias');
 		        }else{
-		        	$("#buscar").empty().html('<b>Resultados: '+ data["0"].id +'</b>');	
+		        	$("#buscar").empty().html('<b>Resultados: '+data["0"].descripcion +'</b>');	
 		        }
 		      });
 		      

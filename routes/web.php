@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('perfil','UserController@perfil');
 Route::post('perfil','UserController@updatePerfil');
 
+Route::get('reportes','ReporteController@mes');
+
 
 Route::get('pdf','PDFController@index');
 Route::get('/home', 'HomeController@index');
@@ -50,6 +52,7 @@ Route::get('/lisColores','ColorController@listar');
 
 Route::Resource('/proformas', 'ProformasController');
 Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
+Route::get('/listar-detalle/{id}','ProformasController@listarDetalle');
 
 Route::Resource('/bitacora', 'BitacoraController');
 

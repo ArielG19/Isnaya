@@ -54,7 +54,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a id="proformas" href="">Mostrar</a>
+                                <a id="proformas" href="{{url('proformas')}}">Mostrar</a>
                             </li>
                             <li>
                                 <a id="proformas" href="/calculos">Agregar</a>

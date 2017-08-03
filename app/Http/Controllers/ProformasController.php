@@ -8,6 +8,7 @@ use App\User;
 use App\Cliente;
 use App\Formato;
 use App\Producto;
+use DB;
 
 class ProformasController extends Controller
 {
@@ -35,6 +36,21 @@ class ProformasController extends Controller
         return view('isnaya.proformas.listar')->with('proformas',$proformas);    
     }
 
+     public function listarDetalle($id){
+         $proformas = Proforma::FindOrFail($id);
+         $proformas->each(function($proformas){
+            $proformas->cliente;
+            $proformas->producto;
+            $proformas->formato;
+            //dd($proformas->cliente);
+            
+        });
+
+        return view('isnaya.proformas.listarDetalle')->with('proformas',$proformas);
+       
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,13 +59,7 @@ class ProformasController extends Controller
     public function create()
     {
         
-        $user = User::pluck('name','id')->prepend('Seleccione el usuario');
-        $clientes = Cliente::pluck('nombre','id')->prepend('Seleccione el cliente');
-        $formato = Formato::pluck('formato','id')->prepend('Seleccione el formato');
-        $producto = Producto::pluck('descripcion','id')->prepend('Seleccione el producto');
 
-        return view('isnaya.proformas.create')->with('user',$user)->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto);
-        //->with('proforma',$proforma);
     }
 
     /**
@@ -60,17 +70,7 @@ class ProformasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-          if($request->ajax()){
-            $proformas = Proforma::create($request->all());
-            //si no hay error entonces
-            if($proformas){
-                //Session::flash('save','Se ha creado correctamente');
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
-            }
-        }
+       
     }
 
     /**
@@ -82,6 +82,8 @@ class ProformasController extends Controller
     public function show($id)
     {
         //
+        $detalle = Proforma::where('solicitante', $id)->get();
+        return response()->json($detalle);
     }
 
     /**
@@ -93,6 +95,10 @@ class ProformasController extends Controller
     public function edit($id)
     {
         //
+        $proformas = Proforma::FindOrFail($id);
+            //devolvemos una respuesta atravez de json
+            return response()->json($proformas);
+            
     }
 
     /**

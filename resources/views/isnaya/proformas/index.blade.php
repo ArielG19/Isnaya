@@ -47,7 +47,7 @@
 
 								<div class="col-md-4">
 									<p class="navbar-text navbar-right" style="margin-top:17px;">
-										<a class="btn btn-info btn-cian" href="#" data-toggle='modal' data-target='#myModalCreateProd' style="margin-bottom:20px; margin-left: 10px; padding: 6px 10px;">
+										<a class="btn btn-info btn-cian" href="/calculos" style="margin-bottom:20px; margin-left: 10px; padding: 6px 10px;">
 					 						<span>Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></span>
               							</a>
 									</p>
@@ -62,7 +62,6 @@
 
 	</div>
 </div>
-@include('isnaya.Proformas.modalCreateProforma')
 @include('isnaya.Proformas.modalDetalles')
 
 
@@ -70,12 +69,13 @@
 	<script>
 		$(document).ready(function(){
 		listarProforma();
+		//listarDetalle();
 		});
 		//creamos una funcion para listar atravez de ajax
 		var listarProforma = function(){
 			$.ajax({
 				type:'get',
-				url:'{{url('listar-proformas')}}',
+				url:'/listar-proformas',
 				success: function(data){
 					$('#listar-proformas').empty().html(data);
 				}
@@ -83,23 +83,24 @@
 			});
 		}
 
-		//creamos la paginacion usando ajax
-		//dentro del documento se produce un click en la clase pagination
-		$(document).on("click",".pagination li a",function(e){
-			//se produce un evento
-			e.preventDefault();
-			var url = $(this).attr("href");
+	
+
+		//btnDetalle = $("#btn-detalle");
+		function MostrarProforma(id){
+			var route = "proformas/"+id+"/edit";
+			$.get(route, function(data){
+				console.log(id);
+			});
 
 			$.ajax({
 				type:'get',
-				url:url,
-				success:function(data){ //data contiene toda la informacion generada
-					$("#listar-proformas").empty().html(data);
+				url:"/listar-detalle/"+id,
+				success: function(data){
+					$('#listar-detalle').empty().html(data);
 				}
 
 			});
-
-		});
+		}	
 	</script>
 @endsection
 @endsection
