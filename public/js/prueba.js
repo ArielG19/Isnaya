@@ -363,6 +363,7 @@ $("#myModalProducto").on("hidden.bs.modal", function(){
 	$("#message-errorProducto").fadeOut();
 });
 //Funcion para guardar producto
+
 $("#addProducto").click(function(event){
 	//recuperamos el valor del input descripcion
   	var descripcion = $("#addDescripcion").val();
@@ -370,7 +371,7 @@ $("#addProducto").click(function(event){
   	var token = $("input[name=_token]").val();
   	//la ruta donde se envia la informacion del formulario
   	var route = "productos";
-  	var dataSting = "descripcion="+ descripcion;
+  	var dataSting = "descripcion="+descripcion;
       $.ajax({
      	url:route,
       	headers:{'X-CSRF-TOKEN':token},
@@ -634,10 +635,8 @@ id_rubro.on('change', function(){
 	})
     .done(function(data){
         costUnit[0].value = data.costo;
-            //console.log(costUnit);
     });
-
-    });
+});
 
 //separación de métodos
 var id_rubro1 = $('#id_rubro1');
@@ -1013,6 +1012,7 @@ function volGral(hxm) {
     volGeneral.val(hxm)
 }
 //separación de métodos
+
 
 function papel2Cambio(){ 	
 	canti2=$('#materiales .material2 #papel2');

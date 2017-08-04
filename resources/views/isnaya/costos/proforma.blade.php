@@ -471,8 +471,10 @@
                             {!! Field::text('',['id'=>'totLaminas']) !!}
                         </div>
                         <div class="col-md-3">
+                           {{--!! Field::text('Tintas offset:') !!--}}
                             <label for="">Tintas offset:</label>
                            {!! Field::text('',['id' => 'TintasOffset']) !!}
+
                         </div>
                      </div>
                      <!-- Boton de navegación -->

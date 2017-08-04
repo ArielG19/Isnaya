@@ -179,9 +179,11 @@ class CalculosController extends Controller
             $proformaColor6->save();
         }
 
-        $valores = $request->all(); 
+        /*$valores = $request->all(); 
         return $valores;
-        return "listo!!";
+        return "listo!!";*/
+        return redirect()->route('proformas.index');
+        
     }
 
     /**

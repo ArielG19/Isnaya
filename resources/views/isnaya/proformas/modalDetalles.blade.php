@@ -9,12 +9,10 @@
 			</div>
 
 			<div class="modal-body">
-				jhjh
-
+				<div id="listar-detalle"></div>
 			</div>
 
 			<div class="modal-footer">
-				{!!link_to('#',$title ='Guardar',$attributes= ['id'=>'addProducto','class'=>'btn btn-info btn-cian'],$secure = null)!!}
 			</div>		
 		</div>
 	</div>

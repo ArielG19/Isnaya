@@ -22,9 +22,9 @@
 											<span class="label label-danger">{{$proforma->estado}}</span>
 										@endif										
 									</td>
-									<td>Total</td>
+									<td>{{$proforma->total}}</td>
            							<td>
-           								<a class="btn btn-info" href="#" data-toggle='modal' data-target='#myModalDetalles' style ="margin-right: 8px;">
+           								<a id="btn-detalle" class="btn btn-info" href="#" Onclick=' MostrarProforma({{$proforma->id}});' data-toggle='modal' data-target='#myModalDetalles' style ="margin-right: 8px;">
               								Detalles
               							</a>
 
