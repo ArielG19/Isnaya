@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Requests\updateProductoRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Producto;
+use \App\Bitacora;
 use Session;
 
 class ProductoController extends Controller
@@ -58,6 +60,15 @@ class ProductoController extends Controller
         //verificamos si viene atravez de ajax
         if($request->ajax()){
             $product = Producto::create($request->all());
+
+            $bitacora= new Bitacora();
+            $idtabla=$product->id;
+            $bitacora->tabla="Producto";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Agregó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
             //si no hay error entonces
             if($product){
                 Session::flash('save','Se ha creado correctamente');
@@ -113,6 +124,15 @@ class ProductoController extends Controller
             $productos = Producto::FindOrFail($id);
             $input = $request->all();
             $resultado = $productos->fill($input)->save();
+
+            $bitacora= new Bitacora();
+            $idtabla=$productos->id;
+            $bitacora->tabla="Productos";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Actualizó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);

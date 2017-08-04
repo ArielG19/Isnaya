@@ -75,6 +75,14 @@ class CalculosController extends Controller
         $proforma->id_usuario=Auth::User()->id;
         $proforma->save();      
         $idproforma=$proforma->id;
+
+        $bitacora= new Bitacora();
+
+        $bitacora->tabla="Proforma";
+        $bitacora->id_tabla=$idproforma;
+        $bitacora->operacion="Agregó";
+        $bitacora->id_usuario=Auth::User()->id;
+        $bitacora->save();
   
         $proformaRubro= new Proforma_Rubro();
         $proformaRubro1= new Proforma_Rubro();

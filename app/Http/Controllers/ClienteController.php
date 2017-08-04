@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \App\Cliente;
+use \App\Bitacora;
 use Sesion;
 
 class ClienteController extends Controller
@@ -44,6 +46,15 @@ class ClienteController extends Controller
     {
          if($request->ajax()){
             $clientes = Cliente::create($request->all());
+            
+            $bitacora= new Bitacora();
+            $idtabla=$clientes->id;
+            $bitacora->tabla="Cliente";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Agregó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
             //si no hay error entonces
             if($clientes){
                 //Session::flash('save','Se ha creado correctamente');
@@ -92,6 +103,15 @@ class ClienteController extends Controller
             $clientes=Cliente::FindOrFail($id);
             $input = $request->all();
             $resultado = $clientes->fill($input)->save();
+
+            $bitacora= new Bitacora();
+            $idtabla=$clientes->id;
+            $bitacora->tabla="Cliente";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Actualizó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);

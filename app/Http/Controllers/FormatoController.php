@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormatoRequest;
 use App\Http\Requests\updateFormatoRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Formato;
+use App\Bitacora;
 
 class FormatoController extends Controller
 {
@@ -48,6 +50,15 @@ class FormatoController extends Controller
         //
         if($request->ajax()){
             $formato = Formato::create($request->all());
+
+            $bitacora= new Bitacora();
+            $idtabla=$formato->id;
+            $bitacora->tabla="Formatos";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Agregó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
             //si no hay error entonces
             if($formato){
                 //Session::flash('save','Se ha creado correctamente');
@@ -99,6 +110,15 @@ class FormatoController extends Controller
             //en input amacenamos toda la info del request
             $input = $request->all();
             $resultado = $formatos->fill($input)->save();
+
+            $bitacora= new Bitacora();
+            $idtabla=$formato->id;
+            $bitacora->tabla="Formatos";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Actualizó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);

@@ -17,7 +17,6 @@
                                     <br><br>
                                     
                                     @if($user->type =="admin")
-<<<<<<< HEAD
                                           <img src="/imagenes/perfil/tipo/admin.png"  class="img-responsive"
                                           style="float: left;border-radius: 5%;">
                                     @else
@@ -26,20 +25,7 @@
                                     @endif
                             </div>
                             <div class="col-md-6" style="padding-left:50px;border-left: 4px solid #9E9E9E;">
-                                   <img src="/imagenes/perfil/{{$user->imagen}}" class="img-responsive"
-                                         style="float: left;border-radius: 5%;">
-=======
-                                          <img src="/imagenes/perfil/tipo/bleach.jpg" 
-                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
-                                    @else
-                                          <img src="/imagenes/perfil/tipo/hollow.jpg" 
-                                          style="width: 300px; height: 300px; float: left;border-radius: 5%; margin-right: 25px;">
-                                    @endif
-                            </div>
-                            <div class="col-md-6" style="padding-left:50px;border-left: 4px solid #9E9E9E;">
-                                   <img src="/imagenes/perfil/{{$user->imagen}}" 
-                                         style="width: 400px; height: 400px; float: left;border-radius: 5%; margin-right: 25px;">
->>>>>>> 78a842b363c5d00bf787af3815cca38272718918
+                                   <img src="/imagenes/perfil/{{$user->imagen}}" class="img-responsive" style="float: left;border-radius: 5%;">
                                    <form enctype="multipart/form-data" action="/perfil" method="POST">
                                         <h3><label for="">Actualizar imagen de perfil</label></h3>
                                         <input type="file" name="imagen">
@@ -47,7 +33,6 @@
                                         <hr style="border-top: 4px solid #9E9E9E;">
                                         <input type="submit" value="Actualizar" class="pull-right btn btn-sm btn-info">
                                     </form>
-
                             </div>
                         </div>
                     </div>

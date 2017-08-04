@@ -45,25 +45,25 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {      
-         if($request->ajax()){
+        if($request->ajax()){
             $rubros = Rubro::create($request->all());
+                $bitacora= new Bitacora();
+                $idtabla=$rubros->id;
+                $bitacora->tabla="Rubro";
+                $bitacora->id_tabla=$idtabla;
+                $bitacora->operacion="Agregó";
+                $bitacora->id_usuario=Auth::User()->id;
+
+                $bitacora->save();
             //si no hay error entonces
             if($rubros){
                 Session::flash('save','Se ha creado correctamente');
                 return response()->json(['success'=>'true']);
-                    /*$bitacora= new Bitacora();
-                    $bitacora->tabla="Rubro";
-                    $bitacora->fecha=new Date();
-                    $bitacora->operaciion="Agregar";
-                    $bitacora->id_usuario=Auth::User()->id;
-
-                    $bitacora->save();*/
 
             }else{
                 return response()->json(['success'=>'false']);
             }
-        }   
-        
+        }        
     } 
 
     /**
@@ -106,6 +106,15 @@ class RubrosController extends Controller
             $rubro=Rubro::FindOrFail($id);
             $input = $request->all();
             $resultado = $rubro->fill($input)->save();
+            
+            $bitacora= new Bitacora();
+            $idtabla=$rubros->id;
+            $bitacora->tabla="Rubro";
+            $bitacora->id_tabla=$idtabla;
+            $bitacora->operacion="Actualizó";
+            $bitacora->id_usuario=Auth::User()->id;
+
+            $bitacora->save();
 
             if($resultado){
                 return response()->json(['success'=>'true']);
