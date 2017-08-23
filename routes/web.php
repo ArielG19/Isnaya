@@ -21,7 +21,10 @@ Auth::routes();
 Route::get('perfil','UserController@perfil');
 Route::post('perfil','UserController@updatePerfil');
 
-Route::get('reportes','ReporteController@mes');
+Route::get('reportes','ReporteController@index');
+Route::get('listar-reportes','ReporteController@listarCliente');
+Route::get('reportes-fecha','ReporteController@listarFecha');
+
 
 
 Route::get('pdf','PDFController@index');
