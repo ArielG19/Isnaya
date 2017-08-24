@@ -17,7 +17,7 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = Cliente::Search($request->nombre)->Orderby('id','ASC')->paginate(5);
+        $clientes = Cliente::Search($request->nombre)->Orderby('id','ASC')->paginate(10);
         return view('isnaya.clientes.index')->with('clientes',$clientes);
     }
     public function listar()

@@ -40,7 +40,8 @@ class CalculosController extends Controller
         //echo($MOFot);
         //return $rubros; //response()->json($rubros);
         //return $MOImpOff;
-        return view('isnaya.costos.proforma')->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto)->with('rubros',$rubros)->with('colores',$colores)->with('lamina',$lamina)->with('MOFot',$MOFot)->with('MOImpOff',$MOImpOff);
+        return view('isnaya.costos.proforma')->with('clientes',$clientes)->with('formato',$formato)->with('producto',$producto)
+        ->with('rubros',$rubros)->with('colores',$colores)->with('lamina',$lamina)->with('MOFot',$MOFot)->with('MOImpOff',$MOImpOff);
     }
 
     /**
@@ -62,15 +63,9 @@ class CalculosController extends Controller
 
     public function store(Request $request)
     {
-        //$name = $request->solicitante;
-       /* 
-        $valores = $request->all(); 
-        return $valores;
-        $valores = $request->all();
-        return $valores; 
-        $valores = $request->all();
-        $proforma->id_usuario= Auth::User()->id;*/ 
-
+      /*  $valores = $request->all(); 
+        return $valores;*/
+        
         $proforma= new Proforma($request->all());
         $proforma->id_usuario=Auth::User()->id;
         $proforma->save();      
@@ -85,22 +80,36 @@ class CalculosController extends Controller
         $bitacora->save();
   
         $proformaRubro= new Proforma_Rubro();
+        $proformaRubro0= new Proforma_Rubro();
         $proformaRubro1= new Proforma_Rubro();
         $proformaRubro2= new Proforma_Rubro();
-        if ($request ['Mat1']) {
-            $proformaRubro->costo=$request['costot1'];
-            $proformaRubro->volumen=$request['vol1'];
-            $proformaRubro->numero=$request['numero'];
-            $proformaRubro->pag_unit=$request['pag_unit1'];
-            $proformaRubro->id_rubro=$request['idMat1'];
-            $proformaRubro->id_proforma=$idproforma;
+        if ($request ['Mat0']) {
+            $proformaRubro0->costo=$request['costot0'];
+            $proformaRubro0->volumen=$request['vol0'];
+            $proformaRubro0->cantRubro=$request['numero1'];
+            $proformaRubro0->numpapel=0;
+            $proformaRubro0->pag_unit=$request['pag_unit'];
+            $proformaRubro0->id_rubro=$request['idMat0'];
+            $proformaRubro0->id_proforma=$idproforma;
 
-            $proformaRubro->save();
+            $proformaRubro0->save();
 
+            if($request['Mat1']){
+                $proformaRubro->costo=$request['costot1'];
+                $proformaRubro->volumen=$request['vol1'];
+                $proformaRubro->cantRubro=$request['numero'];
+                $proformaRubro->numpapel=1;
+                $proformaRubro->pag_unit=$request['pag_unit1'];
+                $proformaRubro->id_rubro=$request['idMat1'];
+                $proformaRubro->id_proforma=$idproforma;
+
+                $proformaRubro->save();
+            }
             if ($request ['Mat2']) {
                 $proformaRubro1->costo=$request['costot2'];
                 $proformaRubro1->volumen=$request['vol2'];
-                $proformaRubro1->numero=$request['numero2'];
+                $proformaRubro1->cantRubro=$request['numero2'];
+                $proformaRubro1->numpapel=2;
                 $proformaRubro1->pag_unit=$request['pag_unit2'];
                 $proformaRubro1->id_rubro=$request['idMat2'];
                 $proformaRubro1->id_proforma=$idproforma;
@@ -110,7 +119,8 @@ class CalculosController extends Controller
                 if ($request ['Mat3']) {
                     $proformaRubro2->costo=$request['costot3'];
                     $proformaRubro2->volumen=$request['vol3'];
-                    $proformaRubro2->numero=$request['numero3'];
+                    $proformaRubro2->cantRubro=$request['numero3'];
+                    $proformaRubro2->numpapel=3;
                     $proformaRubro2->pag_unit=$request['pag_unit3'];
                     $proformaRubro2->id_rubro=$request['idMat3'];
                     $proformaRubro2->id_proforma=$idproforma;
@@ -118,6 +128,15 @@ class CalculosController extends Controller
                     $proformaRubro2->save();
                 }
             }
+        }
+        $proformaColorp = new Proforma_Color();
+        if($request['idcolor0']){
+            $proformaColorp->cantidad = $request['color0'];
+            $proformaColorp->numero = $request['num0'];
+            $proformaColorp->id_proforma = $idproforma;
+            $proformaColorp->id_color = $request['idcolor0'];
+ 
+            $proformaColorp->save();
         }
         $proformaColor = new Proforma_Color();
         if($request['num1']){
@@ -180,8 +199,8 @@ class CalculosController extends Controller
         }
 
         /*$valores = $request->all(); 
-        return $valores;
-        return "listo!!";*/
+        return $valores;*/
+        
         return redirect()->route('proformas.index');
         
     }
@@ -205,7 +224,104 @@ class CalculosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proformas = Proforma::FindOrFail($id);
+        $proformas->each(function($proformas){
+            $proformas->cliente;
+            $proformas->producto;
+            $proformas->formato;
+            $proformas->rubro;
+            //dd($proformas->cliente);
+        });
+
+        $clientes= DB::table('clientes')->get();
+        $productos = DB::table('productos')->get();
+        $formato = DB::table('formatos')->get();
+        $colores = DB::table('colores')->orderBy('color', 'asc')->get();
+        $rubros= DB::table('rubros')->where('tipo','Papel')->get();
+        $lamina= DB::table('rubros')->where('descripcion','Lámina')->get();
+        //return response()->json($proformas);
+        //consultas para enviar los diferentes rubros de la app para editar
+        $rub0 = DB::table('rubros')
+            ->join('proforma__rubros', 'rubros.id', '=', 'proforma__rubros.id_rubro')
+            ->join('proformas', 'proforma__rubros.id_proforma', '=', 'proformas.id')
+            ->where('numpapel','0')
+            ->select('rubros.*','proforma__rubros.cantRubro')
+            ->get();
+            
+        $rub1= DB::table('rubros')
+            ->join('proforma__rubros', 'rubros.id', '=', 'proforma__rubros.id_rubro')
+            ->join('proformas', 'proforma__rubros.id_proforma', '=', 'proformas.id')
+            ->where('numpapel','1')
+            ->select('rubros.*','proforma__rubros.cantRubro')
+            ->get();
+
+        $rub2= DB::table('rubros')
+            ->join('proforma__rubros', 'rubros.id', '=', 'proforma__rubros.id_rubro')
+            ->join('proformas', 'proforma__rubros.id_proforma', '=', 'proformas.id')
+            ->where('numpapel','2')
+            ->select('rubros.*','proforma__rubros.cantRubro')
+            ->get();
+
+        $rub3= DB::table('rubros')
+            ->join('proforma__rubros', 'rubros.id', '=', 'proforma__rubros.id_rubro')
+            ->join('proformas', 'proforma__rubros.id_proforma', '=', 'proformas.id')
+            ->where('numpapel','3')
+            ->select('rubros.*','proforma__rubros.cantRubro')
+            ->get();
+            //dd($rub0);
+        //Fín de consultas consultas
+        $col0 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','0')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+    
+        $col1 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','1')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+        $col2 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','2')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+         $col3 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','3')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+        $col4 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','4')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+        $col5 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','5')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+        
+        $col6 = DB::table('colores')
+            ->join('proforma__colores', 'colores.id', '=', 'proforma__colores.id_color')
+            ->join('proformas', 'proforma__colores.id_proforma', '=', 'proformas.id')
+            ->where('numero','6')
+            ->select('colores.*','proforma__colores.cantidad')
+            ->get();
+        // $material=Rubro::where('tipo', $tip)->get();
+        $MOFot= DB::table('rubros')->where('descripcion','M. O. Fotomecánica')->get();
+        $MOImpOff= DB::table('rubros')->where('descripcion','M. O. Impresión Offset')->get();
+
+        return view('isnaya.costos.profedit')->with('proformas',$proformas)->with('clientes',$clientes)->with('productos',$productos)
+            ->with('formato',$formato)->with('rubros',$rubros)->with('colores',$colores)->with('rub0',$rub0)->with('rub1',$rub1)
+            ->with('rub2',$rub2)->with('rub3',$rub3)->with('col0',$col0)->with('col1',$col1)->with('col2',$col2)->with('col3',$col3)
+            ->with('col4',$col4)->with('col5',$col5)->with('col6',$col6)->with('lamina',$lamina)->with('MOFot', $MOFot)->with('MOImpOff',$MOImpOff);        
     }
 
     /**
@@ -215,9 +331,148 @@ class CalculosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+        $proforma=Proforma::find($id);
+
+        dd($request);
+
+       /* $proforma->id_usuario=Auth::User()->id;
+        $proforma->save();      
+        $idproforma=$proforma->id;
+
+        $bitacora= new Bitacora();
+
+        $bitacora->tabla="Proforma";
+        $bitacora->id_tabla=$idproforma;
+        $bitacora->operacion="Agregó";
+        $bitacora->id_usuario=Auth::User()->id;
+        $bitacora->save();
+  
+        $proformaRubro= new Proforma_Rubro();
+        $proformaRubro0= new Proforma_Rubro();
+        $proformaRubro1= new Proforma_Rubro();
+        $proformaRubro2= new Proforma_Rubro();
+        if ($request ['Mat0']) {
+            $proformaRubro0->costo=$request['costot0'];
+            $proformaRubro0->volumen=$request['vol0'];
+            $proformaRubro0->cantRubro=$request['numero1'];
+            $proformaRubro0->numpapel=0;
+            $proformaRubro0->pag_unit=$request['pag_unit'];
+            $proformaRubro0->id_rubro=$request['idMat0'];
+            $proformaRubro0->id_proforma=$idproforma;
+
+            $proformaRubro0->save();
+
+            if($request['Mat1']){
+                $proformaRubro->costo=$request['costot1'];
+                $proformaRubro->volumen=$request['vol1'];
+                $proformaRubro->cantRubro=$request['numero'];
+                $proformaRubro->numpapel=1;
+                $proformaRubro->pag_unit=$request['pag_unit1'];
+                $proformaRubro->id_rubro=$request['idMat1'];
+                $proformaRubro->id_proforma=$idproforma;
+
+                $proformaRubro->save();
+            }
+            if ($request ['Mat2']) {
+                $proformaRubro1->costo=$request['costot2'];
+                $proformaRubro1->volumen=$request['vol2'];
+                $proformaRubro1->cantRubro=$request['numero2'];
+                $proformaRubro1->numpapel=2;
+                $proformaRubro1->pag_unit=$request['pag_unit2'];
+                $proformaRubro1->id_rubro=$request['idMat2'];
+                $proformaRubro1->id_proforma=$idproforma;
+               
+                $proformaRubro1->save();
+       
+                if ($request ['Mat3']) {
+                    $proformaRubro2->costo=$request['costot3'];
+                    $proformaRubro2->volumen=$request['vol3'];
+                    $proformaRubro2->cantRubro=$request['numero3'];
+                    $proformaRubro2->numpapel=3;
+                    $proformaRubro2->pag_unit=$request['pag_unit3'];
+                    $proformaRubro2->id_rubro=$request['idMat3'];
+                    $proformaRubro2->id_proforma=$idproforma;
+ 
+                    $proformaRubro2->save();
+                }
+            }
+        }
+        $proformaColorp = new Proforma_Color();
+        if($request['idcolor0']){
+            $proformaColorp->cantidad = $request['color0'];
+            $proformaColorp->numero = $request['num0'];
+            $proformaColorp->id_proforma = $idproforma;
+            $proformaColorp->id_color = $request['idcolor0'];
+ 
+            $proformaColorp->save();
+        }
+        $proformaColor = new Proforma_Color();
+        if($request['num1']){
+            $proformaColor->cantidad = $request['color1'];
+            $proformaColor->numero = $request['num1'];
+            $proformaColor->id_proforma = $idproforma;
+            $proformaColor->id_color = $request['idcolor1'];
+ 
+            $proformaColor->save();
+        }
+        $proformaColor2 = new Proforma_Color();
+        if(empty($request['num2'])){ 
+        }else{
+            $proformaColor2->cantidad = $request['color2'];
+            $proformaColor2->numero = $request['num2'];
+            $proformaColor2->id_proforma = $idproforma;
+            $proformaColor2->id_color = $request['idcolor2'];
+            
+            $proformaColor2->save();
+        }
+        $proformaColor3 = new Proforma_Color();
+        if(empty($request['num3'])){
+        }else{
+            $proformaColor3->cantidad = $request['color3'];
+            $proformaColor3->numero = $request['num3'];
+            $proformaColor3->id_proforma = $idproforma;
+            $proformaColor3->id_color = $request['idcolor3'];
+
+            $proformaColor3->save();
+        }
+        $proformaColor4 = new Proforma_Color();
+        if(empty($request['num4'])){
+        }else{
+            $proformaColor4->cantidad = $request['color4'];
+            $proformaColor4->numero = $request['num4'];
+            $proformaColor4->id_proforma = $idproforma;
+            $proformaColor4->id_color = $request['idcolor4'];
+
+            $proformaColor4->save();
+        }
+        $proformaColor5 = new Proforma_Color();
+        if(empty($request['num5'])){
+        }else{
+            $proformaColor5->cantidad = $request['color5'];
+            $proformaColor5->numero = $request['num5'];
+            $proformaColor5->id_proforma = $idproforma;
+            $proformaColor5->id_color = $request['idcolor5'];
+
+            $proformaColor5->save();
+        }
+        $proformaColor6 = new Proforma_Color();
+        if(empty($request['num6'])){
+        }else{
+            $proformaColor6->cantidad = $request['color6'];
+            $proformaColor6->numero = $request['num6'];
+            $proformaColor6->id_proforma = $idproforma;
+            $proformaColor6->id_color = $request['idcolor6'];
+
+            $proformaColor6->save();
+        }
+
+        $valores = $request->all(); 
+        return $valores;
+        
+        return redirect()->route('proformas.index');*/
     }
 
     /**

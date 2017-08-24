@@ -17,7 +17,8 @@ class CreateProformaRubrosTable extends Migration
             $table->increments('id');
             $table->double('costo');
             $table->double('volumen');
-            $table->integer('numero');
+            $table->integer('cantRubro');
+            $table->integer('numpapel');
             $table->integer('pag_unit');
             $table->integer('id_rubro')->unsigned();
             $table->integer('id_proforma')->unsigned();

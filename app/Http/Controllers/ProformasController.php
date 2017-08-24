@@ -36,7 +36,7 @@ class ProformasController extends Controller
         return view('isnaya.proformas.listar')->with('proformas',$proformas);    
     }
 
-     public function listarDetalle($id){
+    public function listarDetalle($id){
          $proformas = Proforma::FindOrFail($id);
          $proformas->each(function($proformas){
             $proformas->cliente;

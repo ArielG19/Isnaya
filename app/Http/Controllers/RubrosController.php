@@ -23,7 +23,7 @@ class RubrosController extends Controller
 
     public function listar()
     {
-        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(6);
+        $rubros = Rubro::Orderby('descripcion','ASC')->paginate(10);
         return view('isnaya.rubro.listar')->with('rubros',$rubros);
     }
 

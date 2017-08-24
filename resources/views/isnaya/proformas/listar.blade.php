@@ -22,7 +22,7 @@
 											<span class="label label-danger">{{$proforma->estado}}</span>
 										@endif										
 									</td>
-									<td>{{$proforma->total}}</td>
+									<td>{{$proforma->valor_venta}}</td>
            							<td>
            								<a id="btn-detalle" class="btn btn-info" href="#" Onclick=' MostrarProforma({{$proforma->id}});' data-toggle='modal' data-target='#myModalDetalles' style ="margin-right: 8px;">
               								Detalles
@@ -32,7 +32,7 @@
               								<i class="fa fa-print" aria-hidden="true"> PDF</i>
               							</a>
 
-             							<a class="btn btn-info" href="#" Onclick='MostrarProducto({{$proforma->id}});' data-toggle='modal' data-target='#myModalProducto' style ="margin-right: 8px;">
+             							<a class="btn btn-info" href="calculos/{{$proforma->id}}/edit" style ="margin-right: 8px;">
               								<i class="fa fa-pencil-square-o" aria-hidden="true">  Editar</i>
               							</a>
 

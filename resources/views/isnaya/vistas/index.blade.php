@@ -10,19 +10,6 @@
 
 
 @section('contenido')
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<center><h1>Inicio del sistema de Gestión de Isnaya</h1></center>
 	
 @endsection

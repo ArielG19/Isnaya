@@ -90,14 +90,14 @@
                         </div>
                         <!--separacion de columnas -->
                         <div class="col-md-4">
-                           <br>
-                           <button type="button" class="btn btn-info btn-cian-big btn-responsive" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-top: 9px; margin-bottom:2px;">
-                              Agregar +
-                           </button><br>
-                           <label for="date">Fecha</label>
-                           {!! Form::date('fecha',null,['id'=>'fechaE','class'=>'form-control'])!!}
-                           <label for="date">Fecha Entrega</label>
-                           {!! Form::date('fechaFin',null,['id'=>'fechaE','class'=>'form-control'])!!}
+                            <br>    
+                            <button type="button" class="btn btn-info btn-cian-big btn-responsive" href="#" data-toggle='modal' data-target='#myModalCreate' style="margin-bottom:2px;">
+                                Agregar +
+                            </button><br>
+                            <label for="date">Fecha</label>
+                            {!! Form::date('fecha',null,['id'=>'fechaE','class'=>'form-control'])!!}
+                            <label for="date">Fecha Entrega</label>
+                            {!! Form::date('fechaFin',null,['id'=>'fechaE','class'=>'form-control'])!!}
                         </div>
                      </div>
                   </div>
@@ -179,7 +179,6 @@
                            <span id="btn-add" class="btn btn-info btn-cian">
                               Agregar +
                            </span>
-                           
                         </div>
                         <div class="col-md-3">
                            <span class="btn btn-info btn-cian" id="mostrar1">Calcular</span>

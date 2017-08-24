@@ -12,7 +12,10 @@ hr{
 	border-top: 1px solid #B4B4B4;
 	width: 100%;
 }
-
+.btn-cal{
+	margin-left: 10px;
+	margin-top: 30px;
+}
 .btn-siguiente{
 	margin-top:25px;
 	margin-bottom: 15px;
@@ -31,18 +34,20 @@ hr{
 }
 /*Botones del sistema de isnaya*/
 .btn-yellow{
-	background-color: #F3E43E;
+	background-color: #F1DF18;
 	width: 90px;
 	color:#4D4D4D;
 }
 .btn-yellow-big{
-	background-color: #F3E43E;
+	background-color: #F1DF18;
 	border-color:  #F3E43E;
 	color:#4D4D4D;
 	width: 60%;
 }
-.btn-yellow: focus, .btn-yellow-big:focus{
-	
+.btn-yellow-big:focus, .btn-yellow-big:hover{
+	background-color: #E9DC56;
+	border-color:  #F2E017;
+	color: #484848;
 }
 .btn-cian{
 	background-color: #00AFEA;
@@ -58,10 +63,15 @@ hr{
 
 .btn-cian-login{
 	background-color: #00AFEA;
-	width: 50%;
 	border-color: transparent;
+	width: 60%;
 }
 
+.btn-cian-login:hover,
+.btn-cian-login:focus{
+	background-color: #3AC4F3;
+	border-color: transparent;
+}
 .btn-cian-small{
 	background-color: #00AFEA;
 	width: 40px;
@@ -79,10 +89,11 @@ hr{
 .btn-magenta-small{
 	background-color: #ED5F66;
 	width: 40px;
+	height: 35px;
 	color:#F4EFEF;
 }
 .btn-magenta-big{
-	background-color: #ED5F66;
+	background-color: #EA38A7;
 	border-color:  #EF5EB8;
 	color:#F4EFEF;
 	width: 60%;
@@ -90,7 +101,7 @@ hr{
 .btn-magenta:focus, .btn-magenta-big:focus, .btn-magenta-small:focus,
 .btn-magenta:hover,.btn-magenta-big:hover,.btn-magenta-small:hover{
 	border-color: #DA329A;
-	background-color: #F3777D;
+	background-color: #FF5ACE;
 }
 
 /*Fin de Botones del sistema de isnaya*/
@@ -109,7 +120,11 @@ hr{
 	border-top: 10px solid #00AFEA;
 }
 .log-container{
-	margin-top: 50px;
+	margin-top: 70px;
+	
+}
+#logo{
+	margin-left: 5px;
 }
 /*Inicio de diseño de los modales del sistema de isnaya*/
 .mod-yellow{
@@ -129,6 +144,8 @@ hr{
 	background-color: #fff;
     border-color: transparent;
     box-shadow: rgba(0,0,0,0.2) 5px 5px 20px;
+	padding-top: 12px;
+    padding-bottom: 12px;
 }
 .pestania{
 	border: 1px solid #D9D7D7;
@@ -157,14 +174,21 @@ hr{
 }*/
 .linea{
 	margin-top: 0px;
+	margin-left: 10px;
+}
+#email{
+	margin-left: 15px;
 }
 #email:focus{
 	outline: 0px;
 }
+.iva{
+	margin: 12px 7px 12px 22px!important
+}
 #password{
 	outline: 0px;
-    /*border-bottom: 1px solid #727070;*/
     border-radius: 0px;
+	margin-left: -5px;
 }
 #sizing-addon1
 {
@@ -174,17 +198,12 @@ hr{
 	border-radius: 0px;
 }
 
-#field_fecha:
-{
-	margin-bottom: 2px !important;
-}
 .tit-cal{
 	font-weight: bold;
 	font-style: italic;
 	font-size: 16px;
 	margin-left: 20px;
 }
-
 #inicio1{	
 	border: 1px solid #D9D7D7;
 	border-top: 7px solid #F3E43E;
@@ -194,6 +213,18 @@ hr{
 	border-top: 7px solid #EF5EB8;
 }
 
+@media (min-width: 900px) {
+	#inicio1{	
+		margin-left: -60px;
+	}
+	#inicio2{
+		margin-left: 60px;
+	}
+}
+/*Este es el contenedor de las ilustraciones de inicio*/
+#contenedorPrincipal{
+	margin-top: 70px !important;
+}
 /*Estilos para productos*/
 th#opc{
 	padding-left: 560px;
@@ -231,7 +262,6 @@ a#imprimir{
 	border-top: 7px solid #EF5EB8;
 
 }
-
 /*Formatos*/
 th#thop{
 	padding-left: 500px;
@@ -241,16 +271,18 @@ th#thop{
 td#tdop{
 	padding-left: 500px;
 }
-
+/* Dropdown del menu */
 a#funciones:hover{
-		border-left: 5px solid #F3E43E;
-		color: #00AFEA;
-		
+	border-left: 5px solid #F3E43E;
+	color: #00AFEA;	
 }
 a#proformas:hover{
-		border-left: 5px solid #EF5EB8;
-		color: #00AFEA;
-		
+	border-left: 5px solid #EF5EB8;
+	color: #00AFEA;	
+}
+a#usuario:hover{
+	border-left: 5px solid #00AFEA;
+	color: #00AFEA;
 }
 
 .mat-cuerpo
@@ -287,4 +319,15 @@ border-bottom: 2px solid #9E9E9E;
 }
 #perfil-name{
 font-size: 18px;
+}
+
+.footer{
+	color: #4D4D4D;
+	font-size: 16px;
+	font-style: italic;
+	margin-top: 145px;
+	margin-left: 10px;
+}
+#foot{
+	margin-left: 75px;
 }

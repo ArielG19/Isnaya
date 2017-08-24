@@ -21,7 +21,7 @@ class ProductoController extends Controller
     {
         //
         //dd($request->get('descripcion'));
-        $productos = Producto::Search($request->get('descripcion'))->Orderby('descripcion','ASC')->paginate(4);
+        $productos = Producto::Search($request->get('descripcion'))->Orderby('descripcion','ASC')->paginate(10);
         return view('isnaya.producto.index')->with('productos',$productos);
     }
 

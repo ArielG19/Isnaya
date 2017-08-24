@@ -8,7 +8,7 @@ class Proforma_Rubro extends Model
 {
     protected $table='proforma__rubros';
 
-    protected $fillable=['id','costo','volumen','numero','pag_unit','id_rubro','id_proforma'];
+    protected $fillable=['id','costo','volumen','cantRubro','numpapel','pag_unit','id_rubro','id_proforma'];
     
     public function proforma(){
         return $this->hasMany(Proforma::class);

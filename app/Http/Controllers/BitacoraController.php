@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Bitacora;
+use App\Bitacora;
+use App\User;
+use DB;
 
 class BitacoraController extends Controller
 {
@@ -14,7 +16,17 @@ class BitacoraController extends Controller
      */
     public function index()
     {
-        //
+        return view('isnaya.bitacora.index');
+    }
+
+    public function listarBitacora(){
+        $bitacoras = Bitacora::Orderby('tabla','ASC')->paginate(10);
+
+        $bitacoras->each(function($bitacoras){
+                $bitacoras->user;
+        });
+        
+        return view('isnaya.bitacora.listar')->with('bitacoras',$bitacoras);    
     }
 
     /**

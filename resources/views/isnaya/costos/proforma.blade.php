@@ -112,8 +112,8 @@
                            {!! Form::select('id_producto',$producto,null,['id'=>'id_producto','class'=>'form-control'])!!}<br>
                            {!! Form::label('Formato:')!!} <br>
                            {!! Form::select('id_formato',$formato,null,['id'=>'id_formats','class'=>'form-control'])!!}
-                           {!! Field::checkbox('Formato Personalizado:','1')!!}
-                           {!! Field::text(null,['placeholder'=>'Ingrese el formato personalizado','id' => 'formatopers'])!!}
+                           {!! Field::checkbox('Formato Personalizado:','1',['class'=>'fpercheck'])!!}
+                           {!! Field::text(null,['placeholder'=>'Ingrese el formato personalizado','id' => 'formatopers','class'=>'fpertxt','disabled'])!!}
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Volumen:')!!} 
@@ -148,7 +148,7 @@
                      <div class="row">
                         <div class="col-md-4">
                            {!! Form::label('Nº Páginas:')!!}
-                           {!! Form::text('numero1', null,['id'=>'papelPort','placeholder'=>'Nº de Páginas','class'=>'form-control']) !!}
+                           {!! Form::text('numero', null,['id'=>'papelPort','placeholder'=>'Nº de Páginas','class'=>'form-control']) !!}
                         </div>
                         <div class="col-md-4">
                            {!! Form::label('Material:')!!} 
@@ -188,20 +188,20 @@
 
                      <div class="row mat-cuerpo">
                         <ul id="materiales" class="col-md-12 mat">
-                           <li class="material material1">
-                              <div class="col-md-3">
-                                 {!! Form::label('Nº Páginas:')!!}
-                                 {!! Form::text('numero', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
-                              </div>
-                              <div class="col-md-3">
-                                 {!! Form::label('Material 1:')!!}
-                                 <select id="id_rubro1" class="form-control">
-                                    @foreach($rubros as $rubro)
-                                       <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </li>
+                            <li class="material material1">
+                                <div class="col-md-3">
+                                    {!! Form::label('Nº Páginas:')!!}
+                                    {!! Form::text('numero1', null,['id'=>'cantPapel1','placeholder'=>'Nº de Páginas','class'=>'form-control este-material'])!!}
+                                </div>
+                                <div class="col-md-3">
+                                    {!! Form::label('Material 1:')!!}
+                                    <select id="id_rubro1" class="form-control">
+                                        @foreach($rubros as $rubro)
+                                            <option value="{{ $rubro->id }}">{{ $rubro->descripcion }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </li>
                         </ul> 
                      </div>
                      <!-- Fín de materiales -->
@@ -230,6 +230,8 @@
                               <div class="col-md-3">
                                  {!! Form::label('Nº Páginas:')!!}
                                  {!! Form::text('', null,['id'=>'cant1','placeholder'=>'Nº de Páginas','class'=>'form-control este-color'])!!}
+                                 
+                                 {!! Form::hidden('color0', '', array ('id' => 'col0') )!!}
                                  {!! Form::hidden('color1', '', array ('id' => 'col1') )!!}
                                  {!! Form::hidden('color2', '', array ('id' => 'col2') )!!}
                                  {!! Form::hidden('color3', '', array ('id' => 'col3') )!!}
@@ -237,6 +239,7 @@
                                  {!! Form::hidden('color5', '', array ('id' => 'col5') )!!}
                                  {!! Form::hidden('color6', '', array ('id' => 'col6') )!!}
 
+                                {!! Form::hidden('idcolor0', '', array ('id' => 'idcol0') )!!}
                                 {!! Form::hidden('idcolor1', '', array ('id' => 'idcol1') )!!}
                                 {!! Form::hidden('idcolor2', '', array ('id' => 'idcol2') )!!}
                                 {!! Form::hidden('idcolor3', '', array ('id' => 'idcol3') )!!}
@@ -244,6 +247,7 @@
                                 {!! Form::hidden('idcolor5', '', array ('id' => 'idcol5') )!!}
                                 {!! Form::hidden('idcolor6', '', array ('id' => 'idcol6') )!!}
 
+                                {!! Form::hidden('num0', '', array ('id' => 'numcolor0') )!!}
                                 {!! Form::hidden('num1', '', array ('id' => 'numcolor1') )!!}
                                 {!! Form::hidden('num2', '', array ('id' => 'numcolor2') )!!}
                                 {!! Form::hidden('num3', '', array ('id' => 'numcolor3') )!!}
@@ -651,12 +655,10 @@
                      <div class="col-md-6">
                         {!! Form::label('Descuento en C$:')!!} 
                         {!! Form::text('descuento',null, ['id'=>'descuento','class'=>'form-control'])!!}
-                        <div class="checkbox">
-                           <label for="">       
-                              <input type="checkbox" class="checkbox" id="iva">IVA
-                           </label> 
-                        </div>
-                        {!! Form::text('iva',null,['class' => 'form-control'])!!} 
+                           
+                        <input type="checkbox" class="iva"><span> IVA</span>
+                        
+                        {!! Form::text('iva',null,['class' => 'form-control ivatxt', 'disabled','id'=>'iva'  ])!!}
                         <label for="">Valor Total de Venta:</label>
                         {!! Form::text('valor_venta',null,['id'=>'valor_venta','class' => 'form-control'])!!}
                         <label for="">Precio Unitario:</label>
@@ -734,7 +736,7 @@
          }
          $("#materiales").append("<li class='material material" + claseNuEl + "'><div class='col-md-3'><label>Nº Páginas</label> <input type='text' class='form-control este-material' id='papel" + claseNuEl + "' onBlur='papel" + claseNuEl + "Cambio()" + "' placeholder='Nº de Páginas'></div> <div class='col-md-3'><label>Material " + claseNuEl + "</label> <select id='id_rubro" + claseNuEl +"' class='form-control' onChange='rubro" + claseNuEl + "Cambio()" + "'> <?php foreach ($rubros as $rubro) {echo"<option value='$rubro->id'>$rubro->descripcion </option>";}?></select></div> </li>");
          } 
-      });
+    });
   </script>
 
 @endsection

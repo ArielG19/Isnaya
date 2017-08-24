@@ -1,6 +1,6 @@
 <div class="modal fade" id="myModalDetalles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
-		<div class="modal-content">
+		<div class="modal-content mod-magenta">
 			<div class="modal-header deta">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span> 

@@ -22,8 +22,13 @@
 	</li>
 
 	<li>
-		<b>Volumen: </b>{{$proformas->volumen}}
+		<b>Páginas: </b>{{$proformas->num_pag}}
 	</li>
+
+	<li>
+		<b>Volumen de Láminas: </b>{{$proformas->volumen}}
+	</li>
+
 
 	<li>
 		<b>Formato: </b>{{$proformas->formato->formato}} 

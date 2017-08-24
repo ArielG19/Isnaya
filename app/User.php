@@ -31,4 +31,9 @@ class User extends Authenticatable
     public function proformas(){
       return $this->hasMany(Proforma::class);
     }
+
+    public function bitacora()
+    {
+      return $this->hasMany(Bitacora::class);
+    }
 }

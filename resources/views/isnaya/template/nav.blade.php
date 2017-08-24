@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top" style="padding-bottom: 20px">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="/home">
-                <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="160px">
+                <img id="logo" alt="Isnaya-Print" src="../../img/logofooter.png" width="160px">
             </a>
         </div>
 
@@ -45,7 +45,15 @@
                             </li>
                             <li>
                                 <a id="funciones" href="/formatos">Formatos</a>
-                            </li>                           
+                            </li>  
+                            @if(Auth::user()->type=='admin')
+                                <li>
+                                    <a id="funciones" href="/bitacora">Bitacora</a>
+                                </li>
+                                <li>
+                                    <a id="funciones" href="/usuarios">Usuarios</a>
+                                </li>  
+                            @endif                         
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -63,19 +71,19 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                     <img src="imagenes/perfil/{{Auth::user()->imagen}}"
+                                <img src="../../imagenes/perfil/{{Auth::user()->imagen}}"
                                  style="width: 45px; height: 45px; float: left;border-radius: 50%; margin-right: 10px; margin-top:-13px;"> {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('/perfil') }}">Configuración</a>
+                                <a id="usuario" href="{{ url('/perfil') }}">Configuración</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="{{ url('/logout') }}"
+                                <a id="usuario" href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    Salir
+                                    Salir <span class="fa fa-sign-out"></span>
                                 </a>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

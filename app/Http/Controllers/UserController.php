@@ -23,7 +23,7 @@ class UserController extends Controller
     }
 
     public function listarUsuarios(){
-             $usuarios = User::Orderby('id','DESC')->paginate(5);
+             $usuarios = User::Orderby('id','DESC')->paginate(10);
             return view('isnaya.usuarios.listar')->with('usuarios',$usuarios);
     }
 

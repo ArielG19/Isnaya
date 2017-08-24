@@ -25,12 +25,7 @@
                                     @endif
                             </div>
                             <div class="col-md-6" style="padding-left:50px;border-left: 4px solid #9E9E9E;">
-<<<<<<< HEAD
                                    <img src="/imagenes/perfil/{{$user->imagen}}" class="img-responsive" style="float: left;border-radius: 5%;">
-=======
-                                   <img src="/imagenes/perfil/{{$user->imagen}}" class="img-responsive"
-                                         style="float: left;border-radius: 5%;">
->>>>>>> 915495c9e7d51ed89fe64a16098b8e3a1fa330f6
                                    <form enctype="multipart/form-data" action="/perfil" method="POST">
                                         <h3><label for="">Actualizar imagen de perfil</label></h3>
                                         <input type="file" name="imagen">

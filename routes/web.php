@@ -15,51 +15,12 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-
 Auth::routes();
-
-Route::get('perfil','UserController@perfil');
-Route::post('perfil','UserController@updatePerfil');
 
 Route::get('reportes','ReporteController@mes');
 
-
-Route::get('pdf','PDFController@index');
-Route::get('/home', 'HomeController@index');
-
 Route::Resource('/usuarios','UserController');
 Route::get('/listar-usuarios/{page?}','UserController@listarUsuarios');
-
-
-Route::Resource('/productos','ProductoController');
-Route::get('/listar-productos/{page?}','ProductoController@listarTodo');
-
-
-Route::Resource('/rubros', 'RubrosController');
-Route::get('/mos_rubros', 'RubrosController@listar');
-
-Route::Resource('/clientes', 'ClienteController');
-Route::get('/lis_clientes','ClienteController@listar');
-
-
-Route::Resource('/formatos', 'FormatoController');
-Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
-
-
-Route::Resource('/colores', 'ColorController');
-Route::get('/lisColores','ColorController@listar');
-
-
-Route::Resource('/proformas', 'ProformasController');
-Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
-Route::get('/listar-detalle/{id}','ProformasController@listarDetalle');
-
-Route::Resource('/bitacora', 'BitacoraController');
-
-Route::Resource('/calculos', 'CalculosController');
-
-Route::get('/listados','CalculosController@listar');
-
 
 Route::group(['middleware' => 'auth'], function()
 {
@@ -67,5 +28,36 @@ Route::group(['middleware' => 'auth'], function()
     {
         return view('/home');
     });
+    //Proteger las rutas para que solo usuarios registrados puedan acceder a ellas
+
+    Route::get('perfil','UserController@perfil');
+    Route::post('perfil','UserController@updatePerfil');
+
+    Route::get('pdf','PDFController@index');
+    Route::get('/home', 'HomeController@index');
+
+    Route::Resource('/productos','ProductoController');
+    Route::get('/listar-productos/{page?}','ProductoController@listarTodo');
+
+    Route::Resource('/rubros', 'RubrosController');
+    Route::get('/mos_rubros', 'RubrosController@listar');
+
+    Route::Resource('/clientes', 'ClienteController');
+    Route::get('/lis_clientes','ClienteController@listar');
+
+    Route::Resource('/formatos', 'FormatoController');
+    Route::get('/listar-formatos/{page?}','FormatoController@listarFormato');
+
+    Route::Resource('/colores', 'ColorController');
+    Route::get('/lisColores','ColorController@listar');
+
+    Route::Resource('/proformas', 'ProformasController');
+    Route::Resource('/calculos', 'CalculosController');
+
+    Route::get('/listar-proformas/{page?}','ProformasController@listarProforma');
+    Route::get('/listar-detalle/{id}','ProformasController@listarDetalle');
+
+    Route::Resource('/bitacora', 'BitacoraController');
+    Route::get('/listarBitacoras','BitacoraController@listarBitacora');
 
 });

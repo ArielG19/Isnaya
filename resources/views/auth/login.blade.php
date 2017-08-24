@@ -3,17 +3,17 @@
 @section('content')
 <div class="container">
     <div class="col-md-10 col-md-offset-1 log-container">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <a class="navbar-brand" href="">
-                <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="160px">
+                <img id="logo" alt="Isnaya-Print" src="img/logofooter.png" width="190px">
             </a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="row login">
                 <center>
                     <h3>Iniciar Sesión</h3>
-                    <h5>Por favor ingrese su usuario y clave</h5>
-                    <br>
+                    <h5>Por favor ingrese su usuario y clave de paso.</h5>
+                    <br><br><br>
                 </center>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
@@ -21,7 +21,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon" id="sizing-addon1"><b>Usuario</b></span>
-                                <input id="email"  type="email" class="text-reset sinborde" name="email" value="{{ old('email') }}" required autofocus placeholder="Ingrese su usuario...">
+                                <input id="email"  type="email" class="text-reset sinborde" name="email" value="{{ old('email') }}" required autofocus placeholder="Ingrese Usuario...">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -36,7 +36,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon" id="sizing-addon1"><b>Contraseña</b></span>
-                                <input id="password" type="password" class="text-reset sinborde" name="password" required placeholder="Ingrese su contraseña">
+                                <input id="password" type="password" class="text-reset sinborde" name="password" required placeholder="Ingrese Contraseña...">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -63,9 +63,9 @@
                                 Entrar
                             </button>
                             <br><br>
-                            <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                            {{--<a class="btn btn-link" href="{{ url('/password/reset') }}">
                                 <span class="glyphicon glyphicon-triangle-right">¿Olvidaste tu contraseña?</span>
-                            </a>
+                            </a>--}}
                         </div>
                     </div>
                 </form>
@@ -73,4 +73,14 @@
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container col-md-10 col-md-offset-1">
+        <div class="col-md-8 col-md-offset-2" id="foot">
+            <b>
+                Bienvenido al sistema de proformas de Isnaya-Print.
+            </b>
+        </div>
+    </div>
+</footer>
 @endsection
